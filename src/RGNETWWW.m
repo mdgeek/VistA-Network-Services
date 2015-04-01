@@ -1,0 +1,321 @@
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;01-Apr-2015 17:40;DKM
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 28
+ ;=================================================================
+ ; This is the TCP I/O handler entry point
+NETSERV(DUMMY) ;
+ D WRITEALL($$PROCESS("$$TCPSTRM(.LN)"))
+ S RGQUIT=1
+ Q
+ ; Entry point where request is in an array.
+ ;  SRCARY = Array reference.  Note that the array contents will be destroyed.
+ ;  Returns the global reference where the response is stored.
+ENTRYARY(SRCARY) ;
+ Q $$PROCESS("$$ARYSTRM(.LN,""SRCARY"")")
+ ; Entry point for processing a request.  By using a stream,
+ ; we can process requests from sources other than a TCP
+ ; stream.
+ ;   SOURCE = Extrinsic that will act as an input stream for reading the request.
+PROCESS(SOURCE) ;
+ N RGNETREQ,RGNETRSP
+ D INIT,PROCX,ENDRSP,CLEANUP
+ Q:$Q RGNETRSP
+ Q
+PROCX N HANDLER,EP,AUTH,X,$ET,$ES
+ S $ET="D ETRAP^RGNETWWW"
+ S X=$$PARSEREQ(SOURCE,.RGNETREQ)
+ I X D SETSTAT(X) Q
+ S HANDLER=$$URL2EP(RGNETREQ("METHOD"),RGNETREQ("PATH"))
+ I 'HANDLER D SETSTAT(404,"No endpoint") Q
+ S EP=$G(^RGNET(996.52,HANDLER,10)),AUTH=$P(^(0),U,3)
+ I '$L(EP) D SETSTAT(404,"No handler") Q
+ Q:'$$AUTH(AUTH,$L(AUTH))
+ D @EP
+ Q
+ETRAP D SETSTAT(500,$P($EC,",",2)),^%ZTER,UNWIND^%ZTER
+ Q
+ ; Writes the contents of the buffer to the TCP socket.
+WRITEALL(BUFFER) ;
+ N LP1,LP2
+ S LP1=""
+ F  S LP1=$O(@BUFFER@(LP1)) Q:'$L(LP1)  D
+ .D:$D(@BUFFER@(LP1))#2 TCPWRITE^RGNETTCP(@BUFFER@(LP1))
+ .S LP2=""
+ .F  S LP2=$O(@BUFFER@(LP1,LP2)) Q:'$L(LP2)  D
+ ..D TCPWRITE^RGNETTCP(@BUFFER@(LP1,LP2))
+ Q
+ ; Extrinsic to act as a TCP input stream
+TCPSTRM(LN) ;
+ N L,TMO
+ S TMO=$S('$D(LN):10,1:0)
+ S LN=$$TCPREADT^RGNETTCP($C(13,10),TMO),L=$L(LN)
+ I L,$E(LN,L-1,L)=$C(13,10) S LN=$E(LN,1,L-2)
+ Q L
+ ; Extrinsic to act as an array stream source
+ARYSTRM(LN,ARYREF) ;
+ N X,L
+ S X=$Q(@ARYREF),L=$QL(ARYREF)
+ Q:'$L(X) 0
+ Q:$NA(@X,L)'=ARYREF 0
+ S LN=@X
+ K @X
+ Q 1
+ ; Parse the HTTP request
+ ;  STREAM  = Input stream (an extrinsic for returning successive lines)
+ ; .RGNETREQ = Array to receive the parsed results
+ ; Parsed components are store under the following nodes:
+ ;  HDR    = Headers
+ ;  METHOD = Method
+ ;  PARAMS = Query parameters
+ ;  PATH   = Request URL
+PARSEREQ(STREAM,RGNETREQ) ;
+ N METHOD,PATH,HEADERS,LP,LN,CNT,QRY,X
+ S CNT=0,NEXT="X="_STREAM
+ F  S @NEXT Q:'X  D
+ .I '$D(METHOD) S METHOD=LN Q
+ .I 'CNT S CNT='$L(LN) Q:CNT
+ .I 'CNT D PARSEHDR(LN) Q
+ .S RGNETREQ("BODY",CNT)=LN,CNT=CNT+1
+ I '$D(METHOD) Q 400
+ S PATH=$P(METHOD," ",2),METHOD=$P(METHOD," ")
+ I '$L(METHOD) Q 405
+ I PATH["?" D
+ .S QRY=$P(PATH,"?",2,9999),PATH=$P(PATH,"?")
+ .D PARSEQS(QRY)
+ S:$E(PATH)="/" PATH=$E(PATH,2,9999)
+ S:$E(PATH,$L(PATH))="/" PATH=$E(PATH,1,$L(PATH)-1)
+ S PATH=$$UNESCURL(PATH)
+ S RGNETREQ("METHOD")=METHOD
+ S RGNETREQ("PATH")=PATH
+ S RGNETREQ("HOST")=$G(RGNETREQ("HDR","host"))_"/"_$P(PATH,"/")
+ D ^%ZTER
+ Q 0
+ ; Parse query string into array named in PREF.
+PARSEQS(VALUE,PREF) ;
+ N X,Y,Z,N,V,M
+ S PREF=$G(PREF,$NA(RGNETREQ("PARAMS")))
+ F X=1:1:$L(VALUE,"&") D
+ .S Y=$P(VALUE,"&",X),N=$$UNESCURL($P(Y,"=")),V=$$UNESCURL($P(Y,"=",2,9999)),M=""
+ .I $L(N) D
+ ..S Z=$L(N,":")
+ ..I Z>1 D
+ ...S Y=$P(N,":",Z)
+ ...S M=$S(Y="missing":"m",Y="exact":"e",Y="text":"t",1:"")
+ ...S:$L(M) N=$P(N,":",1,Z-1)
+ ..S Y=1+$O(@PREF@(N,""),-1)
+ ..F Z=1:1:$L(V,",") D
+ ...S @PREF@(N,Y,Z)=$P(V,",",Z)
+ ...S @PREF@(N,Y,Z,"OPR")=M
+ Q
+ ; Parse body as query string values
+PARSEBD(PARAMS) ;
+ N X
+ F X=0:0 S X=$O(RGNETREQ("BODY",X)) Q:'X  D PARSEQS(RGNETREQ("BODY",X),"PARAMS")
+ Q
+ ; Parse http header into array named in HREF.
+PARSEHDR(VALUE,HREF) ;
+ N N,V
+ S HREF=$G(HREF,$NA(RGNETREQ("HDR")))
+ S N=$$LOW^XLFSTR($P(VALUE,":")),V=$$TRIM^XLFSTR($P(VALUE,":",2,999))
+ S:$L(N) @HREF@(N)=V
+ Q
+ ; Replace escaped characters in URL
+UNESCURL(X) ;
+ I X["%"!(X["+") D
+ .N P,C,H
+ .F P=1:1 S C=$E(X,P) Q:'$L(C)  D
+ ..I C="+" S $E(X,P)=" "
+ ..E  I C="%" S H=$E(X,P+1,P+2),$E(X,P,P+2)=$$UNHEX^XTHCUTL(H)
+ Q X
+ ; Escape reserved characters
+ESCAPE(VALUE) ;
+ N LP
+ F LP="&;amp","<;lt",">;gt",$C(9)_";nbsp","|TAB|;nbsp" D
+ .S VALUE=$$SUBST^RGUT(VALUE,$P(LP,";"),"&"_$P(LP,";",2)_";")
+ Q VALUE
+ ; Returns true if error condition is set
+ISERROR() ;
+ Q +$G(RGNETRSP("STATUS"))'<400
+ ; Sets http status code
+SETSTAT(CODE,TEXT) ;
+ S:'$L($G(TEXT)) TEXT=$P(^RGNET(996.51,CODE,0),U,2)
+ S RGNETRSP("STATUS")=CODE_" "_TEXT
+ D:$$ISERROR RESET
+ Q
+ ; Sets the content type
+SETCTYPE(CTYPE) ;
+ S RGNETRSP("CTYPE")=CTYPE
+ Q
+ ; Finishes a response by adding the necessary headers
+ENDRSP D ADDHDR("HTTP/1.1 "_$G(RGNETRSP("STATUS"),"200 OK"),-999)
+ D ADDHDR("Date: "_$$WWWDATE,-998)
+ D:$D(RGNETRSP("CTYPE"))#2 ADDHDR("Content-Type: "_RGNETRSP("CTYPE")_"; charset=utf-8",-998)
+ D ADDHDR("Content-Length: "_+$G(RGNETRSP("LEN")),-998)
+ D ADDHDR("",0)
+ Q
+ ; Add to response buffer
+ADD(X) N Y
+ S:'$$ISERROR Y=$O(@RGNETRSP@(""),-1)+1,@RGNETRSP@(Y)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+$L(X),RGNETRSP("LAST")=Y
+ Q
+ ; Add array to output buffer
+ ; RT  = Array root
+ ; EOL = End of line character(s)
+ADDARY(RT,EOL) ;
+ N LP
+ S EOL=$G(EOL),LP=0
+ F  S LP=$O(@RT@(LP)) Q:'LP  D
+ .D ADD($G(@RT@(LP))_$G(@RT@(LP,0))_EOL)
+ Q
+ ; Add HTTP response header to output buffer
+ ;  HDR = Properly formatted header
+ ;  SB  = Affects the position of the header in the output.  Typically, not specified.
+ADDHDR(HDR,SB) ;
+ N NXT
+ S SB=+$G(SB,-1)
+ S:SB>0 SB=-SB
+ S NXT=$O(@RGNETRSP@(SB,""),-1)+1,@RGNETRSP@(SB,NXT)=HDR_$C(13,10)
+ Q
+ ; Replace buffer contents at specified index, adjusting content length accordingly.
+REPLACE(IDX,X) ;
+ N Y
+ S Y=$L(X)-$L(@RGNETRSP@(IDX)),@RGNETRSP@(IDX)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+Y
+ Q
+ ; Returns the specified query parameter
+ ; PN = Parameter name
+ ; P1 = Parameter series - for duplicate parameters, specifies which among them (defaults to 1)
+ ; P2 = Parameter value  - for multivalued parameters, specifies which value (defaults to 1)
+GETPARAM(PN,P1,P2) ;
+ Q $G(RGNETREQ("PARAMS",PN,$G(P1,1),$G(P2,1)))
+ ; Initialize environment
+INIT S:'($D(RGNETRSP)#2) RGNETRSP=$$TMPGBL
+ D RESET
+ Q
+ ; Reset the output buffer
+RESET K @RGNETRSP
+ S (RGNETRSP("LAST"),RGNETRSP("LEN"))=0
+ Q
+ ; Returns the host url (e.g., www.xyz.net)
+HOST(PATH,DFLT) ;
+ N URL
+ S URL=$G(PATH)
+ S:$E(URL)="*" URL=$G(DFLT)_$E(URL,2,9999)
+ Q $$CONCAT(RGNETREQ("HOST"),URL)
+ ; Returns host URL including the transport protocol (e.g., http://www.xyz.net)
+HOSTURL(PATH) ;
+ Q $G(RGNETREQ("HDR","x-forwarded-proto"),"http")_"://"_$$HOST(.PATH)
+ ; Prepend local system root to path
+LOCALSYS(PATH) ;
+ Q $$CONCAT("http://"_$$LOW^XLFSTR($$KSP^XUPARAM("WHERE")),.PATH)
+ ; Return UUID for this system
+SYSUUID() ;
+ S:'$L($G(^RGNET("SYS"))) ^("SYS")=$$UUID^RGUT
+ Q ^("SYS")
+ ; Concatenate path to url.
+CONCAT(URL,PATH) ;
+ Q:'$D(PATH) URL
+ F  Q:$E(URL,$L(URL))'="/"  S $E(URL,$L(URL))=""
+ F  Q:$E(PATH)'="/"  S $E(PATH)=""
+ Q URL_"/"_PATH
+ ; Date (format per RFC 1123)
+WWWDATE(DT) ;
+ N TZ,H,M,SN
+ S:'$G(DT) DT=$$NOW^XLFDT
+ S TZ=$$TZ^XLFDT,H=+$E(TZ,2,3),M=+$E(TZ,4,5),SN=$S(TZ<0:1,1:-1)
+ S DT=$$FMADD^XLFDT(DT,0,H*SN,M*SN,0)
+ Q $$FMTDATE^RGUTDATF(DT,"EEE, dd MMM YYYY HH:mm:ss 'GMT'")
+ ; Returns true if request came from a browser
+ISBROWSR() ;
+ Q $G(RGNETREQ("HDR","user-agent"))["Mozilla"
+ ; Attempt authentication if credentials available
+ ; If REQUIRED is true, authentication must succeed.
+ ; Returns true if successful
+AUTH(TYPE,REQUIRED) ;
+ N TP,CRED
+ S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
+ I '$L(TP),$G(DUZ) Q 1
+ S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED)
+ K RGNETREQ("HDR","authorization"),DUZ
+ I $L(TYPE),TP'=TYPE
+ .S REQUIRED=1
+ E  I TP="BASIC" D
+ .N IO,RTN
+ .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
+ .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
+ E  I TP="BEARER" D
+ .S DUZ=$$ISVALID^RGSEOAUT(CRED)
+ I '$G(DUZ),REQUIRED D  Q 0
+ .D SETSTAT(401)
+ .D ADDHDR("WWW-Authenticate: "_TYPE)
+ S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
+ Q 1
+ ; Convert to pattern (Used for URL matching)
+TOPTRN(NM) ;
+ N P,C,X,L
+ S (L,P)=""
+ F X=1:1:$L(NM) D
+ .S C=$E(NM,X)
+ .I C="*" D TOPTRN2(".E") Q
+ .I C="#" D TOPTRN2("1.N") Q
+ .S L=L_C
+ D:$L(P) TOPTRN2("")
+ Q P
+TOPTRN2(X) ;
+ S:$L(L) P=P_"1"""_L_"""",L=""
+ S P=P_X
+ Q
+ ; Looks up endpoint for URL
+ ; Returns IEN of endpoint
+URL2EP(METHOD,URL) ;
+ N IEN
+ S:'$L(URL) URL="/"
+ S IEN=$$URL2EPX(METHOD,URL)
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,$E(URL))
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,"#")
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
+ I 'IEN,$E(URL,$L(URL))'="/" S IEN=$$URL2EP(METHOD,URL_"/")
+ Q IEN
+URL2EPX(METHOD,URL,URLX) ;
+ Q:'$D(URLX) $O(^RGNET(996.52,"C",METHOD,URL,0))
+ N RT,FND,PTRN,IEN
+ S RT=URLX,FND=0
+ F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
+ .F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
+ ..S:URL?@PTRN FND=IEN
+ Q FND
+ ; Returns the weighted value if content type matches an accepted type,
+ ; or 0 if no match.
+ISCTYPE(MTYPE,ACCPT) ;
+ N AT,LP,MT,R,X,Q
+ S ACCPT=$TR(ACCPT," "),MTYPE=$TR(MTYPE," ")
+ F LP=1:1:$L(ACCPT,",") D
+ .S X=$P(ACCPT,",",LP),Q=$P(X,";",2),X=$P(X,";")
+ .S Q=$S($E(Q,1,2)="q=":+$E(Q,3,99),1:1)
+ .S:$L(X) AT(Q,X)=""
+ Q:'$D(AT) 1
+ S Q=""
+ F  S Q=$O(AT(Q),-1) Q:'Q  D  Q:$D(R)
+ .S AT=""
+ .F  S AT=$O(AT(Q,AT)) Q:'$L(AT)  D  Q:$D(R)
+ ..I AT="*/*" S R=Q Q
+ ..F LP=1:1:$L(MTYPE,",") D  Q:$D(R)
+ ...S MT=$P(MTYPE,",",LP)
+ ...I AT=MT S R=Q Q
+ ...I AT["/*",$P(AT,"/")=$P(MT,"/") S R=Q Q
+ ...I AT["*/",$P(AT,"/",2)=$P(MT,"/",2) S R=Q Q
+ Q $S($D(R):R,1:0)
+ ; Return unique temp global reference
+ ; If X is specified, returns the temp global at that index.
+ ; Otherwise, returns the next available global reference.
+TMPGBL(X) ;
+ Q:$G(X) $NA(^TMP("RGNETWWW",$J,X))
+ F  S X=$G(^TMP("RGNETWWW",$J))+1,^($J)=X,X=$NA(^($J,X)) Q:'$D(@X)
+ Q X
+ ; Cleanup temp globals on completion
+CLEANUP N LP,TMP,EXC
+ S TMP=$NA(^TMP("RGNETWWW",$J))
+ I TMP'=$NA(@RGNETRSP,2) K @TMP Q
+ S (@TMP,EXC)=$QS(RGNETRSP,3)
+ F LP=0:0 S LP=$O(@TMP@(LP)) Q:'LP  K:LP'=EXC @TMP@(LP)
+ Q
+ ; Returns description
+GREETING D ADDARY($NA(^RGNET(996.52,HANDLER,99)))
+ Q
