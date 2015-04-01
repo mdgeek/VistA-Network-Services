@@ -9,4 +9,4 @@ one place.  Having done that, I created web server and RPC broker applications t
 of these applications), again drawing ideas from existing packages.
 
 This project is still in evolution.  I am doing load testing on it.  I still need to implement some limits on spawned
-processes to prevent DOS attacks from crippling the system.  But it works!  Feel free to try it out.
+processes to prevent DoS attacks from crippling the system.  But it works!  Feel free to try it out.
