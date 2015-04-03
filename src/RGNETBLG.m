@@ -1,4 +1,4 @@
-RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;01-Apr-2015 14:12;DKM
+RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
  ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 144
  ;=================================================================
  ; Open a log entry.  The return value is the IEN of the new entry.
@@ -63,7 +63,7 @@ DELETE(DA) ;
  Q
  ; Task purge in background
 TASKPRG N ZTSK
- S ZTSK=$$QUEUE^RGUTSK("DOPURGE^RGNETBLG","Purge RG ACTIVITY LOG")
+ S ZTSK=$$QUEUE^RGUTTSK("DOPURGE^RGNETBLG","Purge RG ACTIVITY LOG")
  I ZTSK>0 W !,"RG ACTIVITY LOG purge submitted as task #",ZTSK,!!
  E  W !,"Error submitting RG ACTIVITY LOG purge.",!!
  Q

@@ -1,4 +1,4 @@
-RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;01-Apr-2015 14:12;DKM
+RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;03-Apr-2015 09:20;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Background task for executing an asynchronous RPC
@@ -15,9 +15,9 @@ TASK N RGD,TGT,$ET,$ES
  E  I XWBPTYPE=5 S @TGT@(0)=$G(@RGD)
  E  I XWBPTYPE="H" D
  .N X,Y,FIL,DIR
- .S X=$E($$DIRDLM^RGUOS,3),Y=$L(RGD,X),DIR=$P(RGD,X,1,Y-1),FIL=$P(RGD,X,Y)
+ .S X=$E($$DIRDLM^RGUTOS,3),Y=$L(RGD,X),DIR=$P(RGD,X,1,Y-1),FIL=$P(RGD,X,Y)
  .I '$$FTG^%ZISH(DIR,FIL,$NA(@TGT@(0)),$QL(TGT)+1)
- .D DELETE^RGUOS(RGD)
+ .D DELETE^RGUTOS(RGD)
  I $$S^%ZTLOAD K ^XTMP("RGNETB",RGNETB("UID"),"T",ZTSK)
  E  S ^XTMP("RGNETB",RGNETB("UID"),"T",ZTSK)=ZTSK_"^0^"_XWBWRAP
  Q

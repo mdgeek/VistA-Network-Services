@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;01-Apr-2015 16:22;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;03-Apr-2015 08:31;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -20,10 +20,12 @@ STARTALL D SSALL(1)
 STOPALL D SSALL(0)
  Q
  ; Restart all primary listeners
-RESTALL D STOPALL,STARTALL
+RESTALL Q:$$OSCHECK
+ D STOPALL,STARTALL
  Q
  ; List the status of all primary listeners
-LISTALL N RGCFG,LP,X
+LISTALL Q:$$OSCHECK
+ N RGCFG,LP,X
  F LP=0:0 S LP=$O(^RGNET(996.5,LP)) Q:'LP  D
  .K RGCFG
  .S RGCFG=LP
@@ -35,7 +37,7 @@ LISTALL N RGCFG,LP,X
  ; SS - 1 = start, 0 = stop
  ; SL - true = silent mode
 SSALL(SS,SL) ;
- D:$$OS BADMODE
+ Q:$$OSCHECK(.SL)
  N RGCFG
  F RGCFG=0:0 S RGCFG=$O(^RGNET(996.5,RGCFG)) Q:'RGCFG  D SSLIS(RGCFG,SS,.SL)
  Q
@@ -43,16 +45,17 @@ SSALL(SS,SL) ;
  ; SS - 1 = start, 0 = stop
  ; SL - true = silent mode
 SSLIS(RGCFG,SS,SL) ;
- D:$$OS BADMODE
- N $ET,RGMODE
+ Q:$$OSCHECK(.SL)
+ N $ET,SAME,RGMODE
  Q:'$$GETCFG(.RGCFG)
  S SL=$G(SL,$D(ZTQUEUED))
  S:'SL $ET="D SSERR^RGNETTCP"
  W:'SL RGCFG("name"),": "
+ S SAME=$$STATE=SS
+ S:'SS @$$LOCKNODE(.RGCFG)=1
+ I SAME W:'SL $S(SS:"already",1:"not")," running.",!!  Q
  I SS,RGCFG("disabled") W:'SL "disabled.",!! Q
- I $$STATE=SS W:'SL $S(SS:"already",1:"not")," running.",!! Q
- I 'SS S @$$LOCKNODE(.RGCFG)=1
- E  D JOB(0,.RGCFG)
+ D:SS JOB(0,.RGCFG)
  Q:SL
  N P1,P2,LP
  S P1=$S(SS:"start",1:"stop"),P2=P1_$S(SS:"ed",1:"ped")
@@ -79,10 +82,11 @@ GETCFG(RGCFG) ;
  .F LP=1:1:5 S RGCFG($P("name^port^uci^disabled^maximum",U,LP))=$P(N0,U,LP)
  Q:$Q RGCFG
  Q
- ; Entry point for GTM socket dispatch
+ ; Entry point for GT.M socket dispatch
 GTMEP D EN(2,$ZCM)
  Q
  ; Start listener as background process
+ ; Returns true if operation was successful.
 JOB(RGMODE,RGCFG) ;
  N SUCCESS
  I RGMODE>1 S SUCCESS=0
@@ -163,6 +167,12 @@ PMPT(PMPT,HELP,DFLT) ;
 OS() N OS
  S OS=$P($G(^%ZOSF("OS")),U)
  Q $S(OS["OpenM":0,OS["GT.M":1,1:-1)
+ ; Displays function not available message for GT.M environments
+ ; Returns 1 if function not available.
+OSCHECK(SL) ;
+ Q:'$$OS 0
+ W:'$G(SL) "That function is not available for this environment.",!
+ Q 1
  ; Main loop
 LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
  S $ET="D ETRAP2^RGNETTCP",RGRETRY=0,RGQUIT='$$TCPOPEN,RGOUT=""
@@ -244,24 +254,34 @@ TCPUSE U RGTDEV
 TCPCLOSE C:$D(RGTDEV) RGTDEV
  Q
  ; Return CNT characters from input buffer
-TCPREAD(CNT,TMO) ;
+ ; CNT = # of characters to return
+ ; TMO = Optional timeout in seconds
+ ; USE = If true or not specified, call TCPUSE before read
+TCPREAD(CNT,TMO,USE) ;
+ Q:CNT'>0 ""
  N X
+ D:$G(USE,1) TCPUSE
  S TMO=+$G(TMO)
  R X#CNT:TMO
  Q X
- ; Read up to terminator sequence
+ ; Read up to termination sequence
+ ; TRM = Read termination sequence (included in returned value)
+ ; TMO = Optional timeout in seconds
 TCPREADT(TRM,TMO) ;
- N ST,L,X
- S LN="",L=$L(TRM)-1
- F  S X=$$TCPREAD(1,.TMO) Q:'$L(X)  D  Q:L<0
- .S LN=LN_X,TMO=0
+ N ST,L,X,USE
+ S LN="",L=$L(TRM)-1,USE=1
+ F  S X=$$TCPREAD(1,.TMO,USE) Q:'$L(X)  D  Q:L<0
+ .S LN=LN_X,(TMO,USE)=0
  .S:$E(LN,$L(LN)-L,$L(LN))=TRM L=-1
  Q LN
- ; Read byte from listener port
+ ; Read one byte from socket
+ ; TMO = Optional timeout in seconds
 TCPREADB(TMO) ;
  Q $A($$TCPREAD(1,.TMO))
  ; Write data to socket
- ; This operation is buffered
+ ; All write operations must be done via this method.
+ ; This operation is buffered with a write threshold at 1024 bytes.
+ ; DATA = Date to write
 TCPWRITE(DATA) ;
  S RGOUT=RGOUT_DATA
  D:$L(RGOUT)>1024 TCPFLUSH
@@ -273,6 +293,9 @@ TCPFLUSH Q:'$L(RGOUT)
  S RGOUT=""
  Q
  ; Write array (local or global) to TCP stream
+ ; ARY  = Local or global array reference
+ ; EOL  = Line terminator to add (optional)
+ ; KILL = If true, kill array after writing (default is false)
 ARYOUT(ARY,EOL,KILL) ;
  N ND,LN
  Q:'$L(ARY)
@@ -281,13 +304,17 @@ ARYOUT(ARY,EOL,KILL) ;
  F  S ND=$Q(@ND) Q:'$L(ND)  Q:$NA(@ND,LN)'=ARY  D TCPWRITE(@ND_EOL)
  K:$G(KILL) @ARY
  Q
- ; Write contents of HFS to TCP stream
-HFSOUT(HFS,EOL) ;
+ ; Write contents of a file to TCP stream
+ ; FIL  = File path
+ ; EOL  = Line terminator to add (optional)
+ ; KILL = If true, delete the file after writing (default is false)
+FILOUT(FIL,EOL,KILL) ;
  N LN
  S EOL=$G(EOL)
- D OPEN^RGUTOS(.HFS,"R")
- F  Q:$$READ^RGUTOS(.LN,HFS)  D TCPWRITE(LN_EOL)
- D CLOSE^RGUTOS(.HFS),DELETE^RGUTOS(HFS)
+ D OPEN^RGUTOS(.FIL,"R")
+ F  Q:$$READ^RGUTOS(.LN,FIL)  D TCPWRITE(LN_EOL)
+ D CLOSE^RGUTOS(.FIL)
+ D:$G(KILL) DELETE^RGUTOS(FIL)
  Q
  ; Throw a bad mode exception
 BADMODE D RAISE("Mode not supported for OS.")
@@ -327,7 +354,7 @@ STATE(ACT) ;
 LOCKNODE(RGCFG) ;
  Q:'$$GETCFG(.RGCFG) ""
  Q $NA(^[RGCFG("uci")]XTMP("RGNETTCP","LN",RGCFG,$S($G(RGMODE):$J,1:0)))
- ; Change process name to reflect active handler
+ ; Change process name to reflect active listener
 CHPRN(RGCFG) ;
  D SETNM^%ZOSV("RGNETTCP_"_RGCFG("port"))
  Q

@@ -1,4 +1,4 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;01-Apr-2015 14:12;DKM
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;03-Apr-2015 09:42;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; RPC: User authentication
@@ -61,7 +61,7 @@ AUTH(DATA,AID,WID,SID,AVC,WIP,DIV) ;
  ..D RESET(1)
  .S DATA(1)=RGNETB("UID")_U_$G(^XMB("NETNAME"))_U_$$GET1^DIQ(4,DUZ(2),".01")_U_DUZ
  .S:AID(0) ^XUTL("XQ",$J,1)=AID(0)_U_$G(^DIC(19,AID(0),0)),^("T")=1
- .D AUTOSET(SID),STSAVE^RGNETBRK(1)
+ .D AUTOSET(SID),STSAVE^RGNETTCP(1)
  I +DATA(0)=4 D
  .S DATA(1)=$P(XUENV,U,3)_U_$P(XUVOL,U)_U_XUCI_U_+RGPORT
  Q

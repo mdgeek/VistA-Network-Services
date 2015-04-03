@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;01-Apr-2015 14:12;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;03-Apr-2015 09:57;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -9,14 +9,13 @@ EVTCHK() ;EP
  E  Q 0
  S RTN=+$O(^XTMP("RGNETB",RGNETB("UID"),"E",0)),X=$NA(^(RTN))
  I RTN D
- .D TCPUSE^RGNETBRK
- .W $C(3)
+ .D TCPWRITE^RGNETTCP($C(3))
  .D ARYOUT^RGNETBRK(X)
 ERR1 L -^XTMP("RGNETB",RGNETB("UID"),"E")
  Q $G(RTN)
  ; Start monitor in background if not already running
 MONSTART ;EP
- I '$$MONCHECK,$$QUEUE^RGUTSK("MONITOR^RGNETBEV","VueCentric Event Monitor")
+ I '$$MONCHECK,$$QUEUE^RGUTTSK("MONITOR^RGNETBEV","NETSERV Broker Event Monitor")
  Q
  ; Returns true if event monitor is running
  ;   LOCK = If specified and true, do not release lock.
@@ -238,7 +237,7 @@ DELLOG(IEN) ;EP
  ; Task purge in background
 TASKPRG ;EP
  N ZTSK
- S ZTSK=$$QUEUE^RGUTSK("DOPURGE^RGNETBEV(1)","Purge RG EVENT LOG")
+ S ZTSK=$$QUEUE^RGUTTSK("DOPURGE^RGNETBEV(1)","Purge RG EVENT LOG")
  I ZTSK>0 W !,"RG EVENT LOG purge submitted as task #",ZTSK,!!
  E  W !,"Error submitting RG EVENT LOG purge.",!!
  Q

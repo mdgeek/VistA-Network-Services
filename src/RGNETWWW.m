@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;01-Apr-2015 17:40;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;02-Apr-2015 11:54;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 28
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -31,9 +31,11 @@ PROCX N HANDLER,EP,AUTH,X,$ET,$ES
  Q:'$$AUTH(AUTH,$L(AUTH))
  D @EP
  Q
+ ; Trap an expected error, returning it as a 500 status code.
 ETRAP D SETSTAT(500,$P($EC,",",2)),^%ZTER,UNWIND^%ZTER
  Q
  ; Writes the contents of the buffer to the TCP socket.
+ ;  BUFFER = Array reference containing buffered output.
 WRITEALL(BUFFER) ;
  N LP1,LP2
  S LP1=""
@@ -44,6 +46,7 @@ WRITEALL(BUFFER) ;
  ..D TCPWRITE^RGNETTCP(@BUFFER@(LP1,LP2))
  Q
  ; Extrinsic to act as a TCP input stream
+ ;  .LN = Single line returned from input stream.
 TCPSTRM(LN) ;
  N L,TMO
  S TMO=$S('$D(LN):10,1:0)
@@ -51,6 +54,8 @@ TCPSTRM(LN) ;
  I L,$E(LN,L-1,L)=$C(13,10) S LN=$E(LN,1,L-2)
  Q L
  ; Extrinsic to act as an array stream source
+ ;  .LN = Single line returned from input stream.
+ ;  ARYREF = Contains arrary reference.  Note: input array will be killed.
 ARYSTRM(LN,ARYREF) ;
  N X,L
  S X=$Q(@ARYREF),L=$QL(ARYREF)
@@ -62,11 +67,12 @@ ARYSTRM(LN,ARYREF) ;
  ; Parse the HTTP request
  ;  STREAM  = Input stream (an extrinsic for returning successive lines)
  ; .RGNETREQ = Array to receive the parsed results
- ; Parsed components are store under the following nodes:
+ ; Parsed components are stored under the following nodes:
  ;  HDR    = Headers
  ;  METHOD = Method
  ;  PARAMS = Query parameters
- ;  PATH   = Request URL
+ ;  PATH   = Request path
+ ;  HOST   = Request URL (less protocol)
 PARSEREQ(STREAM,RGNETREQ) ;
  N METHOD,PATH,HEADERS,LP,LN,CNT,QRY,X
  S CNT=0,NEXT="X="_STREAM
@@ -90,11 +96,13 @@ PARSEREQ(STREAM,RGNETREQ) ;
  D ^%ZTER
  Q 0
  ; Parse query string into array named in PREF.
-PARSEQS(VALUE,PREF) ;
+ ;  QS = Query string
+ ;  PREF = Array reference to receive data.  Defaults to RGNETREQ("PARAMS").
+PARSEQS(QS,PREF) ;
  N X,Y,Z,N,V,M
  S PREF=$G(PREF,$NA(RGNETREQ("PARAMS")))
- F X=1:1:$L(VALUE,"&") D
- .S Y=$P(VALUE,"&",X),N=$$UNESCURL($P(Y,"=")),V=$$UNESCURL($P(Y,"=",2,9999)),M=""
+ F X=1:1:$L(QS,"&") D
+ .S Y=$P(QS,"&",X),N=$$UNESCURL($P(Y,"=")),V=$$UNESCURL($P(Y,"=",2,9999)),M=""
  .I $L(N) D
  ..S Z=$L(N,":")
  ..I Z>1 D
@@ -271,7 +279,6 @@ URL2EP(METHOD,URL) ;
  S:'IEN IEN=$$URL2EPX(METHOD,URL,$E(URL))
  S:'IEN IEN=$$URL2EPX(METHOD,URL,"#")
  S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
- I 'IEN,$E(URL,$L(URL))'="/" S IEN=$$URL2EP(METHOD,URL_"/")
  Q IEN
 URL2EPX(METHOD,URL,URLX) ;
  Q:'$D(URLX) $O(^RGNET(996.52,"C",METHOD,URL,0))
@@ -280,6 +287,7 @@ URL2EPX(METHOD,URL,URLX) ;
  F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
  .F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
  ..S:URL?@PTRN FND=IEN
+ I 'FND,$E(URL,$L(URL))'="/" S FND=$$URL2EPX(METHOD,URL_"/",URLX)
  Q FND
  ; Returns the weighted value if content type matches an accepted type,
  ; or 0 if no match.

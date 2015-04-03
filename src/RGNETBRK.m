@@ -1,4 +1,4 @@
-RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;01-Apr-2015 14:12;DKM
+RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;03-Apr-2015 09:28;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Handler for broker I/O
@@ -11,7 +11,6 @@ NETSERV(RGNETB) ;
 DOACTION(VAC) ;
  N NM,SB,RT,VL,PR,RG,ACT,SEQ,ARG,RGERR,RGDATA,X
  S RGERR(0)=0
- D TCPUSE
  S X=$$TCPREAD^RGNETTCP(8,10)
  Q:$E(X,1,5)'="{CIA}" 0
  S ARG=0,RGNETB("EOD")=$E(X,6),SEQ=$E(X,7),ACT=$E(X,8)
@@ -42,7 +41,7 @@ TCPREADL() ;
  Q $$TCPREAD^RGNETTCP(L*16+N)
  ; Write data to socket
 TCPWRITE(DATA,EOD) ;
- D TCPWRITE^RGNETTCP($G(DATA)_$S($G(EOD):$$CTL("EOD"),1:""))
+ D TCPWRITE^RGNETTCP($G(DATA)_$$EOD(.EOD))
  Q
  ; Raise an exception
 RAISE(MSG,P1,P2) ;
@@ -71,6 +70,14 @@ SNDERR N X
  Q
 SNDEOD D TCPWRITE(,1)
  Q
+ ; Send data from an array.
+ ;  ARY = Array to send
+ ;  EOL = If true, append line terminator
+ARYOUT(ARY,EOL) ;
+ D ARYOUT^RGNETTCP(ARY,$S($G(EOL):$C(13),1:""))
+ Q
  ; Return control byte
 CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
  Q ""
+ ; Return EOD byte if X is true
+EOD(X) Q $S($G(X):$$CTL("EOD"),1:"")
