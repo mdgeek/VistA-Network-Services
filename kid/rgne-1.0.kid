@@ -1,11 +1,11 @@
-KIDS Distribution saved on Apr 03, 2015@10:00:13
+KIDS Distribution saved on Apr 04, 2015@09:07:24
 NETWORK SERVICES 1.0
 **KIDS**:NETWORK SERVICES 1.0^NETSERV CONNECTION MANAGER 1.0^NETSERV WEB SERVER 1.0^NETSERV RPC BROKER 1.0^NETSERV OAUTH2 SERVICE 1.0^
 
 **INSTALL NAME**
 NETWORK SERVICES 1.0
 "BLD",8510,0)
-NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150403^n
+NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150404^n
 "BLD",8510,1,0)
 ^^7^7^3150401.074118
 "BLD",8510,1,1,0)
@@ -23,7 +23,7 @@ NETSERV OATH2 SERVICE      - OAuth 2 implementation.
 "BLD",8510,1,7,0)
 
 "BLD",8510,6.3)
-14
+15
 "BLD",8510,10,0)
 ^9.63^400^4
 "BLD",8510,10,100,0)
@@ -135,9 +135,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150403
+1.0^3150404
 "PKG",225,22,1,1,0)
-^^7^7^3150403
+^^7^7^3150404
 "PKG",225,22,1,1,1,0)
 This is a suite of network services including:
 "PKG",225,22,1,1,2,0)
@@ -229,7 +229,7 @@ D XPZ2^XPDIQ
 **INSTALL NAME**
 NETSERV CONNECTION MANAGER 1.0
 "BLD",8506,0)
-NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150403^n
+NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150404^n
 "BLD",8506,1,0)
 ^^2^2^3150401.074349
 "BLD",8506,1,1,0)
@@ -247,7 +247,7 @@ y^y^f^^^^n^^
 "BLD",8506,4,"B",996.5,996.5)
 
 "BLD",8506,6.3)
-41
+44
 "BLD",8506,"ABPKG")
 n
 "BLD",8506,"KRN",0)
@@ -275,7 +275,7 @@ n
 "BLD",8506,"KRN",9.8,"NM",0)
 ^9.68A^1^1
 "BLD",8506,"KRN",9.8,"NM",1,0)
-RGNETTCP^^0^B79496806
+RGNETTCP^^0^B81491712
 "BLD",8506,"KRN",9.8,"NM","B","RGNETTCP",1)
 
 "BLD",8506,"KRN",19,0)
@@ -375,9 +375,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150403
+1.0^3150404
 "PKG",225,22,1,1,0)
-^^2^2^3150403
+^^2^2^3150404
 "PKG",225,22,1,1,1,0)
 Manages TCP connections for various network services.  Provides concurrent
 "PKG",225,22,1,1,2,0)
@@ -457,11 +457,11 @@ D XPZ2^XPDIQ
 "RTN")
 1
 "RTN","RGNETTCP")
-0^1^B79496806
+0^1^B81491712
 "RTN","RGNETTCP",1,0)
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;03-Apr-2015 08:31;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;04-Apr-2015 09:05;DKM
 "RTN","RGNETTCP",2,0)
- ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 41
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 44
 "RTN","RGNETTCP",3,0)
  ;=================================================================
 "RTN","RGNETTCP",4,0)
@@ -485,698 +485,708 @@ STOP(RGCFG) ;
 "RTN","RGNETTCP",13,0)
 RESTART(RGCFG) ;
 "RTN","RGNETTCP",14,0)
- D STOP(.RGCFG),START(.RGCFG)
+ Q:$$OSCHECK
 "RTN","RGNETTCP",15,0)
- Q
+ D STOP(.RGCFG),START(.RGCFG)
 "RTN","RGNETTCP",16,0)
- ; Start all primary listeners
+ Q
 "RTN","RGNETTCP",17,0)
-STARTALL D SSALL(1)
+ ; Start all primary listeners
 "RTN","RGNETTCP",18,0)
- Q
+STARTALL D SSALL(1)
 "RTN","RGNETTCP",19,0)
- ; Stop all primary listeners
+ Q
 "RTN","RGNETTCP",20,0)
-STOPALL D SSALL(0)
+ ; Stop all primary listeners
 "RTN","RGNETTCP",21,0)
- Q
+STOPALL D SSALL(0)
 "RTN","RGNETTCP",22,0)
- ; Restart all primary listeners
+ Q
 "RTN","RGNETTCP",23,0)
-RESTALL Q:$$OSCHECK
+ ; Restart all primary listeners
 "RTN","RGNETTCP",24,0)
- D STOPALL,STARTALL
+RESTALL Q:$$OSCHECK
 "RTN","RGNETTCP",25,0)
- Q
+ D STOPALL,STARTALL
 "RTN","RGNETTCP",26,0)
- ; List the status of all primary listeners
+ Q
 "RTN","RGNETTCP",27,0)
-LISTALL Q:$$OSCHECK
+ ; List the status of all primary listeners
 "RTN","RGNETTCP",28,0)
- N RGCFG,LP,X
+LISTALL Q:$$OSCHECK
 "RTN","RGNETTCP",29,0)
- F LP=0:0 S LP=$O(^RGNET(996.5,LP)) Q:'LP  D
+ N RGCFG,LP,X
 "RTN","RGNETTCP",30,0)
- .K RGCFG
+ F LP=0:0 S LP=$O(^RGNET(996.5,LP)) Q:'LP  D
 "RTN","RGNETTCP",31,0)
- .S RGCFG=LP
+ .K RGCFG
 "RTN","RGNETTCP",32,0)
- .D GETCFG(.RGCFG)
+ .S RGCFG=LP
 "RTN","RGNETTCP",33,0)
- .S X=$$STATE
+ .D GETCFG(.RGCFG)
 "RTN","RGNETTCP",34,0)
- .W RGCFG("name")," is",$S(X:"",1:" not")," running on port ",RGCFG("port"),".",!!
+ .S X=$$STATE
 "RTN","RGNETTCP",35,0)
- Q
+ .W RGCFG("name")," is",$S(X:"",1:" not")," running on port ",RGCFG("port"),".",!!
 "RTN","RGNETTCP",36,0)
- ; Start/stop all registered listeners
+ Q
 "RTN","RGNETTCP",37,0)
- ; SS - 1 = start, 0 = stop
+ ; Start/stop all registered listeners
 "RTN","RGNETTCP",38,0)
- ; SL - true = silent mode
-"RTN","RGNETTCP",39,0)
-SSALL(SS,SL) ;
-"RTN","RGNETTCP",40,0)
- Q:$$OSCHECK(.SL)
-"RTN","RGNETTCP",41,0)
- N RGCFG
-"RTN","RGNETTCP",42,0)
- F RGCFG=0:0 S RGCFG=$O(^RGNET(996.5,RGCFG)) Q:'RGCFG  D SSLIS(RGCFG,SS,.SL)
-"RTN","RGNETTCP",43,0)
- Q
-"RTN","RGNETTCP",44,0)
- ; Start/stop primary listener
-"RTN","RGNETTCP",45,0)
  ; SS - 1 = start, 0 = stop
-"RTN","RGNETTCP",46,0)
+"RTN","RGNETTCP",39,0)
  ; SL - true = silent mode
-"RTN","RGNETTCP",47,0)
-SSLIS(RGCFG,SS,SL) ;
-"RTN","RGNETTCP",48,0)
+"RTN","RGNETTCP",40,0)
+SSALL(SS,SL) ;
+"RTN","RGNETTCP",41,0)
  Q:$$OSCHECK(.SL)
+"RTN","RGNETTCP",42,0)
+ N RGCFG
+"RTN","RGNETTCP",43,0)
+ F RGCFG=0:0 S RGCFG=$O(^RGNET(996.5,RGCFG)) Q:'RGCFG  D SSLIS(RGCFG,SS,.SL)
+"RTN","RGNETTCP",44,0)
+ Q
+"RTN","RGNETTCP",45,0)
+ ; Start/stop primary listener
+"RTN","RGNETTCP",46,0)
+ ; SS - 1 = start, 0 = stop
+"RTN","RGNETTCP",47,0)
+ ; SL - true = silent mode
+"RTN","RGNETTCP",48,0)
+SSLIS(RGCFG,SS,SL) ;
 "RTN","RGNETTCP",49,0)
- N $ET,SAME,RGMODE
+ Q:$$OSCHECK(.SL)
 "RTN","RGNETTCP",50,0)
- Q:'$$GETCFG(.RGCFG)
+ N $ET,SAME,RGMODE
 "RTN","RGNETTCP",51,0)
- S SL=$G(SL,$D(ZTQUEUED))
+ Q:'$$GETCFG(.RGCFG)
 "RTN","RGNETTCP",52,0)
- S:'SL $ET="D SSERR^RGNETTCP"
+ S SL=$G(SL,$D(ZTQUEUED))
 "RTN","RGNETTCP",53,0)
- W:'SL RGCFG("name"),": "
+ S:'SL $ET="D SSERR^RGNETTCP"
 "RTN","RGNETTCP",54,0)
- S SAME=$$STATE=SS
+ W:'SL RGCFG("name"),": "
 "RTN","RGNETTCP",55,0)
- S:'SS @$$LOCKNODE(.RGCFG)=1
+ S SAME=$$STATE=SS
 "RTN","RGNETTCP",56,0)
- I SAME W:'SL $S(SS:"already",1:"not")," running.",!!  Q
+ S:'SS @$$LOCKNODE(.RGCFG)=1
 "RTN","RGNETTCP",57,0)
- I SS,RGCFG("disabled") W:'SL "disabled.",!! Q
+ I SAME W:'SL $S(SS:"already",1:"not")," running.",!!  Q
 "RTN","RGNETTCP",58,0)
- D:SS JOB(0,.RGCFG)
+ I SS,RGCFG("disabled") W:'SL "disabled.",!! Q
 "RTN","RGNETTCP",59,0)
- Q:SL
+ D:SS JOB(0,.RGCFG)
 "RTN","RGNETTCP",60,0)
- N P1,P2,LP
+ Q:SL
 "RTN","RGNETTCP",61,0)
- S P1=$S(SS:"start",1:"stop"),P2=P1_$S(SS:"ed",1:"ped")
+ N P1,P2,LP
 "RTN","RGNETTCP",62,0)
- W "waiting for ",P1," signal..."
+ S P1=$S(SS:"start",1:"stop"),P2=P1_$S(SS:"ed",1:"ped")
 "RTN","RGNETTCP",63,0)
- F LP=1:1:5 D
+ W "waiting for ",P1," signal..."
 "RTN","RGNETTCP",64,0)
- .H 2
+ F LP=1:1:5 D
 "RTN","RGNETTCP",65,0)
- .W "."
+ .H 2
 "RTN","RGNETTCP",66,0)
- .S:$$STATE=SS LP=99
+ .W "."
 "RTN","RGNETTCP",67,0)
- I LP<99 W " failed to ",P1,".",!!
+ .S:$$STATE=SS LP=99
 "RTN","RGNETTCP",68,0)
- E  W " ",P2," on port ",RGCFG("port"),".",!!
+ I LP<99 W " failed to ",P1,".",!!
 "RTN","RGNETTCP",69,0)
- Q
+ E  W " ",P2," on port ",RGCFG("port"),".",!!
 "RTN","RGNETTCP",70,0)
-SSERR W "failed: ",$$EC^%ZOSV,!!
+ Q
 "RTN","RGNETTCP",71,0)
- D UNWIND^%ZTER
+SSERR W "failed: ",$$EC^%ZOSV,!!
 "RTN","RGNETTCP",72,0)
- Q
+ D UNWIND^%ZTER
 "RTN","RGNETTCP",73,0)
- ; Fetch listener configuration
+ Q
 "RTN","RGNETTCP",74,0)
- ; Populates RGCFG with configuration data.
+ ; Fetch listener configuration
 "RTN","RGNETTCP",75,0)
- ; Returns listener IEN
+ ; Populates RGCFG with configuration data.
 "RTN","RGNETTCP",76,0)
-GETCFG(RGCFG) ;
+ ; Returns listener IEN
 "RTN","RGNETTCP",77,0)
- Q:$D(RGCFG)=11 RGCFG
+GETCFG(RGCFG) ;
 "RTN","RGNETTCP",78,0)
- S:RGCFG'=+RGCFG RGCFG=+$O(^RGNET(996.5,"B",RGCFG,0))
+ Q:$D(RGCFG)=11 RGCFG
 "RTN","RGNETTCP",79,0)
- I RGCFG D
+ S:RGCFG'=+RGCFG RGCFG=+$O(^RGNET(996.5,"B",RGCFG,0))
 "RTN","RGNETTCP",80,0)
- .N N0,LP
+ I RGCFG D
 "RTN","RGNETTCP",81,0)
- .S N0=^RGNET(996.5,RGCFG,0),RGCFG("handler")=$G(^(10))
+ .N N0,LP
 "RTN","RGNETTCP",82,0)
- .F LP=1:1:5 S RGCFG($P("name^port^uci^disabled^maximum",U,LP))=$P(N0,U,LP)
+ .S N0=^RGNET(996.5,RGCFG,0),RGCFG("handler")=$G(^(10))
 "RTN","RGNETTCP",83,0)
- Q:$Q RGCFG
+ .F LP=1:1:5 S RGCFG($P("name^port^uci^disabled^maximum",U,LP))=$P(N0,U,LP)
 "RTN","RGNETTCP",84,0)
- Q
+ Q:$Q RGCFG
 "RTN","RGNETTCP",85,0)
- ; Entry point for GT.M socket dispatch
+ Q
 "RTN","RGNETTCP",86,0)
-GTMEP D EN(2,$ZCM)
+ ; Entry point for GT.M socket dispatch
 "RTN","RGNETTCP",87,0)
- Q
+GTMEP D EN(2,$ZCM)
 "RTN","RGNETTCP",88,0)
- ; Start listener as background process
+ Q
 "RTN","RGNETTCP",89,0)
- ; Returns true if operation was successful.
+ ; Start listener as background process
 "RTN","RGNETTCP",90,0)
-JOB(RGMODE,RGCFG) ;
+ ; Returns true if operation was successful.
 "RTN","RGNETTCP",91,0)
- N SUCCESS
+JOB(RGMODE,RGCFG) ;
 "RTN","RGNETTCP",92,0)
- I RGMODE>1 S SUCCESS=0
+ N SUCCESS
 "RTN","RGNETTCP",93,0)
- E  I '$$GETCFG(.RGCFG) S SUCCESS=0
+ I RGMODE>1 S SUCCESS=0
 "RTN","RGNETTCP",94,0)
- E  I RGMODE=1 D
+ E  I '$$GETCFG(.RGCFG) S SUCCESS=0
 "RTN","RGNETTCP",95,0)
- .X "J EN^RGNETTCP(RGMODE,RGCFG):(:4:RGTDEV:RGTDEV):15"
+ E  I RGMODE=1 D
 "RTN","RGNETTCP",96,0)
- .S SUCCESS=$T
+ .X "J EN^RGNETTCP(RGMODE,RGCFG):(:4:RGTDEV:RGTDEV):15"
 "RTN","RGNETTCP",97,0)
- E  I $L(RGCFG("uci")) D
+ .S SUCCESS=$T
 "RTN","RGNETTCP",98,0)
- .X "J EN^RGNETTCP(RGMODE,RGCFG)[RGCFG(""uci"")]"
+ E  I $L(RGCFG("uci")) D
 "RTN","RGNETTCP",99,0)
- .S SUCCESS=$T
+ .X "J EN^RGNETTCP(RGMODE,RGCFG)[RGCFG(""uci"")]"
 "RTN","RGNETTCP",100,0)
- E  D
-"RTN","RGNETTCP",101,0)
- .J EN^RGNETTCP(RGMODE,RGCFG)
-"RTN","RGNETTCP",102,0)
  .S SUCCESS=$T
-"RTN","RGNETTCP",103,0)
- Q:$Q SUCCESS
-"RTN","RGNETTCP",104,0)
- Q
-"RTN","RGNETTCP",105,0)
- ; Start listener process (primary and secondary)
-"RTN","RGNETTCP",106,0)
- ;   RGMODE = Connection type:
-"RTN","RGNETTCP",107,0)
- ;     0: primary listener   - dispatches connections
-"RTN","RGNETTCP",108,0)
- ;     1: secondary listener - dispatched by primary listener
-"RTN","RGNETTCP",109,0)
- ;     2: secondary listener - dispatched by OS
-"RTN","RGNETTCP",110,0)
- ;     3: debug listener     - debug mode listener
-"RTN","RGNETTCP",111,0)
- ;   RGCFG = Listener name or IEN
-"RTN","RGNETTCP",112,0)
-EN(RGMODE,RGCFG) ;
-"RTN","RGNETTCP",113,0)
- N RGTDEV,RGQUIT,RGRETRY,RGOS,$ET,$ES
-"RTN","RGNETTCP",114,0)
- S U="^",DT=$$DT^XLFDT,$ET="D ETRAP1^RGNETTCP"
-"RTN","RGNETTCP",115,0)
- D:'$$GETCFG(.RGCFG) RAISE("Unknown listener.")
-"RTN","RGNETTCP",116,0)
- Q:RGCFG("disabled")
-"RTN","RGNETTCP",117,0)
- S (RGQUIT,RGRETRY)=0,RGOS=$$OS
-"RTN","RGNETTCP",118,0)
- D:RGOS<0 RAISE("Unsupported operating system.")
-"RTN","RGNETTCP",119,0)
- I RGOS,RGMODE'>1 D BADMODE                                            ; GT.M supports only modes 2 and 3
-"RTN","RGNETTCP",120,0)
- I 'RGOS,RGMODE=2 D BADMODE                                            ; Cache does not support mode 2
-"RTN","RGNETTCP",121,0)
- Q:'$$STATE(1)                                                         ; Quit if listener already running
-"RTN","RGNETTCP",122,0)
- D CLEANUP,STSAVE(0),NULLOPEN,STSAVE(1)                                ; Initialize environment
-"RTN","RGNETTCP",123,0)
- D CHPRN(.RGCFG)                                                       ; Change process name
-"RTN","RGNETTCP",124,0)
- D LISTEN                                                              ; Main loop
-"RTN","RGNETTCP",125,0)
- D:RGQUIT>0!'RGMODE STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP,LOGOUT^XUSRB:$G(DUZ)
-"RTN","RGNETTCP",126,0)
- I 'RGMODE,'RGQUIT D JOB(0,.RGCFG)                                     ; Restart primary listener after fatal error
-"RTN","RGNETTCP",127,0)
- D CLEANUP
-"RTN","RGNETTCP",128,0)
- Q
-"RTN","RGNETTCP",129,0)
- ; Entry point for interactive debugging
-"RTN","RGNETTCP",130,0)
-DEBUG N PORT,IP,CFG
-"RTN","RGNETTCP",131,0)
- D TITLE^RGUT("Debug Mode Support",$P($T(+2),";",3))
-"RTN","RGNETTCP",132,0)
- F  D  Q:$D(CFG)
-"RTN","RGNETTCP",133,0)
- .S CFG=$$ENTRY^RGUTLKP(996.5,,"Enter listener name: ")
-"RTN","RGNETTCP",134,0)
- .W !
-"RTN","RGNETTCP",135,0)
- .Q:CFG'>0
-"RTN","RGNETTCP",136,0)
- .D GETCFG(.CFG)
-"RTN","RGNETTCP",137,0)
- .I CFG("disabled") W "That listener is disabled.  Try again.",! K CFG
-"RTN","RGNETTCP",138,0)
- Q:CFG'>0
-"RTN","RGNETTCP",139,0)
- S IP=$$PMPT("Addr","Enter callback IP address.","127.0.0.1")
-"RTN","RGNETTCP",140,0)
- Q:U[IP
-"RTN","RGNETTCP",141,0)
- S PORT=$$PMPT("Port","Enter callback port.",CFG("port"))
-"RTN","RGNETTCP",142,0)
- Q:U[PORT
-"RTN","RGNETTCP",143,0)
- S CFG("port")=PORT,CFG("ip")=IP
-"RTN","RGNETTCP",144,0)
- I $L($T(^%Serenji)),$$ASK^RGUT("Use Serenji Debugger","Y") D  Q
-"RTN","RGNETTCP",145,0)
- .N SRJIP,SRJPORT
-"RTN","RGNETTCP",146,0)
- .S SRJIP=$$PMPT("Serenji Listener Addr","Enter Serenji listener address",IP)
-"RTN","RGNETTCP",147,0)
- .Q:U[SRJIP
-"RTN","RGNETTCP",148,0)
- .S SRJPORT=$$PMPT("Serenji Listener Port","Enter Serenji listener port",4321)
-"RTN","RGNETTCP",149,0)
- .Q:U[SRJPORT
-"RTN","RGNETTCP",150,0)
- .D DEBUG^%Serenji("EN^RGNETTCP(3,.CFG)",SRJIP,SRJPORT)
-"RTN","RGNETTCP",151,0)
- W !
-"RTN","RGNETTCP",152,0)
- D EN(3,.CFG)
-"RTN","RGNETTCP",153,0)
- Q
-"RTN","RGNETTCP",154,0)
- ; Prompt for user input
-"RTN","RGNETTCP",155,0)
-PMPT(PMPT,HELP,DFLT) ;
-"RTN","RGNETTCP",156,0)
- N RET
-"RTN","RGNETTCP",157,0)
- F  D  Q:$D(RET)
-"RTN","RGNETTCP",158,0)
- .W PMPT,": ",$S($D(DFLT):DFLT_"// ",1:"")
-"RTN","RGNETTCP",159,0)
- .R RET:$G(DTIME,30)
-"RTN","RGNETTCP",160,0)
- .E  S RET=U
-"RTN","RGNETTCP",161,0)
- .I $D(DFLT),'$L(RET) S RET=DFLT W DFLT
-"RTN","RGNETTCP",162,0)
- .W !
-"RTN","RGNETTCP",163,0)
- .I RET["?" W !,HELP,!! K RET
-"RTN","RGNETTCP",164,0)
- Q RET
-"RTN","RGNETTCP",165,0)
- ; Determine operating system
-"RTN","RGNETTCP",166,0)
- ; Returns 0 = Cache, 1 = GT.M, -1 = unknown
-"RTN","RGNETTCP",167,0)
-OS() N OS
-"RTN","RGNETTCP",168,0)
- S OS=$P($G(^%ZOSF("OS")),U)
-"RTN","RGNETTCP",169,0)
- Q $S(OS["OpenM":0,OS["GT.M":1,1:-1)
-"RTN","RGNETTCP",170,0)
- ; Displays function not available message for GT.M environments
-"RTN","RGNETTCP",171,0)
- ; Returns 1 if function not available.
-"RTN","RGNETTCP",172,0)
-OSCHECK(SL) ;
-"RTN","RGNETTCP",173,0)
- Q:'$$OS 0
-"RTN","RGNETTCP",174,0)
- W:'$G(SL) "That function is not available for this environment.",!
-"RTN","RGNETTCP",175,0)
- Q 1
-"RTN","RGNETTCP",176,0)
- ; Main loop
-"RTN","RGNETTCP",177,0)
-LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
-"RTN","RGNETTCP",178,0)
- S $ET="D ETRAP2^RGNETTCP",RGRETRY=0,RGQUIT='$$TCPOPEN,RGOUT=""
-"RTN","RGNETTCP",179,0)
- S HNDLR=RGCFG("handler")_"(.RGSTATE)"
-"RTN","RGNETTCP",180,0)
- F  Q:$$QUIT  D
-"RTN","RGNETTCP",181,0)
- .D TCPUSE
-"RTN","RGNETTCP",182,0)
- .D:RGMODE @HNDLR
-"RTN","RGNETTCP",183,0)
- .D:'RGMODE WAIT
-"RTN","RGNETTCP",184,0)
- .D TCPFLUSH
-"RTN","RGNETTCP",185,0)
- D TCPCLOSE
-"RTN","RGNETTCP",186,0)
- Q
-"RTN","RGNETTCP",187,0)
- ; Wait for connection request, then spawn handler (RGMODE = 0)
-"RTN","RGNETTCP",188,0)
-WAIT N X
-"RTN","RGNETTCP",189,0)
- R X:10
-"RTN","RGNETTCP",190,0)
- D:$T JOB(1,.RGCFG)
-"RTN","RGNETTCP",191,0)
- Q
-"RTN","RGNETTCP",192,0)
- ; Test handler
-"RTN","RGNETTCP",193,0)
-TEST D TCPWRITE("HTTP/1.1 200 GOT HERE"_$C(13,10))
-"RTN","RGNETTCP",194,0)
- D TCPWRITE($C(13,10))
-"RTN","RGNETTCP",195,0)
- D TCPWRITE("<H1>SUCCESS !!!</H1>")
-"RTN","RGNETTCP",196,0)
- D TCPWRITE($H)
-"RTN","RGNETTCP",197,0)
- S RGQUIT=1
-"RTN","RGNETTCP",198,0)
- Q
-"RTN","RGNETTCP",199,0)
- ; Return temp global root
-"RTN","RGNETTCP",200,0)
-TMPGBL() Q $NA(^TMP("RGNETTCP",$J))
-"RTN","RGNETTCP",201,0)
- ; Cleanup environment
-"RTN","RGNETTCP",202,0)
-CLEANUP K @$$TMPGBL,^XUTL("XQ",$J),@$$LOCKNODE(.RGCFG)
-"RTN","RGNETTCP",203,0)
- Q
-"RTN","RGNETTCP",204,0)
- ; Returns true if listener should quit
-"RTN","RGNETTCP",205,0)
-QUIT() S:'RGQUIT RGQUIT=+$G(@$$LOCKNODE(.RGCFG))
-"RTN","RGNETTCP",206,0)
- Q RGRETRY>5!RGQUIT
-"RTN","RGNETTCP",207,0)
- ; Save application state
-"RTN","RGNETTCP",208,0)
-STSAVE(ST) ;
-"RTN","RGNETTCP",209,0)
- D SAVE^XUS1
-"RTN","RGNETTCP",210,0)
- K @$$TMPGBL@(ST)
-"RTN","RGNETTCP",211,0)
- M @$$TMPGBL@(ST)=^XUTL("XQ",$J)
-"RTN","RGNETTCP",212,0)
- Q
-"RTN","RGNETTCP",213,0)
- ; Restore application state
-"RTN","RGNETTCP",214,0)
-STREST(ST) ;
-"RTN","RGNETTCP",215,0)
- K ^XUTL("XQ",$J)
-"RTN","RGNETTCP",216,0)
- M ^XUTL("XQ",$J)=@$$TMPGBL@(ST)
-"RTN","RGNETTCP",217,0)
- K IO
-"RTN","RGNETTCP",218,0)
- D RESETVAR^%ZIS
-"RTN","RGNETTCP",219,0)
- I ST,$D(IO)#2 D
-"RTN","RGNETTCP",220,0)
- .N $ET
-"RTN","RGNETTCP",221,0)
- .S $ET="S $EC="""" D NULLOPEN^RGNETTCP"
-"RTN","RGNETTCP",222,0)
- .U IO
-"RTN","RGNETTCP",223,0)
- Q
-"RTN","RGNETTCP",224,0)
- ; Establish null device as default IO device
-"RTN","RGNETTCP",225,0)
-NULLOPEN N %ZIS,IOP,POP
-"RTN","RGNETTCP",226,0)
- S %ZIS="0H",IOP="NULL"
-"RTN","RGNETTCP",227,0)
- D ^%ZIS,RAISE("Failed to open null device."):POP
-"RTN","RGNETTCP",228,0)
- U IO
-"RTN","RGNETTCP",229,0)
- Q
-"RTN","RGNETTCP",230,0)
- ; Open TCP listener port
-"RTN","RGNETTCP",231,0)
- ; Returns true if successful
-"RTN","RGNETTCP",232,0)
-TCPOPEN() ;
-"RTN","RGNETTCP",233,0)
- N POP
-"RTN","RGNETTCP",234,0)
- S POP=0
-"RTN","RGNETTCP",235,0)
- I RGMODE=3 D
-"RTN","RGNETTCP",236,0)
- .D CALL^%ZISTCP(RGCFG("ip"),RGCFG("port"))
-"RTN","RGNETTCP",237,0)
- .Q:POP
-"RTN","RGNETTCP",238,0)
- .S RGTDEV=IO,IO(0)=IO
-"RTN","RGNETTCP",239,0)
- E  I RGMODE D
-"RTN","RGNETTCP",240,0)
- .S RGTDEV=$P
-"RTN","RGNETTCP",241,0)
- .I RGOS D
-"RTN","RGNETTCP",242,0)
- ..S @"$ZINTERRUPT=""I $$JOBEXAM^ZU($ZPOSITION)"""
-"RTN","RGNETTCP",243,0)
- ..X "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")" Q
-"RTN","RGNETTCP",244,0)
+"RTN","RGNETTCP",101,0)
  E  D
-"RTN","RGNETTCP",245,0)
- .I 'RGOS D
-"RTN","RGNETTCP",246,0)
- ..S RGTDEV="|TCP|"_RGCFG("port")
-"RTN","RGNETTCP",247,0)
- ..X "O RGTDEV:(:RGCFG(""port""):""ADS""):5"
-"RTN","RGNETTCP",248,0)
- ..S POP='$T
-"RTN","RGNETTCP",249,0)
- Q 'POP
-"RTN","RGNETTCP",250,0)
- ; Use TCP listener port
-"RTN","RGNETTCP",251,0)
-TCPUSE U RGTDEV
-"RTN","RGNETTCP",252,0)
+"RTN","RGNETTCP",102,0)
+ .J EN^RGNETTCP(RGMODE,RGCFG)
+"RTN","RGNETTCP",103,0)
+ .S SUCCESS=$T
+"RTN","RGNETTCP",104,0)
+ Q:$Q SUCCESS
+"RTN","RGNETTCP",105,0)
  Q
-"RTN","RGNETTCP",253,0)
- ; Close TCP listener port
-"RTN","RGNETTCP",254,0)
-TCPCLOSE C:$D(RGTDEV) RGTDEV
-"RTN","RGNETTCP",255,0)
+"RTN","RGNETTCP",106,0)
+ ; Start listener process (primary and secondary)
+"RTN","RGNETTCP",107,0)
+ ;   RGMODE = Connection type:
+"RTN","RGNETTCP",108,0)
+ ;     0: primary listener   - dispatches connections
+"RTN","RGNETTCP",109,0)
+ ;     1: secondary listener - dispatched by primary listener
+"RTN","RGNETTCP",110,0)
+ ;     2: secondary listener - dispatched by OS
+"RTN","RGNETTCP",111,0)
+ ;     3: debug listener     - debug mode listener
+"RTN","RGNETTCP",112,0)
+ ;   RGCFG = Listener name or IEN
+"RTN","RGNETTCP",113,0)
+EN(RGMODE,RGCFG) ;
+"RTN","RGNETTCP",114,0)
+ N RGTDEV,RGQUIT,RGRETRY,RGOS,$ET,$ES
+"RTN","RGNETTCP",115,0)
+ S U="^",DT=$$DT^XLFDT,$ET="D ETRAP1^RGNETTCP"
+"RTN","RGNETTCP",116,0)
+ D:'$$GETCFG(.RGCFG) RAISE("Unknown listener.")
+"RTN","RGNETTCP",117,0)
+ Q:RGCFG("disabled")
+"RTN","RGNETTCP",118,0)
+ S (RGQUIT,RGRETRY)=0,RGOS=$$OS
+"RTN","RGNETTCP",119,0)
+ D:RGOS<0 RAISE("Unsupported operating system.")
+"RTN","RGNETTCP",120,0)
+ I RGOS,RGMODE'>1 D BADMODE                                            ; GT.M supports only modes 2 and 3
+"RTN","RGNETTCP",121,0)
+ I 'RGOS,RGMODE=2 D BADMODE                                            ; Cache does not support mode 2
+"RTN","RGNETTCP",122,0)
+ Q:'$$STATE(1)                                                         ; Quit if listener already running
+"RTN","RGNETTCP",123,0)
+ D CLEANUP,STSAVE(0),NULLOPEN,STSAVE(1)                                ; Initialize environment
+"RTN","RGNETTCP",124,0)
+ D CHPRN(.RGCFG)                                                       ; Change process name
+"RTN","RGNETTCP",125,0)
+ F  D LISTEN Q:RGQUIT>0!RGMODE                                         ; Main loop
+"RTN","RGNETTCP",126,0)
+ D STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP,LOGOUT^XUSRB:$G(DUZ)
+"RTN","RGNETTCP",127,0)
  Q
-"RTN","RGNETTCP",256,0)
- ; Return CNT characters from input buffer
-"RTN","RGNETTCP",257,0)
- ; CNT = # of characters to return
-"RTN","RGNETTCP",258,0)
- ; TMO = Optional timeout in seconds
-"RTN","RGNETTCP",259,0)
- ; USE = If true or not specified, call TCPUSE before read
-"RTN","RGNETTCP",260,0)
-TCPREAD(CNT,TMO,USE) ;
-"RTN","RGNETTCP",261,0)
- Q:CNT'>0 ""
-"RTN","RGNETTCP",262,0)
- N X
-"RTN","RGNETTCP",263,0)
- D:$G(USE,1) TCPUSE
-"RTN","RGNETTCP",264,0)
- S TMO=+$G(TMO)
-"RTN","RGNETTCP",265,0)
- R X#CNT:TMO
-"RTN","RGNETTCP",266,0)
- Q X
-"RTN","RGNETTCP",267,0)
- ; Read up to termination sequence
-"RTN","RGNETTCP",268,0)
- ; TRM = Read termination sequence (included in returned value)
-"RTN","RGNETTCP",269,0)
- ; TMO = Optional timeout in seconds
-"RTN","RGNETTCP",270,0)
-TCPREADT(TRM,TMO) ;
-"RTN","RGNETTCP",271,0)
- N ST,L,X,USE
-"RTN","RGNETTCP",272,0)
- S LN="",L=$L(TRM)-1,USE=1
-"RTN","RGNETTCP",273,0)
- F  S X=$$TCPREAD(1,.TMO,USE) Q:'$L(X)  D  Q:L<0
-"RTN","RGNETTCP",274,0)
- .S LN=LN_X,(TMO,USE)=0
-"RTN","RGNETTCP",275,0)
- .S:$E(LN,$L(LN)-L,$L(LN))=TRM L=-1
-"RTN","RGNETTCP",276,0)
- Q LN
-"RTN","RGNETTCP",277,0)
- ; Read one byte from socket
-"RTN","RGNETTCP",278,0)
- ; TMO = Optional timeout in seconds
-"RTN","RGNETTCP",279,0)
-TCPREADB(TMO) ;
-"RTN","RGNETTCP",280,0)
- Q $A($$TCPREAD(1,.TMO))
-"RTN","RGNETTCP",281,0)
- ; Write data to socket
-"RTN","RGNETTCP",282,0)
- ; All write operations must be done via this method.
-"RTN","RGNETTCP",283,0)
- ; This operation is buffered with a write threshold at 1024 bytes.
-"RTN","RGNETTCP",284,0)
- ; DATA = Date to write
-"RTN","RGNETTCP",285,0)
-TCPWRITE(DATA) ;
-"RTN","RGNETTCP",286,0)
- S RGOUT=RGOUT_DATA
-"RTN","RGNETTCP",287,0)
- D:$L(RGOUT)>1024 TCPFLUSH
-"RTN","RGNETTCP",288,0)
+"RTN","RGNETTCP",128,0)
+ ; Entry point for interactive debugging
+"RTN","RGNETTCP",129,0)
+DEBUG N PORT,CFG
+"RTN","RGNETTCP",130,0)
+ D TITLE^RGUT("Debug Mode Support",$P($T(+2),";",3))
+"RTN","RGNETTCP",131,0)
+ F  D  Q:$D(CFG)
+"RTN","RGNETTCP",132,0)
+ .S CFG=$$ENTRY^RGUTLKP(996.5,,"Enter listener name: ")
+"RTN","RGNETTCP",133,0)
+ .W !
+"RTN","RGNETTCP",134,0)
+ .Q:CFG'>0
+"RTN","RGNETTCP",135,0)
+ .D GETCFG(.CFG)
+"RTN","RGNETTCP",136,0)
+ .I CFG("disabled") W "That listener is disabled.  Try again.",! K CFG
+"RTN","RGNETTCP",137,0)
+ Q:CFG'>0
+"RTN","RGNETTCP",138,0)
+ S PORT=$$PMPT("Port","Enter listener port.",CFG("port"))
+"RTN","RGNETTCP",139,0)
+ Q:U[PORT
+"RTN","RGNETTCP",140,0)
+ S CFG("port")=PORT
+"RTN","RGNETTCP",141,0)
+ I $L($T(^%Serenji)),$$ASK^RGUT("Use Serenji Debugger","Y") D  Q
+"RTN","RGNETTCP",142,0)
+ .N SRJIP,SRJPORT
+"RTN","RGNETTCP",143,0)
+ .S SRJIP=$$PMPT("Serenji Listener Addr","Enter Serenji listener address",IP)
+"RTN","RGNETTCP",144,0)
+ .Q:U[SRJIP
+"RTN","RGNETTCP",145,0)
+ .S SRJPORT=$$PMPT("Serenji Listener Port","Enter Serenji listener port",4321)
+"RTN","RGNETTCP",146,0)
+ .Q:U[SRJPORT
+"RTN","RGNETTCP",147,0)
+ .D DEBUG^%Serenji("EN^RGNETTCP(3,.CFG)",SRJIP,SRJPORT)
+"RTN","RGNETTCP",148,0)
+ W !,"Now listening on port ",CFG("port"),!
+"RTN","RGNETTCP",149,0)
+ D EN(3,.CFG)
+"RTN","RGNETTCP",150,0)
  Q
-"RTN","RGNETTCP",289,0)
- ; Flush the output buffer
-"RTN","RGNETTCP",290,0)
-TCPFLUSH Q:'$L(RGOUT)
-"RTN","RGNETTCP",291,0)
+"RTN","RGNETTCP",151,0)
+ ; Prompt for user input
+"RTN","RGNETTCP",152,0)
+PMPT(PMPT,HELP,DFLT) ;
+"RTN","RGNETTCP",153,0)
+ N RET
+"RTN","RGNETTCP",154,0)
+ F  D  Q:$D(RET)
+"RTN","RGNETTCP",155,0)
+ .W PMPT,": ",$S($D(DFLT):DFLT_"// ",1:"")
+"RTN","RGNETTCP",156,0)
+ .R RET:$G(DTIME,30)
+"RTN","RGNETTCP",157,0)
+ .E  S RET=U
+"RTN","RGNETTCP",158,0)
+ .I $D(DFLT),'$L(RET) S RET=DFLT W DFLT
+"RTN","RGNETTCP",159,0)
+ .W !
+"RTN","RGNETTCP",160,0)
+ .I RET["?" W !,HELP,!! K RET
+"RTN","RGNETTCP",161,0)
+ Q RET
+"RTN","RGNETTCP",162,0)
+ ; Determine operating system
+"RTN","RGNETTCP",163,0)
+ ; Returns 0 = Cache, 1 = GT.M, -1 = unknown
+"RTN","RGNETTCP",164,0)
+OS() N OS
+"RTN","RGNETTCP",165,0)
+ S OS=$P($G(^%ZOSF("OS")),U)
+"RTN","RGNETTCP",166,0)
+ Q $S(OS["OpenM":0,OS["GT.M":1,1:-1)
+"RTN","RGNETTCP",167,0)
+ ; Displays function not available message for GT.M environments
+"RTN","RGNETTCP",168,0)
+ ; Returns 1 if function not available.
+"RTN","RGNETTCP",169,0)
+OSCHECK(SL) ;
+"RTN","RGNETTCP",170,0)
+ Q:'$$OS 0
+"RTN","RGNETTCP",171,0)
+ W:'$G(SL) "That function is not available for this environment.",!
+"RTN","RGNETTCP",172,0)
+ Q 1
+"RTN","RGNETTCP",173,0)
+ ; Main loop
+"RTN","RGNETTCP",174,0)
+LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
+"RTN","RGNETTCP",175,0)
+ S $ET="D ETRAP2^RGNETTCP",RGQUIT='$$TCPOPEN,RGOUT=""
+"RTN","RGNETTCP",176,0)
+ S HNDLR=RGCFG("handler")_"(.RGSTATE)"
+"RTN","RGNETTCP",177,0)
+ F  Q:$$QUIT  D
+"RTN","RGNETTCP",178,0)
+ .D TCPUSE
+"RTN","RGNETTCP",179,0)
+ .D:RGMODE @HNDLR
+"RTN","RGNETTCP",180,0)
+ .D:'RGMODE WAIT
+"RTN","RGNETTCP",181,0)
+ .D TCPFLUSH
+"RTN","RGNETTCP",182,0)
+ D TCPCLOSE
+"RTN","RGNETTCP",183,0)
+ Q
+"RTN","RGNETTCP",184,0)
+ ; Wait for connection request, then spawn handler (RGMODE = 0)
+"RTN","RGNETTCP",185,0)
+WAIT N X
+"RTN","RGNETTCP",186,0)
+ R X:10
+"RTN","RGNETTCP",187,0)
+ D:$T JOB(1,.RGCFG)
+"RTN","RGNETTCP",188,0)
+ Q
+"RTN","RGNETTCP",189,0)
+ ; Return temp global root
+"RTN","RGNETTCP",190,0)
+TMPGBL() Q $NA(^TMP("RGNETTCP",$J))
+"RTN","RGNETTCP",191,0)
+ ; Cleanup environment
+"RTN","RGNETTCP",192,0)
+CLEANUP K @$$TMPGBL,^XUTL("XQ",$J),@$$LOCKNODE(.RGCFG)
+"RTN","RGNETTCP",193,0)
+ Q
+"RTN","RGNETTCP",194,0)
+ ; Returns true if listener should quit
+"RTN","RGNETTCP",195,0)
+QUIT() S:'RGQUIT RGQUIT=RGRETRY>5
+"RTN","RGNETTCP",196,0)
+ S:'RGQUIT RGQUIT=+$G(@$$LOCKNODE(.RGCFG))
+"RTN","RGNETTCP",197,0)
+ I 'RGQUIT,RGMODE=3 S RGQUIT=$$QUIT3
+"RTN","RGNETTCP",198,0)
+ Q RGQUIT
+"RTN","RGNETTCP",199,0)
+ ; Allows user to request quit in debug mode
+"RTN","RGNETTCP",200,0)
+QUIT3() N X
+"RTN","RGNETTCP",201,0)
+ U $P
+"RTN","RGNETTCP",202,0)
+ R X#1:0
+"RTN","RGNETTCP",203,0)
  D TCPUSE
+"RTN","RGNETTCP",204,0)
+ Q X=U
+"RTN","RGNETTCP",205,0)
+ ; Save application state
+"RTN","RGNETTCP",206,0)
+STSAVE(ST) ;
+"RTN","RGNETTCP",207,0)
+ D SAVE^XUS1
+"RTN","RGNETTCP",208,0)
+ K @$$TMPGBL@(ST)
+"RTN","RGNETTCP",209,0)
+ M @$$TMPGBL@(ST)=^XUTL("XQ",$J)
+"RTN","RGNETTCP",210,0)
+ Q
+"RTN","RGNETTCP",211,0)
+ ; Restore application state
+"RTN","RGNETTCP",212,0)
+STREST(ST) ;
+"RTN","RGNETTCP",213,0)
+ K ^XUTL("XQ",$J)
+"RTN","RGNETTCP",214,0)
+ M ^XUTL("XQ",$J)=@$$TMPGBL@(ST)
+"RTN","RGNETTCP",215,0)
+ K IO
+"RTN","RGNETTCP",216,0)
+ D RESETVAR^%ZIS
+"RTN","RGNETTCP",217,0)
+ I ST,$D(IO)#2 D
+"RTN","RGNETTCP",218,0)
+ .N $ET
+"RTN","RGNETTCP",219,0)
+ .S $ET="S $EC="""" D NULLOPEN^RGNETTCP"
+"RTN","RGNETTCP",220,0)
+ .U IO
+"RTN","RGNETTCP",221,0)
+ Q
+"RTN","RGNETTCP",222,0)
+ ; Establish null device as default IO device
+"RTN","RGNETTCP",223,0)
+NULLOPEN N %ZIS,IOP,POP
+"RTN","RGNETTCP",224,0)
+ S %ZIS="0H",IOP="NULL"
+"RTN","RGNETTCP",225,0)
+ D ^%ZIS,RAISE("Failed to open null device."):POP
+"RTN","RGNETTCP",226,0)
+ U IO
+"RTN","RGNETTCP",227,0)
+ Q
+"RTN","RGNETTCP",228,0)
+ ; Open TCP listener port
+"RTN","RGNETTCP",229,0)
+ ; Returns true if successful
+"RTN","RGNETTCP",230,0)
+TCPOPEN() ;
+"RTN","RGNETTCP",231,0)
+ N POP
+"RTN","RGNETTCP",232,0)
+ S POP=0
+"RTN","RGNETTCP",233,0)
+ I RGMODE=3 D
+"RTN","RGNETTCP",234,0)
+ .I RGOS D
+"RTN","RGNETTCP",235,0)
+ ..S RGTDEV="server$"_RGCFG("port")
+"RTN","RGNETTCP",236,0)
+ ..X "O RGTDEV:(ZLISTEN=RGCFG(""port"")_"":TCP"":attach=""server""):9999:""socket"""
+"RTN","RGNETTCP",237,0)
+ ..X:$T "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")"
+"RTN","RGNETTCP",238,0)
+ ..S POP='$T
+"RTN","RGNETTCP",239,0)
+ .E  D
+"RTN","RGNETTCP",240,0)
+ ..S RGTDEV="|TCP|"_RGCFG("port")
+"RTN","RGNETTCP",241,0)
+ ..X "O RGTDEV:(:RGCFG(""port""):""DS""):9999"
+"RTN","RGNETTCP",242,0)
+ ..S POP='$T
+"RTN","RGNETTCP",243,0)
+ E  I RGMODE D
+"RTN","RGNETTCP",244,0)
+ .S RGTDEV=$P
+"RTN","RGNETTCP",245,0)
+ .I RGOS D
+"RTN","RGNETTCP",246,0)
+ ..S @"$ZINTERRUPT=""I $$JOBEXAM^ZU($ZPOSITION)"""
+"RTN","RGNETTCP",247,0)
+ ..X "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")"
+"RTN","RGNETTCP",248,0)
+ E  D
+"RTN","RGNETTCP",249,0)
+ .I 'RGOS D
+"RTN","RGNETTCP",250,0)
+ ..S RGTDEV="|TCP|"_RGCFG("port")
+"RTN","RGNETTCP",251,0)
+ ..X "O RGTDEV:(:RGCFG(""port""):""ADS""):5"
+"RTN","RGNETTCP",252,0)
+ ..S POP='$T
+"RTN","RGNETTCP",253,0)
+ Q 'POP
+"RTN","RGNETTCP",254,0)
+ ; Use TCP listener port
+"RTN","RGNETTCP",255,0)
+TCPUSE U RGTDEV
+"RTN","RGNETTCP",256,0)
+ Q
+"RTN","RGNETTCP",257,0)
+ ; Close TCP listener port
+"RTN","RGNETTCP",258,0)
+TCPCLOSE C:$D(RGTDEV) RGTDEV
+"RTN","RGNETTCP",259,0)
+ Q
+"RTN","RGNETTCP",260,0)
+ ; Return CNT characters from input buffer
+"RTN","RGNETTCP",261,0)
+ ; CNT = # of characters to return
+"RTN","RGNETTCP",262,0)
+ ; TMO = Optional timeout in seconds
+"RTN","RGNETTCP",263,0)
+ ; USE = If true or not specified, call TCPUSE before read
+"RTN","RGNETTCP",264,0)
+TCPREAD(CNT,TMO,USE) ;
+"RTN","RGNETTCP",265,0)
+ Q:CNT'>0 ""
+"RTN","RGNETTCP",266,0)
+ N X
+"RTN","RGNETTCP",267,0)
+ D:$G(USE,1) TCPUSE
+"RTN","RGNETTCP",268,0)
+ S TMO=+$G(TMO)
+"RTN","RGNETTCP",269,0)
+ R X#CNT:TMO
+"RTN","RGNETTCP",270,0)
+ Q X
+"RTN","RGNETTCP",271,0)
+ ; Read up to termination sequence
+"RTN","RGNETTCP",272,0)
+ ; TRM = Read termination sequence (included in returned value)
+"RTN","RGNETTCP",273,0)
+ ; TMO = Optional timeout in seconds
+"RTN","RGNETTCP",274,0)
+TCPREADT(TRM,TMO) ;
+"RTN","RGNETTCP",275,0)
+ N ST,L,X,USE
+"RTN","RGNETTCP",276,0)
+ S LN="",L=$L(TRM)-1,USE=1
+"RTN","RGNETTCP",277,0)
+ F  S X=$$TCPREAD(1,.TMO,USE) Q:'$L(X)  D  Q:L<0
+"RTN","RGNETTCP",278,0)
+ .S LN=LN_X,(TMO,USE)=0
+"RTN","RGNETTCP",279,0)
+ .S:$E(LN,$L(LN)-L,$L(LN))=TRM L=-1
+"RTN","RGNETTCP",280,0)
+ Q LN
+"RTN","RGNETTCP",281,0)
+ ; Read one byte from socket
+"RTN","RGNETTCP",282,0)
+ ; TMO = Optional timeout in seconds
+"RTN","RGNETTCP",283,0)
+TCPREADB(TMO) ;
+"RTN","RGNETTCP",284,0)
+ Q $A($$TCPREAD(1,.TMO))
+"RTN","RGNETTCP",285,0)
+ ; Write data to socket
+"RTN","RGNETTCP",286,0)
+ ; All write operations must be done via this method.
+"RTN","RGNETTCP",287,0)
+ ; This operation is buffered with a write threshold at 1024 bytes.
+"RTN","RGNETTCP",288,0)
+ ; DATA = Date to write
+"RTN","RGNETTCP",289,0)
+TCPWRITE(DATA) ;
+"RTN","RGNETTCP",290,0)
+ S RGOUT=RGOUT_DATA
+"RTN","RGNETTCP",291,0)
+ D:$L(RGOUT)>1024 TCPFLUSH
 "RTN","RGNETTCP",292,0)
- W RGOUT,!
+ Q
 "RTN","RGNETTCP",293,0)
- S RGOUT=""
+ ; Flush the output buffer
 "RTN","RGNETTCP",294,0)
- Q
+TCPFLUSH Q:'$L(RGOUT)
 "RTN","RGNETTCP",295,0)
- ; Write array (local or global) to TCP stream
+ D TCPUSE
 "RTN","RGNETTCP",296,0)
- ; ARY  = Local or global array reference
+ W RGOUT,!
 "RTN","RGNETTCP",297,0)
- ; EOL  = Line terminator to add (optional)
+ S RGOUT=""
 "RTN","RGNETTCP",298,0)
- ; KILL = If true, kill array after writing (default is false)
+ Q
 "RTN","RGNETTCP",299,0)
-ARYOUT(ARY,EOL,KILL) ;
+ ; Write array (local or global) to TCP stream
 "RTN","RGNETTCP",300,0)
- N ND,LN
+ ; ARY  = Local or global array reference
 "RTN","RGNETTCP",301,0)
- Q:'$L(ARY)
-"RTN","RGNETTCP",302,0)
- S ARY=$NA(@ARY)
-"RTN","RGNETTCP",303,0)
- S ND=ARY,LN=$QL(ARY),EOL=$G(EOL)
-"RTN","RGNETTCP",304,0)
- F  S ND=$Q(@ND) Q:'$L(ND)  Q:$NA(@ND,LN)'=ARY  D TCPWRITE(@ND_EOL)
-"RTN","RGNETTCP",305,0)
- K:$G(KILL) @ARY
-"RTN","RGNETTCP",306,0)
- Q
-"RTN","RGNETTCP",307,0)
- ; Write contents of a file to TCP stream
-"RTN","RGNETTCP",308,0)
- ; FIL  = File path
-"RTN","RGNETTCP",309,0)
  ; EOL  = Line terminator to add (optional)
+"RTN","RGNETTCP",302,0)
+ ; KILL = If true, kill array after writing (default is false)
+"RTN","RGNETTCP",303,0)
+ARYOUT(ARY,EOL,KILL) ;
+"RTN","RGNETTCP",304,0)
+ N ND,LN
+"RTN","RGNETTCP",305,0)
+ Q:'$L(ARY)
+"RTN","RGNETTCP",306,0)
+ S ARY=$NA(@ARY)
+"RTN","RGNETTCP",307,0)
+ S ND=ARY,LN=$QL(ARY),EOL=$G(EOL)
+"RTN","RGNETTCP",308,0)
+ F  S ND=$Q(@ND) Q:'$L(ND)  Q:$NA(@ND,LN)'=ARY  D TCPWRITE(@ND_EOL)
+"RTN","RGNETTCP",309,0)
+ K:$G(KILL) @ARY
 "RTN","RGNETTCP",310,0)
- ; KILL = If true, delete the file after writing (default is false)
+ Q
 "RTN","RGNETTCP",311,0)
-FILOUT(FIL,EOL,KILL) ;
+ ; Write contents of a file to TCP stream
 "RTN","RGNETTCP",312,0)
- N LN
+ ; FIL  = File path
 "RTN","RGNETTCP",313,0)
- S EOL=$G(EOL)
+ ; EOL  = Line terminator to add (optional)
 "RTN","RGNETTCP",314,0)
- D OPEN^RGUTOS(.FIL,"R")
+ ; KILL = If true, delete the file after writing (default is false)
 "RTN","RGNETTCP",315,0)
- F  Q:$$READ^RGUTOS(.LN,FIL)  D TCPWRITE(LN_EOL)
+FILOUT(FIL,EOL,KILL) ;
 "RTN","RGNETTCP",316,0)
- D CLOSE^RGUTOS(.FIL)
+ N LN
 "RTN","RGNETTCP",317,0)
- D:$G(KILL) DELETE^RGUTOS(FIL)
+ S EOL=$G(EOL)
 "RTN","RGNETTCP",318,0)
- Q
+ D OPEN^RGUTOS(.FIL,"R")
 "RTN","RGNETTCP",319,0)
- ; Throw a bad mode exception
+ F  Q:$$READ^RGUTOS(.LN,FIL)  D TCPWRITE(LN_EOL)
 "RTN","RGNETTCP",320,0)
-BADMODE D RAISE("Mode not supported for OS.")
+ D CLOSE^RGUTOS(.FIL)
 "RTN","RGNETTCP",321,0)
- Q
+ D:$G(KILL) DELETE^RGUTOS(FIL)
 "RTN","RGNETTCP",322,0)
- ; Raise an exception
+ Q
 "RTN","RGNETTCP",323,0)
-RAISE(MSG) ;
+ ; Throw a bad mode exception
 "RTN","RGNETTCP",324,0)
- D RAISE^RGUTOS(MSG)
+BADMODE D RAISE("Mode not supported for OS.")
 "RTN","RGNETTCP",325,0)
  Q
 "RTN","RGNETTCP",326,0)
- ; Startup error
+ ; Raise an exception
 "RTN","RGNETTCP",327,0)
-ETRAP1 D ^%ZTER,UNWIND^%ZTER
+RAISE(MSG) ;
 "RTN","RGNETTCP",328,0)
- Q
+ D RAISE^RGUTOS(MSG)
 "RTN","RGNETTCP",329,0)
- ; Communication error
+ Q
 "RTN","RGNETTCP",330,0)
-ETRAP2 N ECSAV
+ ; Startup error
 "RTN","RGNETTCP",331,0)
- S ECSAV=$EC,RGRETRY=RGRETRY+1
+ETRAP1 S RGQUIT=1
 "RTN","RGNETTCP",332,0)
- D:RGRETRY=1&(ECSAV'[$S('RGOS:"READ",1:"Z150376602")) ^%ZTER
+ D ^%ZTER,UNWIND^%ZTER
 "RTN","RGNETTCP",333,0)
- D UNWIND^%ZTER
+ Q
 "RTN","RGNETTCP",334,0)
- Q
+ ; Communication error
 "RTN","RGNETTCP",335,0)
- ; Lock/Unlock listener
+ETRAP2 S RGRETRY=RGRETRY+1
 "RTN","RGNETTCP",336,0)
- ; ACT:  1 = lock, 0 = unlock, missing = return status
+ S:RGQUIT'>0 RGQUIT=$S(RGRETRY>5:1,'RGMODE:-1,1:0)
 "RTN","RGNETTCP",337,0)
- ; Returns true if locked, false if not.
+ D:RGRETRY=1 ^%ZTER
 "RTN","RGNETTCP",338,0)
-STATE(ACT) ;
+ D UNWIND^%ZTER
 "RTN","RGNETTCP",339,0)
- N RES,LN
-"RTN","RGNETTCP",340,0)
- S LN=$$LOCKNODE(.RGCFG)
-"RTN","RGNETTCP",341,0)
- I '$D(ACT) D
-"RTN","RGNETTCP",342,0)
- .L +@LN:0
-"RTN","RGNETTCP",343,0)
- .S RES='$T
-"RTN","RGNETTCP",344,0)
- .L:'RES -@LN
-"RTN","RGNETTCP",345,0)
- E  I ACT D
-"RTN","RGNETTCP",346,0)
- .L +@LN:1
-"RTN","RGNETTCP",347,0)
- .S RES=$T
-"RTN","RGNETTCP",348,0)
- E  D
-"RTN","RGNETTCP",349,0)
- .L -@LN
-"RTN","RGNETTCP",350,0)
- .S RES=0
-"RTN","RGNETTCP",351,0)
- Q:$Q RES
-"RTN","RGNETTCP",352,0)
  Q
+"RTN","RGNETTCP",340,0)
+ ; Lock/Unlock listener
+"RTN","RGNETTCP",341,0)
+ ; ACT:  1 = lock, 0 = unlock, missing = return status
+"RTN","RGNETTCP",342,0)
+ ; Returns true if locked, false if not.
+"RTN","RGNETTCP",343,0)
+STATE(ACT) ;
+"RTN","RGNETTCP",344,0)
+ N RES,LN
+"RTN","RGNETTCP",345,0)
+ S LN=$$LOCKNODE(.RGCFG)
+"RTN","RGNETTCP",346,0)
+ I '$D(ACT) D
+"RTN","RGNETTCP",347,0)
+ .L +@LN:0
+"RTN","RGNETTCP",348,0)
+ .S RES='$T
+"RTN","RGNETTCP",349,0)
+ .L:'RES -@LN
+"RTN","RGNETTCP",350,0)
+ E  I ACT D
+"RTN","RGNETTCP",351,0)
+ .L +@LN:1
+"RTN","RGNETTCP",352,0)
+ .S RES=$T
 "RTN","RGNETTCP",353,0)
- ; Get global reference for lock node
+ E  D
 "RTN","RGNETTCP",354,0)
-LOCKNODE(RGCFG) ;
+ .L -@LN
 "RTN","RGNETTCP",355,0)
- Q:'$$GETCFG(.RGCFG) ""
+ .S RES=0
 "RTN","RGNETTCP",356,0)
- Q $NA(^[RGCFG("uci")]XTMP("RGNETTCP","LN",RGCFG,$S($G(RGMODE):$J,1:0)))
+ Q:$Q RES
 "RTN","RGNETTCP",357,0)
- ; Change process name to reflect active listener
+ Q
 "RTN","RGNETTCP",358,0)
-CHPRN(RGCFG) ;
+ ; Get global reference for lock node
 "RTN","RGNETTCP",359,0)
- D SETNM^%ZOSV("RGNETTCP_"_RGCFG("port"))
+LOCKNODE(RGCFG) ;
 "RTN","RGNETTCP",360,0)
+ Q:'$$GETCFG(.RGCFG) ""
+"RTN","RGNETTCP",361,0)
+ Q $NA(^[RGCFG("uci")]XTMP("RGNETTCP","LN",RGCFG,$S($G(RGMODE):$J,1:0)))
+"RTN","RGNETTCP",362,0)
+ ; Change process name to reflect active listener
+"RTN","RGNETTCP",363,0)
+CHPRN(RGCFG) ;
+"RTN","RGNETTCP",364,0)
+ D SETNM^%ZOSV("RGNETTCP_"_RGCFG("port"))
+"RTN","RGNETTCP",365,0)
  Q
 "SEC","^DIC",996.5,996.5,0,"AUDIT")
 @
@@ -1305,7 +1315,7 @@ process requests on a given TCP port via the specified handler.
 **INSTALL NAME**
 NETSERV WEB SERVER 1.0
 "BLD",8508,0)
-NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150403^n
+NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150404^n
 "BLD",8508,1,0)
 ^^3^3^3150401.074908
 "BLD",8508,1,1,0)
@@ -1339,7 +1349,7 @@ I $G(^RGNET(996.52,Y,10))["^RGNETW"
 "BLD",8508,4,"B",996.52,996.52)
 
 "BLD",8508,6.3)
-41
+44
 "BLD",8508,"ABPKG")
 n
 "BLD",8508,"KRN",0)
@@ -1367,7 +1377,7 @@ n
 "BLD",8508,"KRN",9.8,"NM",0)
 ^9.68A^3^2
 "BLD",8508,"KRN",9.8,"NM",2,0)
-RGNETWWW^^0^B82729245
+RGNETWWW^^0^B82369018
 "BLD",8508,"KRN",9.8,"NM",3,0)
 RGNETWRR^^0^B31409526
 "BLD",8508,"KRN",9.8,"NM","B","RGNETWRR",3)
@@ -1679,9 +1689,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150403
+1.0^3150404
 "PKG",225,22,1,1,0)
-^^3^3^3150403
+^^3^3^3150404
 "PKG",225,22,1,1,1,0)
 This is an implementation of a Web Server that uses the NETSERV connection
 "PKG",225,22,1,1,2,0)
@@ -1767,7 +1777,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETWRR",1,0)
 RGNETWRR ;RI/CBMI/DKM - Web endpoint for RPC and routine lookup ;01-Apr-2015 11:20;DKM
 "RTN","RGNETWRR",2,0)
- ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 41
+ ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 44
 "RTN","RGNETWRR",3,0)
  ;=================================================================
 "RTN","RGNETWRR",4,0)
@@ -2117,11 +2127,11 @@ ESCAPE(X) ;
 "RTN","RGNETWRR",176,0)
  Q $$ESCAPE^RGNETWWW(X)
 "RTN","RGNETWWW")
-0^2^B82729245
+0^2^B82369018
 "RTN","RGNETWWW",1,0)
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;02-Apr-2015 11:54;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;04-Apr-2015 08:46;DKM
 "RTN","RGNETWWW",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 41
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 44
 "RTN","RGNETWWW",3,0)
  ;=================================================================
 "RTN","RGNETWWW",4,0)
@@ -2131,7 +2141,7 @@ NETSERV(DUMMY) ;
 "RTN","RGNETWWW",6,0)
  D WRITEALL($$PROCESS("$$TCPSTRM(.LN)"))
 "RTN","RGNETWWW",7,0)
- S RGQUIT=1
+ S RGQUIT=RGMODE'=3
 "RTN","RGNETWWW",8,0)
  Q
 "RTN","RGNETWWW",9,0)
@@ -2309,472 +2319,470 @@ PARSEREQ(STREAM,RGNETREQ) ;
 "RTN","RGNETWWW",95,0)
  S RGNETREQ("HOST")=$G(RGNETREQ("HDR","host"))_"/"_$P(PATH,"/")
 "RTN","RGNETWWW",96,0)
- D ^%ZTER
-"RTN","RGNETWWW",97,0)
  Q 0
-"RTN","RGNETWWW",98,0)
+"RTN","RGNETWWW",97,0)
  ; Parse query string into array named in PREF.
-"RTN","RGNETWWW",99,0)
+"RTN","RGNETWWW",98,0)
  ;  QS = Query string
-"RTN","RGNETWWW",100,0)
+"RTN","RGNETWWW",99,0)
  ;  PREF = Array reference to receive data.  Defaults to RGNETREQ("PARAMS").
-"RTN","RGNETWWW",101,0)
+"RTN","RGNETWWW",100,0)
 PARSEQS(QS,PREF) ;
-"RTN","RGNETWWW",102,0)
+"RTN","RGNETWWW",101,0)
  N X,Y,Z,N,V,M
-"RTN","RGNETWWW",103,0)
+"RTN","RGNETWWW",102,0)
  S PREF=$G(PREF,$NA(RGNETREQ("PARAMS")))
-"RTN","RGNETWWW",104,0)
+"RTN","RGNETWWW",103,0)
  F X=1:1:$L(QS,"&") D
-"RTN","RGNETWWW",105,0)
+"RTN","RGNETWWW",104,0)
  .S Y=$P(QS,"&",X),N=$$UNESCURL($P(Y,"=")),V=$$UNESCURL($P(Y,"=",2,9999)),M=""
-"RTN","RGNETWWW",106,0)
+"RTN","RGNETWWW",105,0)
  .I $L(N) D
-"RTN","RGNETWWW",107,0)
+"RTN","RGNETWWW",106,0)
  ..S Z=$L(N,":")
-"RTN","RGNETWWW",108,0)
+"RTN","RGNETWWW",107,0)
  ..I Z>1 D
-"RTN","RGNETWWW",109,0)
+"RTN","RGNETWWW",108,0)
  ...S Y=$P(N,":",Z)
-"RTN","RGNETWWW",110,0)
+"RTN","RGNETWWW",109,0)
  ...S M=$S(Y="missing":"m",Y="exact":"e",Y="text":"t",1:"")
-"RTN","RGNETWWW",111,0)
+"RTN","RGNETWWW",110,0)
  ...S:$L(M) N=$P(N,":",1,Z-1)
-"RTN","RGNETWWW",112,0)
+"RTN","RGNETWWW",111,0)
  ..S Y=1+$O(@PREF@(N,""),-1)
-"RTN","RGNETWWW",113,0)
+"RTN","RGNETWWW",112,0)
  ..F Z=1:1:$L(V,",") D
-"RTN","RGNETWWW",114,0)
+"RTN","RGNETWWW",113,0)
  ...S @PREF@(N,Y,Z)=$P(V,",",Z)
-"RTN","RGNETWWW",115,0)
+"RTN","RGNETWWW",114,0)
  ...S @PREF@(N,Y,Z,"OPR")=M
+"RTN","RGNETWWW",115,0)
+ Q
 "RTN","RGNETWWW",116,0)
- Q
-"RTN","RGNETWWW",117,0)
  ; Parse body as query string values
-"RTN","RGNETWWW",118,0)
+"RTN","RGNETWWW",117,0)
 PARSEBD(PARAMS) ;
-"RTN","RGNETWWW",119,0)
+"RTN","RGNETWWW",118,0)
  N X
-"RTN","RGNETWWW",120,0)
+"RTN","RGNETWWW",119,0)
  F X=0:0 S X=$O(RGNETREQ("BODY",X)) Q:'X  D PARSEQS(RGNETREQ("BODY",X),"PARAMS")
+"RTN","RGNETWWW",120,0)
+ Q
 "RTN","RGNETWWW",121,0)
- Q
-"RTN","RGNETWWW",122,0)
  ; Parse http header into array named in HREF.
-"RTN","RGNETWWW",123,0)
+"RTN","RGNETWWW",122,0)
 PARSEHDR(VALUE,HREF) ;
-"RTN","RGNETWWW",124,0)
+"RTN","RGNETWWW",123,0)
  N N,V
-"RTN","RGNETWWW",125,0)
+"RTN","RGNETWWW",124,0)
  S HREF=$G(HREF,$NA(RGNETREQ("HDR")))
-"RTN","RGNETWWW",126,0)
+"RTN","RGNETWWW",125,0)
  S N=$$LOW^XLFSTR($P(VALUE,":")),V=$$TRIM^XLFSTR($P(VALUE,":",2,999))
-"RTN","RGNETWWW",127,0)
+"RTN","RGNETWWW",126,0)
  S:$L(N) @HREF@(N)=V
+"RTN","RGNETWWW",127,0)
+ Q
 "RTN","RGNETWWW",128,0)
- Q
-"RTN","RGNETWWW",129,0)
  ; Replace escaped characters in URL
-"RTN","RGNETWWW",130,0)
+"RTN","RGNETWWW",129,0)
 UNESCURL(X) ;
-"RTN","RGNETWWW",131,0)
+"RTN","RGNETWWW",130,0)
  I X["%"!(X["+") D
-"RTN","RGNETWWW",132,0)
+"RTN","RGNETWWW",131,0)
  .N P,C,H
-"RTN","RGNETWWW",133,0)
+"RTN","RGNETWWW",132,0)
  .F P=1:1 S C=$E(X,P) Q:'$L(C)  D
-"RTN","RGNETWWW",134,0)
+"RTN","RGNETWWW",133,0)
  ..I C="+" S $E(X,P)=" "
-"RTN","RGNETWWW",135,0)
+"RTN","RGNETWWW",134,0)
  ..E  I C="%" S H=$E(X,P+1,P+2),$E(X,P,P+2)=$$UNHEX^XTHCUTL(H)
+"RTN","RGNETWWW",135,0)
+ Q X
 "RTN","RGNETWWW",136,0)
- Q X
-"RTN","RGNETWWW",137,0)
  ; Escape reserved characters
-"RTN","RGNETWWW",138,0)
+"RTN","RGNETWWW",137,0)
 ESCAPE(VALUE) ;
+"RTN","RGNETWWW",138,0)
+ N LP
 "RTN","RGNETWWW",139,0)
- N LP
-"RTN","RGNETWWW",140,0)
  F LP="&;amp","<;lt",">;gt",$C(9)_";nbsp","|TAB|;nbsp" D
-"RTN","RGNETWWW",141,0)
+"RTN","RGNETWWW",140,0)
  .S VALUE=$$SUBST^RGUT(VALUE,$P(LP,";"),"&"_$P(LP,";",2)_";")
-"RTN","RGNETWWW",142,0)
+"RTN","RGNETWWW",141,0)
  Q VALUE
-"RTN","RGNETWWW",143,0)
+"RTN","RGNETWWW",142,0)
  ; Returns true if error condition is set
-"RTN","RGNETWWW",144,0)
+"RTN","RGNETWWW",143,0)
 ISERROR() ;
-"RTN","RGNETWWW",145,0)
+"RTN","RGNETWWW",144,0)
  Q +$G(RGNETRSP("STATUS"))'<400
-"RTN","RGNETWWW",146,0)
+"RTN","RGNETWWW",145,0)
  ; Sets http status code
-"RTN","RGNETWWW",147,0)
+"RTN","RGNETWWW",146,0)
 SETSTAT(CODE,TEXT) ;
-"RTN","RGNETWWW",148,0)
+"RTN","RGNETWWW",147,0)
  S:'$L($G(TEXT)) TEXT=$P(^RGNET(996.51,CODE,0),U,2)
-"RTN","RGNETWWW",149,0)
+"RTN","RGNETWWW",148,0)
  S RGNETRSP("STATUS")=CODE_" "_TEXT
-"RTN","RGNETWWW",150,0)
+"RTN","RGNETWWW",149,0)
  D:$$ISERROR RESET
+"RTN","RGNETWWW",150,0)
+ Q
 "RTN","RGNETWWW",151,0)
- Q
-"RTN","RGNETWWW",152,0)
  ; Sets the content type
-"RTN","RGNETWWW",153,0)
+"RTN","RGNETWWW",152,0)
 SETCTYPE(CTYPE) ;
-"RTN","RGNETWWW",154,0)
+"RTN","RGNETWWW",153,0)
  S RGNETRSP("CTYPE")=CTYPE
+"RTN","RGNETWWW",154,0)
+ Q
 "RTN","RGNETWWW",155,0)
- Q
-"RTN","RGNETWWW",156,0)
  ; Finishes a response by adding the necessary headers
-"RTN","RGNETWWW",157,0)
+"RTN","RGNETWWW",156,0)
 ENDRSP D ADDHDR("HTTP/1.1 "_$G(RGNETRSP("STATUS"),"200 OK"),-999)
-"RTN","RGNETWWW",158,0)
+"RTN","RGNETWWW",157,0)
  D ADDHDR("Date: "_$$WWWDATE,-998)
-"RTN","RGNETWWW",159,0)
+"RTN","RGNETWWW",158,0)
  D:$D(RGNETRSP("CTYPE"))#2 ADDHDR("Content-Type: "_RGNETRSP("CTYPE")_"; charset=utf-8",-998)
-"RTN","RGNETWWW",160,0)
+"RTN","RGNETWWW",159,0)
  D ADDHDR("Content-Length: "_+$G(RGNETRSP("LEN")),-998)
-"RTN","RGNETWWW",161,0)
+"RTN","RGNETWWW",160,0)
  D ADDHDR("",0)
+"RTN","RGNETWWW",161,0)
+ Q
 "RTN","RGNETWWW",162,0)
- Q
-"RTN","RGNETWWW",163,0)
  ; Add to response buffer
-"RTN","RGNETWWW",164,0)
+"RTN","RGNETWWW",163,0)
 ADD(X) N Y
-"RTN","RGNETWWW",165,0)
+"RTN","RGNETWWW",164,0)
  S:'$$ISERROR Y=$O(@RGNETRSP@(""),-1)+1,@RGNETRSP@(Y)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+$L(X),RGNETRSP("LAST")=Y
+"RTN","RGNETWWW",165,0)
+ Q
 "RTN","RGNETWWW",166,0)
- Q
-"RTN","RGNETWWW",167,0)
  ; Add array to output buffer
-"RTN","RGNETWWW",168,0)
+"RTN","RGNETWWW",167,0)
  ; RT  = Array root
-"RTN","RGNETWWW",169,0)
+"RTN","RGNETWWW",168,0)
  ; EOL = End of line character(s)
-"RTN","RGNETWWW",170,0)
+"RTN","RGNETWWW",169,0)
 ADDARY(RT,EOL) ;
-"RTN","RGNETWWW",171,0)
+"RTN","RGNETWWW",170,0)
  N LP
-"RTN","RGNETWWW",172,0)
+"RTN","RGNETWWW",171,0)
  S EOL=$G(EOL),LP=0
-"RTN","RGNETWWW",173,0)
+"RTN","RGNETWWW",172,0)
  F  S LP=$O(@RT@(LP)) Q:'LP  D
-"RTN","RGNETWWW",174,0)
+"RTN","RGNETWWW",173,0)
  .D ADD($G(@RT@(LP))_$G(@RT@(LP,0))_EOL)
+"RTN","RGNETWWW",174,0)
+ Q
 "RTN","RGNETWWW",175,0)
- Q
-"RTN","RGNETWWW",176,0)
  ; Add HTTP response header to output buffer
-"RTN","RGNETWWW",177,0)
+"RTN","RGNETWWW",176,0)
  ;  HDR = Properly formatted header
-"RTN","RGNETWWW",178,0)
+"RTN","RGNETWWW",177,0)
  ;  SB  = Affects the position of the header in the output.  Typically, not specified.
-"RTN","RGNETWWW",179,0)
+"RTN","RGNETWWW",178,0)
 ADDHDR(HDR,SB) ;
-"RTN","RGNETWWW",180,0)
+"RTN","RGNETWWW",179,0)
  N NXT
-"RTN","RGNETWWW",181,0)
+"RTN","RGNETWWW",180,0)
  S SB=+$G(SB,-1)
-"RTN","RGNETWWW",182,0)
+"RTN","RGNETWWW",181,0)
  S:SB>0 SB=-SB
-"RTN","RGNETWWW",183,0)
+"RTN","RGNETWWW",182,0)
  S NXT=$O(@RGNETRSP@(SB,""),-1)+1,@RGNETRSP@(SB,NXT)=HDR_$C(13,10)
+"RTN","RGNETWWW",183,0)
+ Q
 "RTN","RGNETWWW",184,0)
- Q
-"RTN","RGNETWWW",185,0)
  ; Replace buffer contents at specified index, adjusting content length accordingly.
-"RTN","RGNETWWW",186,0)
+"RTN","RGNETWWW",185,0)
 REPLACE(IDX,X) ;
-"RTN","RGNETWWW",187,0)
+"RTN","RGNETWWW",186,0)
  N Y
-"RTN","RGNETWWW",188,0)
+"RTN","RGNETWWW",187,0)
  S Y=$L(X)-$L(@RGNETRSP@(IDX)),@RGNETRSP@(IDX)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+Y
+"RTN","RGNETWWW",188,0)
+ Q
 "RTN","RGNETWWW",189,0)
- Q
-"RTN","RGNETWWW",190,0)
  ; Returns the specified query parameter
-"RTN","RGNETWWW",191,0)
+"RTN","RGNETWWW",190,0)
  ; PN = Parameter name
-"RTN","RGNETWWW",192,0)
+"RTN","RGNETWWW",191,0)
  ; P1 = Parameter series - for duplicate parameters, specifies which among them (defaults to 1)
-"RTN","RGNETWWW",193,0)
+"RTN","RGNETWWW",192,0)
  ; P2 = Parameter value  - for multivalued parameters, specifies which value (defaults to 1)
-"RTN","RGNETWWW",194,0)
+"RTN","RGNETWWW",193,0)
 GETPARAM(PN,P1,P2) ;
-"RTN","RGNETWWW",195,0)
+"RTN","RGNETWWW",194,0)
  Q $G(RGNETREQ("PARAMS",PN,$G(P1,1),$G(P2,1)))
-"RTN","RGNETWWW",196,0)
+"RTN","RGNETWWW",195,0)
  ; Initialize environment
-"RTN","RGNETWWW",197,0)
+"RTN","RGNETWWW",196,0)
 INIT S:'($D(RGNETRSP)#2) RGNETRSP=$$TMPGBL
-"RTN","RGNETWWW",198,0)
+"RTN","RGNETWWW",197,0)
  D RESET
+"RTN","RGNETWWW",198,0)
+ Q
 "RTN","RGNETWWW",199,0)
- Q
-"RTN","RGNETWWW",200,0)
  ; Reset the output buffer
-"RTN","RGNETWWW",201,0)
+"RTN","RGNETWWW",200,0)
 RESET K @RGNETRSP
-"RTN","RGNETWWW",202,0)
+"RTN","RGNETWWW",201,0)
  S (RGNETRSP("LAST"),RGNETRSP("LEN"))=0
+"RTN","RGNETWWW",202,0)
+ Q
 "RTN","RGNETWWW",203,0)
- Q
-"RTN","RGNETWWW",204,0)
  ; Returns the host url (e.g., www.xyz.net)
-"RTN","RGNETWWW",205,0)
+"RTN","RGNETWWW",204,0)
 HOST(PATH,DFLT) ;
-"RTN","RGNETWWW",206,0)
+"RTN","RGNETWWW",205,0)
  N URL
-"RTN","RGNETWWW",207,0)
+"RTN","RGNETWWW",206,0)
  S URL=$G(PATH)
-"RTN","RGNETWWW",208,0)
+"RTN","RGNETWWW",207,0)
  S:$E(URL)="*" URL=$G(DFLT)_$E(URL,2,9999)
-"RTN","RGNETWWW",209,0)
+"RTN","RGNETWWW",208,0)
  Q $$CONCAT(RGNETREQ("HOST"),URL)
-"RTN","RGNETWWW",210,0)
+"RTN","RGNETWWW",209,0)
  ; Returns host URL including the transport protocol (e.g., http://www.xyz.net)
-"RTN","RGNETWWW",211,0)
+"RTN","RGNETWWW",210,0)
 HOSTURL(PATH) ;
-"RTN","RGNETWWW",212,0)
+"RTN","RGNETWWW",211,0)
  Q $G(RGNETREQ("HDR","x-forwarded-proto"),"http")_"://"_$$HOST(.PATH)
-"RTN","RGNETWWW",213,0)
+"RTN","RGNETWWW",212,0)
  ; Prepend local system root to path
-"RTN","RGNETWWW",214,0)
+"RTN","RGNETWWW",213,0)
 LOCALSYS(PATH) ;
-"RTN","RGNETWWW",215,0)
+"RTN","RGNETWWW",214,0)
  Q $$CONCAT("http://"_$$LOW^XLFSTR($$KSP^XUPARAM("WHERE")),.PATH)
-"RTN","RGNETWWW",216,0)
+"RTN","RGNETWWW",215,0)
  ; Return UUID for this system
-"RTN","RGNETWWW",217,0)
+"RTN","RGNETWWW",216,0)
 SYSUUID() ;
-"RTN","RGNETWWW",218,0)
+"RTN","RGNETWWW",217,0)
  S:'$L($G(^RGNET("SYS"))) ^("SYS")=$$UUID^RGUT
-"RTN","RGNETWWW",219,0)
+"RTN","RGNETWWW",218,0)
  Q ^("SYS")
-"RTN","RGNETWWW",220,0)
+"RTN","RGNETWWW",219,0)
  ; Concatenate path to url.
-"RTN","RGNETWWW",221,0)
+"RTN","RGNETWWW",220,0)
 CONCAT(URL,PATH) ;
-"RTN","RGNETWWW",222,0)
+"RTN","RGNETWWW",221,0)
  Q:'$D(PATH) URL
-"RTN","RGNETWWW",223,0)
+"RTN","RGNETWWW",222,0)
  F  Q:$E(URL,$L(URL))'="/"  S $E(URL,$L(URL))=""
-"RTN","RGNETWWW",224,0)
+"RTN","RGNETWWW",223,0)
  F  Q:$E(PATH)'="/"  S $E(PATH)=""
-"RTN","RGNETWWW",225,0)
+"RTN","RGNETWWW",224,0)
  Q URL_"/"_PATH
-"RTN","RGNETWWW",226,0)
+"RTN","RGNETWWW",225,0)
  ; Date (format per RFC 1123)
-"RTN","RGNETWWW",227,0)
+"RTN","RGNETWWW",226,0)
 WWWDATE(DT) ;
-"RTN","RGNETWWW",228,0)
+"RTN","RGNETWWW",227,0)
  N TZ,H,M,SN
-"RTN","RGNETWWW",229,0)
+"RTN","RGNETWWW",228,0)
  S:'$G(DT) DT=$$NOW^XLFDT
-"RTN","RGNETWWW",230,0)
+"RTN","RGNETWWW",229,0)
  S TZ=$$TZ^XLFDT,H=+$E(TZ,2,3),M=+$E(TZ,4,5),SN=$S(TZ<0:1,1:-1)
-"RTN","RGNETWWW",231,0)
+"RTN","RGNETWWW",230,0)
  S DT=$$FMADD^XLFDT(DT,0,H*SN,M*SN,0)
-"RTN","RGNETWWW",232,0)
+"RTN","RGNETWWW",231,0)
  Q $$FMTDATE^RGUTDATF(DT,"EEE, dd MMM YYYY HH:mm:ss 'GMT'")
-"RTN","RGNETWWW",233,0)
+"RTN","RGNETWWW",232,0)
  ; Returns true if request came from a browser
-"RTN","RGNETWWW",234,0)
+"RTN","RGNETWWW",233,0)
 ISBROWSR() ;
-"RTN","RGNETWWW",235,0)
+"RTN","RGNETWWW",234,0)
  Q $G(RGNETREQ("HDR","user-agent"))["Mozilla"
-"RTN","RGNETWWW",236,0)
+"RTN","RGNETWWW",235,0)
  ; Attempt authentication if credentials available
-"RTN","RGNETWWW",237,0)
+"RTN","RGNETWWW",236,0)
  ; If REQUIRED is true, authentication must succeed.
-"RTN","RGNETWWW",238,0)
+"RTN","RGNETWWW",237,0)
  ; Returns true if successful
-"RTN","RGNETWWW",239,0)
+"RTN","RGNETWWW",238,0)
 AUTH(TYPE,REQUIRED) ;
-"RTN","RGNETWWW",240,0)
+"RTN","RGNETWWW",239,0)
  N TP,CRED
-"RTN","RGNETWWW",241,0)
+"RTN","RGNETWWW",240,0)
  S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
-"RTN","RGNETWWW",242,0)
+"RTN","RGNETWWW",241,0)
  I '$L(TP),$G(DUZ) Q 1
-"RTN","RGNETWWW",243,0)
+"RTN","RGNETWWW",242,0)
  S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED)
-"RTN","RGNETWWW",244,0)
+"RTN","RGNETWWW",243,0)
  K RGNETREQ("HDR","authorization"),DUZ
-"RTN","RGNETWWW",245,0)
+"RTN","RGNETWWW",244,0)
  I $L(TYPE),TP'=TYPE
-"RTN","RGNETWWW",246,0)
+"RTN","RGNETWWW",245,0)
  .S REQUIRED=1
-"RTN","RGNETWWW",247,0)
+"RTN","RGNETWWW",246,0)
  E  I TP="BASIC" D
-"RTN","RGNETWWW",248,0)
+"RTN","RGNETWWW",247,0)
  .N IO,RTN
-"RTN","RGNETWWW",249,0)
+"RTN","RGNETWWW",248,0)
  .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
-"RTN","RGNETWWW",250,0)
+"RTN","RGNETWWW",249,0)
  .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
-"RTN","RGNETWWW",251,0)
+"RTN","RGNETWWW",250,0)
  E  I TP="BEARER" D
-"RTN","RGNETWWW",252,0)
+"RTN","RGNETWWW",251,0)
  .S DUZ=$$ISVALID^RGSEOAUT(CRED)
-"RTN","RGNETWWW",253,0)
+"RTN","RGNETWWW",252,0)
  I '$G(DUZ),REQUIRED D  Q 0
-"RTN","RGNETWWW",254,0)
+"RTN","RGNETWWW",253,0)
  .D SETSTAT(401)
-"RTN","RGNETWWW",255,0)
+"RTN","RGNETWWW",254,0)
  .D ADDHDR("WWW-Authenticate: "_TYPE)
-"RTN","RGNETWWW",256,0)
+"RTN","RGNETWWW",255,0)
  S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
-"RTN","RGNETWWW",257,0)
+"RTN","RGNETWWW",256,0)
  Q 1
-"RTN","RGNETWWW",258,0)
+"RTN","RGNETWWW",257,0)
  ; Convert to pattern (Used for URL matching)
-"RTN","RGNETWWW",259,0)
+"RTN","RGNETWWW",258,0)
 TOPTRN(NM) ;
-"RTN","RGNETWWW",260,0)
+"RTN","RGNETWWW",259,0)
  N P,C,X,L
-"RTN","RGNETWWW",261,0)
+"RTN","RGNETWWW",260,0)
  S (L,P)=""
-"RTN","RGNETWWW",262,0)
+"RTN","RGNETWWW",261,0)
  F X=1:1:$L(NM) D
-"RTN","RGNETWWW",263,0)
+"RTN","RGNETWWW",262,0)
  .S C=$E(NM,X)
-"RTN","RGNETWWW",264,0)
+"RTN","RGNETWWW",263,0)
  .I C="*" D TOPTRN2(".E") Q
-"RTN","RGNETWWW",265,0)
+"RTN","RGNETWWW",264,0)
  .I C="#" D TOPTRN2("1.N") Q
-"RTN","RGNETWWW",266,0)
+"RTN","RGNETWWW",265,0)
  .S L=L_C
-"RTN","RGNETWWW",267,0)
+"RTN","RGNETWWW",266,0)
  D:$L(P) TOPTRN2("")
-"RTN","RGNETWWW",268,0)
+"RTN","RGNETWWW",267,0)
  Q P
-"RTN","RGNETWWW",269,0)
+"RTN","RGNETWWW",268,0)
 TOPTRN2(X) ;
-"RTN","RGNETWWW",270,0)
+"RTN","RGNETWWW",269,0)
  S:$L(L) P=P_"1"""_L_"""",L=""
-"RTN","RGNETWWW",271,0)
+"RTN","RGNETWWW",270,0)
  S P=P_X
+"RTN","RGNETWWW",271,0)
+ Q
 "RTN","RGNETWWW",272,0)
- Q
-"RTN","RGNETWWW",273,0)
  ; Looks up endpoint for URL
-"RTN","RGNETWWW",274,0)
+"RTN","RGNETWWW",273,0)
  ; Returns IEN of endpoint
-"RTN","RGNETWWW",275,0)
+"RTN","RGNETWWW",274,0)
 URL2EP(METHOD,URL) ;
-"RTN","RGNETWWW",276,0)
+"RTN","RGNETWWW",275,0)
  N IEN
-"RTN","RGNETWWW",277,0)
+"RTN","RGNETWWW",276,0)
  S:'$L(URL) URL="/"
-"RTN","RGNETWWW",278,0)
+"RTN","RGNETWWW",277,0)
  S IEN=$$URL2EPX(METHOD,URL)
-"RTN","RGNETWWW",279,0)
+"RTN","RGNETWWW",278,0)
  S:'IEN IEN=$$URL2EPX(METHOD,URL,$E(URL))
-"RTN","RGNETWWW",280,0)
+"RTN","RGNETWWW",279,0)
  S:'IEN IEN=$$URL2EPX(METHOD,URL,"#")
-"RTN","RGNETWWW",281,0)
+"RTN","RGNETWWW",280,0)
  S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
-"RTN","RGNETWWW",282,0)
+"RTN","RGNETWWW",281,0)
  Q IEN
-"RTN","RGNETWWW",283,0)
+"RTN","RGNETWWW",282,0)
 URL2EPX(METHOD,URL,URLX) ;
-"RTN","RGNETWWW",284,0)
+"RTN","RGNETWWW",283,0)
  Q:'$D(URLX) $O(^RGNET(996.52,"C",METHOD,URL,0))
-"RTN","RGNETWWW",285,0)
+"RTN","RGNETWWW",284,0)
  N RT,FND,PTRN,IEN
-"RTN","RGNETWWW",286,0)
+"RTN","RGNETWWW",285,0)
  S RT=URLX,FND=0
-"RTN","RGNETWWW",287,0)
+"RTN","RGNETWWW",286,0)
  F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
-"RTN","RGNETWWW",288,0)
+"RTN","RGNETWWW",287,0)
  .F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
-"RTN","RGNETWWW",289,0)
+"RTN","RGNETWWW",288,0)
  ..S:URL?@PTRN FND=IEN
-"RTN","RGNETWWW",290,0)
+"RTN","RGNETWWW",289,0)
  I 'FND,$E(URL,$L(URL))'="/" S FND=$$URL2EPX(METHOD,URL_"/",URLX)
-"RTN","RGNETWWW",291,0)
+"RTN","RGNETWWW",290,0)
  Q FND
-"RTN","RGNETWWW",292,0)
+"RTN","RGNETWWW",291,0)
  ; Returns the weighted value if content type matches an accepted type,
-"RTN","RGNETWWW",293,0)
+"RTN","RGNETWWW",292,0)
  ; or 0 if no match.
-"RTN","RGNETWWW",294,0)
+"RTN","RGNETWWW",293,0)
 ISCTYPE(MTYPE,ACCPT) ;
-"RTN","RGNETWWW",295,0)
+"RTN","RGNETWWW",294,0)
  N AT,LP,MT,R,X,Q
-"RTN","RGNETWWW",296,0)
+"RTN","RGNETWWW",295,0)
  S ACCPT=$TR(ACCPT," "),MTYPE=$TR(MTYPE," ")
-"RTN","RGNETWWW",297,0)
+"RTN","RGNETWWW",296,0)
  F LP=1:1:$L(ACCPT,",") D
-"RTN","RGNETWWW",298,0)
+"RTN","RGNETWWW",297,0)
  .S X=$P(ACCPT,",",LP),Q=$P(X,";",2),X=$P(X,";")
-"RTN","RGNETWWW",299,0)
+"RTN","RGNETWWW",298,0)
  .S Q=$S($E(Q,1,2)="q=":+$E(Q,3,99),1:1)
-"RTN","RGNETWWW",300,0)
+"RTN","RGNETWWW",299,0)
  .S:$L(X) AT(Q,X)=""
-"RTN","RGNETWWW",301,0)
+"RTN","RGNETWWW",300,0)
  Q:'$D(AT) 1
-"RTN","RGNETWWW",302,0)
+"RTN","RGNETWWW",301,0)
  S Q=""
-"RTN","RGNETWWW",303,0)
+"RTN","RGNETWWW",302,0)
  F  S Q=$O(AT(Q),-1) Q:'Q  D  Q:$D(R)
-"RTN","RGNETWWW",304,0)
+"RTN","RGNETWWW",303,0)
  .S AT=""
-"RTN","RGNETWWW",305,0)
+"RTN","RGNETWWW",304,0)
  .F  S AT=$O(AT(Q,AT)) Q:'$L(AT)  D  Q:$D(R)
-"RTN","RGNETWWW",306,0)
+"RTN","RGNETWWW",305,0)
  ..I AT="*/*" S R=Q Q
-"RTN","RGNETWWW",307,0)
+"RTN","RGNETWWW",306,0)
  ..F LP=1:1:$L(MTYPE,",") D  Q:$D(R)
-"RTN","RGNETWWW",308,0)
+"RTN","RGNETWWW",307,0)
  ...S MT=$P(MTYPE,",",LP)
-"RTN","RGNETWWW",309,0)
+"RTN","RGNETWWW",308,0)
  ...I AT=MT S R=Q Q
-"RTN","RGNETWWW",310,0)
+"RTN","RGNETWWW",309,0)
  ...I AT["/*",$P(AT,"/")=$P(MT,"/") S R=Q Q
-"RTN","RGNETWWW",311,0)
+"RTN","RGNETWWW",310,0)
  ...I AT["*/",$P(AT,"/",2)=$P(MT,"/",2) S R=Q Q
-"RTN","RGNETWWW",312,0)
+"RTN","RGNETWWW",311,0)
  Q $S($D(R):R,1:0)
-"RTN","RGNETWWW",313,0)
+"RTN","RGNETWWW",312,0)
  ; Return unique temp global reference
-"RTN","RGNETWWW",314,0)
+"RTN","RGNETWWW",313,0)
  ; If X is specified, returns the temp global at that index.
-"RTN","RGNETWWW",315,0)
+"RTN","RGNETWWW",314,0)
  ; Otherwise, returns the next available global reference.
-"RTN","RGNETWWW",316,0)
+"RTN","RGNETWWW",315,0)
 TMPGBL(X) ;
-"RTN","RGNETWWW",317,0)
+"RTN","RGNETWWW",316,0)
  Q:$G(X) $NA(^TMP("RGNETWWW",$J,X))
-"RTN","RGNETWWW",318,0)
+"RTN","RGNETWWW",317,0)
  F  S X=$G(^TMP("RGNETWWW",$J))+1,^($J)=X,X=$NA(^($J,X)) Q:'$D(@X)
-"RTN","RGNETWWW",319,0)
+"RTN","RGNETWWW",318,0)
  Q X
-"RTN","RGNETWWW",320,0)
+"RTN","RGNETWWW",319,0)
  ; Cleanup temp globals on completion
-"RTN","RGNETWWW",321,0)
+"RTN","RGNETWWW",320,0)
 CLEANUP N LP,TMP,EXC
-"RTN","RGNETWWW",322,0)
+"RTN","RGNETWWW",321,0)
  S TMP=$NA(^TMP("RGNETWWW",$J))
-"RTN","RGNETWWW",323,0)
+"RTN","RGNETWWW",322,0)
  I TMP'=$NA(@RGNETRSP,2) K @TMP Q
-"RTN","RGNETWWW",324,0)
+"RTN","RGNETWWW",323,0)
  S (@TMP,EXC)=$QS(RGNETRSP,3)
-"RTN","RGNETWWW",325,0)
+"RTN","RGNETWWW",324,0)
  F LP=0:0 S LP=$O(@TMP@(LP)) Q:'LP  K:LP'=EXC @TMP@(LP)
-"RTN","RGNETWWW",326,0)
+"RTN","RGNETWWW",325,0)
  Q
-"RTN","RGNETWWW",327,0)
+"RTN","RGNETWWW",326,0)
  ; Returns description
-"RTN","RGNETWWW",328,0)
+"RTN","RGNETWWW",327,0)
 GREETING D ADDARY($NA(^RGNET(996.52,HANDLER,99)))
-"RTN","RGNETWWW",329,0)
+"RTN","RGNETWWW",328,0)
  Q
 "SEC","^DIC",996.5,996.5,0,"AUDIT")
 @
@@ -3061,7 +3069,7 @@ and the request URL to the corresponding entry in this file.
 **INSTALL NAME**
 NETSERV RPC BROKER 1.0
 "BLD",8509,0)
-NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150403^n
+NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150404^n
 "BLD",8509,1,0)
 ^^3^3^3150401.075336
 "BLD",8509,1,1,0)
@@ -3105,7 +3113,7 @@ y^y^f^^^^n
 "BLD",8509,4,"B",996.57,996.57)
 
 "BLD",8509,6.3)
-42
+45
 "BLD",8509,"ABPKG")
 n
 "BLD",8509,"KRN",0)
@@ -3133,7 +3141,7 @@ n
 "BLD",8509,"KRN",9.8,"NM",0)
 ^9.68A^7^7
 "BLD",8509,"KRN",9.8,"NM",1,0)
-RGNETBAC^^0^B22724506
+RGNETBAC^^0^B22725869
 "BLD",8509,"KRN",9.8,"NM",2,0)
 RGNETBAS^^0^B5689802
 "BLD",8509,"KRN",9.8,"NM",3,0)
@@ -3141,7 +3149,7 @@ RGNETBEV^^0^B59524142
 "BLD",8509,"KRN",9.8,"NM",4,0)
 RGNETBLG^^0^B10138528
 "BLD",8509,"KRN",9.8,"NM",5,0)
-RGNETBRK^^0^B5804794
+RGNETBRK^^0^B5805650
 "BLD",8509,"KRN",9.8,"NM",6,0)
 RGNETBRP^^0^B62000067
 "BLD",8509,"KRN",9.8,"NM",7,0)
@@ -3749,9 +3757,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150403
+1.0^3150404
 "PKG",225,22,1,1,0)
-^^3^3^3150403
+^^3^3^3150404
 "PKG",225,22,1,1,1,0)
 This is an implementation of a remote procedure call broker that uses the
 "PKG",225,22,1,1,2,0)
@@ -3833,23 +3841,23 @@ D XPZ2^XPDIQ
 "RTN")
 7
 "RTN","RGNETBAC")
-0^1^B22724506
+0^1^B22725869
 "RTN","RGNETBAC",1,0)
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;03-Apr-2015 09:47;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;04-Apr-2015 07:33;DKM
 "RTN","RGNETBAC",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBAC",3,0)
  ;=================================================================
 "RTN","RGNETBAC",4,0)
  ; Connect action
 "RTN","RGNETBAC",5,0)
- ; RGDATA is returned to client as:
+ ; Data is returned to client as:
 "RTN","RGNETBAC",6,0)
- ;   callback flag^authentication method^server version^case sensitive^context cached^encryption type
+ ;   debug flag^authentication method^server version^case sensitive^cipher key
 "RTN","RGNETBAC",7,0)
-ACTC N X,Y,VOL,UCI,AUTH
+ACTC N X,Y,VOL,UCI,VER,AUTH
 "RTN","RGNETBAC",8,0)
- S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2)
+ S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2),VER=$P($T(+2),";",3)
 "RTN","RGNETBAC",9,0)
  S:'$L(UCI) UCI=Y
 "RTN","RGNETBAC",10,0)
@@ -3859,7 +3867,7 @@ ACTC N X,Y,VOL,UCI,AUTH
 "RTN","RGNETBAC",12,0)
  Q:$$ERRCHK('$L(VOL),11)
 "RTN","RGNETBAC",13,0)
- S AUTH=$$AUTHMETH(UCI),RGDATA='$G(RGNETB("DBG"))_"^"_AUTH_"^1.1^"_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_"^1^"_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
+ S AUTH=$$AUTHMETH(UCI),RGDATA=(RGMODE=3)_U_AUTH_U_VER_U_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_U_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
 "RTN","RGNETBAC",14,0)
  Q:$$ERRCHK('$L(AUTH),24,UCI)
 "RTN","RGNETBAC",15,0)
@@ -4113,9 +4121,9 @@ AUTHMETH(UCI) ;
 "RTN","RGNETBAS")
 0^2^B5689802
 "RTN","RGNETBAS",1,0)
-RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;03-Apr-2015 09:20;DKM
+RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;04-Apr-2015 08:42;DKM
 "RTN","RGNETBAS",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBAS",3,0)
  ;=================================================================
 "RTN","RGNETBAS",4,0)
@@ -4243,7 +4251,7 @@ STOPALL N ZTSK
 "RTN","RGNETBEV",1,0)
 RGNETBEV ;RI/CBMI/DKM - Event Support ;03-Apr-2015 09:57;DKM
 "RTN","RGNETBEV",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBEV",3,0)
  ;=================================================================
 "RTN","RGNETBEV",4,0)
@@ -4783,7 +4791,7 @@ RELATES(EVA,EVB) ;EP
 "RTN","RGNETBLG",1,0)
 RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
 "RTN","RGNETBLG",2,0)
- ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 42
+ ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 45
 "RTN","RGNETBLG",3,0)
  ;=================================================================
 "RTN","RGNETBLG",4,0)
@@ -4965,11 +4973,11 @@ ISACTIVE() ;
 "RTN","RGNETBLG",92,0)
  Q RTN
 "RTN","RGNETBRK")
-0^5^B5804794
+0^5^B5805650
 "RTN","RGNETBRK",1,0)
-RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;03-Apr-2015 09:28;DKM
+RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;03-Apr-2015 18:26;DKM
 "RTN","RGNETBRK",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBRK",3,0)
  ;=================================================================
 "RTN","RGNETBRK",4,0)
@@ -4995,7 +5003,7 @@ DOACTION(VAC) ;
 "RTN","RGNETBRK",14,0)
  S X=$$TCPREAD^RGNETTCP(8,10)
 "RTN","RGNETBRK",15,0)
- Q:$E(X,1,5)'="{CIA}" 0
+ Q:$E(X,1,5)'="{RGN}" 0
 "RTN","RGNETBRK",16,0)
  S ARG=0,RGNETB("EOD")=$E(X,6),SEQ=$E(X,7),ACT=$E(X,8)
 "RTN","RGNETBRK",17,0)
@@ -5137,7 +5145,7 @@ EOD(X) Q $S($G(X):$$CTL("EOD"),1:"")
 "RTN","RGNETBRP",1,0)
 RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;03-Apr-2015 09:42;DKM
 "RTN","RGNETBRP",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBRP",3,0)
  ;=================================================================
 "RTN","RGNETBRP",4,0)
@@ -5683,7 +5691,7 @@ TMPGBL(X) ;
 "RTN","RGNETBUT",1,0)
 RGNETBUT ;RI/CBMI/DKM - NETSERV RPC Broker Utilities ;01-Apr-2015 14:12;DKM
 "RTN","RGNETBUT",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 42
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 45
 "RTN","RGNETBUT",3,0)
  ;=================================================================
 "RTN","RGNETBUT",4,0)
@@ -6843,7 +6851,7 @@ NETSERV BROKER AUTHENTICATION^996.57
 **INSTALL NAME**
 NETSERV OAUTH2 SERVICE 1.0
 "BLD",8511,0)
-NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150403^n
+NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150404^n
 "BLD",8511,1,0)
 ^^2^2^3150401.080059
 "BLD",8511,1,1,0)
@@ -6867,7 +6875,7 @@ y^y^f^^^^n
 "BLD",8511,4,"B",996.53,996.53)
 
 "BLD",8511,6.3)
-41
+44
 "BLD",8511,"ABPKG")
 n
 "BLD",8511,"KRN",0)
@@ -7045,9 +7053,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150403
+1.0^3150404
 "PKG",225,22,1,1,0)
-^^2^2^3150403
+^^2^2^3150404
 "PKG",225,22,1,1,1,0)
 Provides an implementation of the OAuth 2 authentication protocol using the
 "PKG",225,22,1,1,2,0)
@@ -7131,7 +7139,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETOA",1,0)
 RGNETOA ;RI/CBMI/DKM - OAuth2 Support ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 41
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 44
 "RTN","RGNETOA",3,0)
  ;=================================================================
 "RTN","RGNETOA",4,0)
@@ -7285,7 +7293,7 @@ PUT(PN,VL,PF) ;
 "RTN","RGNETOAA",1,0)
 RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 41
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 44
 "RTN","RGNETOAA",3,0)
  ;=================================================================
 "RTN","RGNETOAA",4,0)
@@ -7389,7 +7397,7 @@ VALIDRDU()
 "RTN","RGNETOAT",1,0)
 RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAT",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 41
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 44
 "RTN","RGNETOAT",3,0)
  ;=================================================================
 "RTN","RGNETOAT",4,0)

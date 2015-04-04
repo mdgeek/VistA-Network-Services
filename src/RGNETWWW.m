@@ -1,10 +1,10 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;02-Apr-2015 11:54;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;04-Apr-2015 08:46;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 28
  ;=================================================================
  ; This is the TCP I/O handler entry point
 NETSERV(DUMMY) ;
  D WRITEALL($$PROCESS("$$TCPSTRM(.LN)"))
- S RGQUIT=1
+ S RGQUIT=RGMODE'=3
  Q
  ; Entry point where request is in an array.
  ;  SRCARY = Array reference.  Note that the array contents will be destroyed.
@@ -93,7 +93,6 @@ PARSEREQ(STREAM,RGNETREQ) ;
  S RGNETREQ("METHOD")=METHOD
  S RGNETREQ("PATH")=PATH
  S RGNETREQ("HOST")=$G(RGNETREQ("HDR","host"))_"/"_$P(PATH,"/")
- D ^%ZTER
  Q 0
  ; Parse query string into array named in PREF.
  ;  QS = Query string

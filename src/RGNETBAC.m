@@ -1,16 +1,16 @@
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;03-Apr-2015 09:47;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;04-Apr-2015 07:33;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Connect action
- ; RGDATA is returned to client as:
- ;   callback flag^authentication method^server version^case sensitive^context cached^encryption type
-ACTC N X,Y,VOL,UCI,AUTH
- S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2)
+ ; Data is returned to client as:
+ ;   debug flag^authentication method^server version^case sensitive^cipher key
+ACTC N X,Y,VOL,UCI,VER,AUTH
+ S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2),VER=$P($T(+2),";",3)
  S:'$L(UCI) UCI=Y
  S:'$L(VOL) VOL=$P(Y,",",2),$P(UCI,",",2)=VOL
  I UCI'=UCI(0),$$ERRCHK(0[$$UCICHECK^%ZOSV(UCI),14,UCI) Q
  Q:$$ERRCHK('$L(VOL),11)
- S AUTH=$$AUTHMETH(UCI),RGDATA='$G(RGNETB("DBG"))_"^"_AUTH_"^1.1^"_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_"^1^"_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
+ S AUTH=$$AUTHMETH(UCI),RGDATA=(RGMODE=3)_U_AUTH_U_VER_U_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_U_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
  Q:$$ERRCHK('$L(AUTH),24,UCI)
  I $D(^%ZOSF("ACTJ")) D  Q:$$ERRCHK(X'>Y&X,10,Y,X)
  .; Y=# active jobs, X=max active jobs

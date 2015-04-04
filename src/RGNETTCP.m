@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;03-Apr-2015 08:31;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;04-Apr-2015 09:05;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -11,6 +11,7 @@ STOP(RGCFG) ;
  Q
  ; Restart a primary listener
 RESTART(RGCFG) ;
+ Q:$$OSCHECK
  D STOP(.RGCFG),START(.RGCFG)
  Q
  ; Start all primary listeners
@@ -121,13 +122,11 @@ EN(RGMODE,RGCFG) ;
  Q:'$$STATE(1)                                                         ; Quit if listener already running
  D CLEANUP,STSAVE(0),NULLOPEN,STSAVE(1)                                ; Initialize environment
  D CHPRN(.RGCFG)                                                       ; Change process name
- D LISTEN                                                              ; Main loop
- D:RGQUIT>0!'RGMODE STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP,LOGOUT^XUSRB:$G(DUZ)
- I 'RGMODE,'RGQUIT D JOB(0,.RGCFG)                                     ; Restart primary listener after fatal error
- D CLEANUP
+ F  D LISTEN Q:RGQUIT>0!RGMODE                                         ; Main loop
+ D STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP,LOGOUT^XUSRB:$G(DUZ)
  Q
  ; Entry point for interactive debugging
-DEBUG N PORT,IP,CFG
+DEBUG N PORT,CFG
  D TITLE^RGUT("Debug Mode Support",$P($T(+2),";",3))
  F  D  Q:$D(CFG)
  .S CFG=$$ENTRY^RGUTLKP(996.5,,"Enter listener name: ")
@@ -136,11 +135,9 @@ DEBUG N PORT,IP,CFG
  .D GETCFG(.CFG)
  .I CFG("disabled") W "That listener is disabled.  Try again.",! K CFG
  Q:CFG'>0
- S IP=$$PMPT("Addr","Enter callback IP address.","127.0.0.1")
- Q:U[IP
- S PORT=$$PMPT("Port","Enter callback port.",CFG("port"))
+ S PORT=$$PMPT("Port","Enter listener port.",CFG("port"))
  Q:U[PORT
- S CFG("port")=PORT,CFG("ip")=IP
+ S CFG("port")=PORT
  I $L($T(^%Serenji)),$$ASK^RGUT("Use Serenji Debugger","Y") D  Q
  .N SRJIP,SRJPORT
  .S SRJIP=$$PMPT("Serenji Listener Addr","Enter Serenji listener address",IP)
@@ -148,7 +145,7 @@ DEBUG N PORT,IP,CFG
  .S SRJPORT=$$PMPT("Serenji Listener Port","Enter Serenji listener port",4321)
  .Q:U[SRJPORT
  .D DEBUG^%Serenji("EN^RGNETTCP(3,.CFG)",SRJIP,SRJPORT)
- W !
+ W !,"Now listening on port ",CFG("port"),!
  D EN(3,.CFG)
  Q
  ; Prompt for user input
@@ -175,7 +172,7 @@ OSCHECK(SL) ;
  Q 1
  ; Main loop
 LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
- S $ET="D ETRAP2^RGNETTCP",RGRETRY=0,RGQUIT='$$TCPOPEN,RGOUT=""
+ S $ET="D ETRAP2^RGNETTCP",RGQUIT='$$TCPOPEN,RGOUT=""
  S HNDLR=RGCFG("handler")_"(.RGSTATE)"
  F  Q:$$QUIT  D
  .D TCPUSE
@@ -189,21 +186,22 @@ WAIT N X
  R X:10
  D:$T JOB(1,.RGCFG)
  Q
- ; Test handler
-TEST D TCPWRITE("HTTP/1.1 200 GOT HERE"_$C(13,10))
- D TCPWRITE($C(13,10))
- D TCPWRITE("<H1>SUCCESS !!!</H1>")
- D TCPWRITE($H)
- S RGQUIT=1
- Q
  ; Return temp global root
 TMPGBL() Q $NA(^TMP("RGNETTCP",$J))
  ; Cleanup environment
 CLEANUP K @$$TMPGBL,^XUTL("XQ",$J),@$$LOCKNODE(.RGCFG)
  Q
  ; Returns true if listener should quit
-QUIT() S:'RGQUIT RGQUIT=+$G(@$$LOCKNODE(.RGCFG))
- Q RGRETRY>5!RGQUIT
+QUIT() S:'RGQUIT RGQUIT=RGRETRY>5
+ S:'RGQUIT RGQUIT=+$G(@$$LOCKNODE(.RGCFG))
+ I 'RGQUIT,RGMODE=3 S RGQUIT=$$QUIT3
+ Q RGQUIT
+ ; Allows user to request quit in debug mode
+QUIT3() N X
+ U $P
+ R X#1:0
+ D TCPUSE
+ Q X=U
  ; Save application state
 STSAVE(ST) ;
  D SAVE^XUS1
@@ -233,14 +231,20 @@ TCPOPEN() ;
  N POP
  S POP=0
  I RGMODE=3 D
- .D CALL^%ZISTCP(RGCFG("ip"),RGCFG("port"))
- .Q:POP
- .S RGTDEV=IO,IO(0)=IO
+ .I RGOS D
+ ..S RGTDEV="server$"_RGCFG("port")
+ ..X "O RGTDEV:(ZLISTEN=RGCFG(""port"")_"":TCP"":attach=""server""):9999:""socket"""
+ ..X:$T "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")"
+ ..S POP='$T
+ .E  D
+ ..S RGTDEV="|TCP|"_RGCFG("port")
+ ..X "O RGTDEV:(:RGCFG(""port""):""DS""):9999"
+ ..S POP='$T
  E  I RGMODE D
  .S RGTDEV=$P
  .I RGOS D
  ..S @"$ZINTERRUPT=""I $$JOBEXAM^ZU($ZPOSITION)"""
- ..X "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")" Q
+ ..X "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")"
  E  D
  .I 'RGOS D
  ..S RGTDEV="|TCP|"_RGCFG("port")
@@ -324,12 +328,13 @@ RAISE(MSG) ;
  D RAISE^RGUTOS(MSG)
  Q
  ; Startup error
-ETRAP1 D ^%ZTER,UNWIND^%ZTER
+ETRAP1 S RGQUIT=1
+ D ^%ZTER,UNWIND^%ZTER
  Q
  ; Communication error
-ETRAP2 N ECSAV
- S ECSAV=$EC,RGRETRY=RGRETRY+1
- D:RGRETRY=1&(ECSAV'[$S('RGOS:"READ",1:"Z150376602")) ^%ZTER
+ETRAP2 S RGRETRY=RGRETRY+1
+ S:RGQUIT'>0 RGQUIT=$S(RGRETRY>5:1,'RGMODE:-1,1:0)
+ D:RGRETRY=1 ^%ZTER
  D UNWIND^%ZTER
  Q
  ; Lock/Unlock listener
