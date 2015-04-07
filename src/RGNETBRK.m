@@ -1,4 +1,4 @@
-RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;03-Apr-2015 18:26;DKM
+RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;05-Apr-2015 16:26;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Handler for broker I/O
@@ -39,10 +39,6 @@ TCPREADL() ;
  S N=X#16,X=$$TCPREAD^RGNETTCP(X\16),L=0
  F I=1:1:$L(X) S L=L*256+$A(X,I)
  Q $$TCPREAD^RGNETTCP(L*16+N)
- ; Write data to socket
-TCPWRITE(DATA,EOD) ;
- D TCPWRITE^RGNETTCP($G(DATA)_$$EOD(.EOD))
- Q
  ; Raise an exception
 RAISE(MSG,P1,P2) ;
  D GETDLG^RGNETBUT(MSG,.MSG,.P1,.P2)
@@ -58,8 +54,9 @@ ETRAP2 N ECSAV
 REPLY(DATA,ACK) ;
  N MORE
  S MORE=$D(DATA)\10
- D TCPWRITE($C(+$G(ACK))_$G(DATA)_$S(MORE:$C(13),1:""),'MORE)
- D:MORE ARYOUT("DATA",1),SNDEOD
+ D TCPWRITE^RGNETTCP($C(+$G(ACK))_$G(DATA)_$S(MORE:$C(13),1:""))
+ D:MORE ARYOUT("DATA",1)
+ D SNDEOD
  K DATA
  Q
  ; Send error information
@@ -68,7 +65,7 @@ SNDERR N X
  D ARYOUT("RGERR",1),SNDEOD
  S RGERR(0)=0
  Q
-SNDEOD D TCPWRITE(,1)
+SNDEOD D TCPWRITE^RGNETTCP($$CTL("EOD"))
  Q
  ; Send data from an array.
  ;  ARY = Array to send
@@ -79,5 +76,3 @@ ARYOUT(ARY,EOL) ;
  ; Return control byte
 CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
  Q ""
- ; Return EOD byte if X is true
-EOD(X) Q $S($G(X):$$CTL("EOD"),1:"")

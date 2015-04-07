@@ -1,22 +1,23 @@
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;04-Apr-2015 07:33;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;05-Apr-2015 16:19;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Connect action
  ; Data is returned to client as:
  ;   debug flag^authentication method^server version^case sensitive^cipher key
-ACTC N X,Y,VOL,UCI,VER,AUTH
+ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS
  S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2),VER=$P($T(+2),";",3)
  S:'$L(UCI) UCI=Y
  S:'$L(VOL) VOL=$P(Y,",",2),$P(UCI,",",2)=VOL
  I UCI'=UCI(0),$$ERRCHK(0[$$UCICHECK^%ZOSV(UCI),14,UCI) Q
  Q:$$ERRCHK('$L(VOL),11)
- S AUTH=$$AUTHMETH(UCI),RGDATA=(RGMODE=3)_U_AUTH_U_VER_U_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_U_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
+ S AUTH=$$AUTHMETH(UCI),CAPS=(RGMODE=3)_U_AUTH_U_VER_U_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_U_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
  Q:$$ERRCHK('$L(AUTH),24,UCI)
  I $D(^%ZOSF("ACTJ")) D  Q:$$ERRCHK(X'>Y&X,10,Y,X)
  .; Y=# active jobs, X=max active jobs
  .X ^%ZOSF("ACTJ")
  .S X=+$O(^XTV(8989.3,1,4,"B",VOL,0)),X=$S(X:+$P($G(^XTV(8989.3,1,4,X,0)),U,3),1:0)
  D INTRO^XUS1A("RGDATA")
+ S RGDATA=CAPS
  Q
  ; Disconnect action
 ACTD D RESET^RGNETBRP()
@@ -98,12 +99,12 @@ ERRCHK(TEST,ERR,P1,P2,P3) ;
  Q
  ; Writes return data to TCP stream
 DATAOUT D TCPWRITE^RGNETTCP($C(0))
- I XWBPTYPE=1 D TCPWRITE^RGNETBRK(.RGD) Q
+ I XWBPTYPE=1 D TCPWRITE^RGNETTCP($G(RGD)) Q
  I XWBPTYPE=2 D ARYOUT^RGNETBRK("RGD",1) Q
  I XWBPTYPE=3 D ARYOUT^RGNETBRK("RGD",XWBWRAP) Q
  I XWBPTYPE=4 D ARYOUT^RGNETBRK(RGD,XWBWRAP) Q
- I XWBPTYPE=5 D TCPWRITE^RGNETBRK($G(@RGD)) Q
- I XWBPTYPE="H" D HFSOUT^RGNETBRK(RGD,XWBWRAP) Q
+ I XWBPTYPE=5 D TCPWRITE^RGNETTCP($G(@RGD)) Q
+ I XWBPTYPE="H" D FILOUT^RGNETTCP(RGD,XWBWRAP) Q
  Q
  ; Returns true if RPC can run in current context
 CANRUN(RPC,CTX) ;
