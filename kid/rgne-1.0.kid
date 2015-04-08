@@ -1,4 +1,4 @@
-KIDS Distribution saved on Apr 07, 2015@20:48:58
+KIDS Distribution saved on Apr 07, 2015@22:48:21
 NETWORK SERVICES 1.0
 **KIDS**:NETWORK SERVICES 1.0^NETSERV CONNECTION MANAGER 1.0^NETSERV WEB SERVER 1.0^NETSERV RPC BROKER 1.0^NETSERV OAUTH2 SERVICE 1.0^
 
@@ -23,7 +23,7 @@ NETSERV OATH2 SERVICE      - OAuth 2 implementation.
 "BLD",8510,1,7,0)
 
 "BLD",8510,6.3)
-18
+20
 "BLD",8510,10,0)
 ^9.63^400^4
 "BLD",8510,10,100,0)
@@ -247,7 +247,7 @@ y^y^f^^^^n^^
 "BLD",8506,4,"B",996.5,996.5)
 
 "BLD",8506,6.3)
-53
+59
 "BLD",8506,"ABPKG")
 n
 "BLD",8506,"KRN",0)
@@ -461,7 +461,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETTCP",1,0)
 RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;07-Apr-2015 15:21;DKM
 "RTN","RGNETTCP",2,0)
- ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 53
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 59
 "RTN","RGNETTCP",3,0)
  ;=================================================================
 "RTN","RGNETTCP",4,0)
@@ -1349,7 +1349,7 @@ I $G(^RGNET(996.52,Y,10))["^RGNETW"
 "BLD",8508,4,"B",996.52,996.52)
 
 "BLD",8508,6.3)
-53
+59
 "BLD",8508,"ABPKG")
 n
 "BLD",8508,"KRN",0)
@@ -1377,7 +1377,7 @@ n
 "BLD",8508,"KRN",9.8,"NM",0)
 ^9.68A^3^2
 "BLD",8508,"KRN",9.8,"NM",2,0)
-RGNETWWW^^0^B84272769
+RGNETWWW^^0^B84332119
 "BLD",8508,"KRN",9.8,"NM",3,0)
 RGNETWRR^^0^B31409526
 "BLD",8508,"KRN",9.8,"NM","B","RGNETWRR",3)
@@ -1777,7 +1777,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETWRR",1,0)
 RGNETWRR ;RI/CBMI/DKM - Web endpoint for RPC and routine lookup ;01-Apr-2015 11:20;DKM
 "RTN","RGNETWRR",2,0)
- ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 53
+ ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 59
 "RTN","RGNETWRR",3,0)
  ;=================================================================
 "RTN","RGNETWRR",4,0)
@@ -2127,11 +2127,11 @@ ESCAPE(X) ;
 "RTN","RGNETWRR",176,0)
  Q $$ESCAPE^RGNETWWW(X)
 "RTN","RGNETWWW")
-0^2^B84272769
+0^2^B84332119
 "RTN","RGNETWWW",1,0)
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 20:21;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 22:43;DKM
 "RTN","RGNETWWW",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 53
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
 "RTN","RGNETWWW",3,0)
  ;=================================================================
 "RTN","RGNETWWW",4,0)
@@ -2611,9 +2611,9 @@ AUTH(TYPE,REQUIRED) ;
 "RTN","RGNETWWW",241,0)
  I '$L(TP),$G(DUZ) Q 1
 "RTN","RGNETWWW",242,0)
- S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED)
-"RTN","RGNETWWW",243,0)
  K RGNETREQ("HDR","authorization"),DUZ
+"RTN","RGNETWWW",243,0)
+ S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED),DUZ=0
 "RTN","RGNETWWW",244,0)
  I $L(TYPE),TP'=TYPE
 "RTN","RGNETWWW",245,0)
@@ -2631,7 +2631,7 @@ AUTH(TYPE,REQUIRED) ;
 "RTN","RGNETWWW",251,0)
  .S DUZ=$$ISVALID^RGSEOAUT(CRED)
 "RTN","RGNETWWW",252,0)
- I '$G(DUZ),REQUIRED D  Q 0
+ I 'DUZ,REQUIRED D  Q 0
 "RTN","RGNETWWW",253,0)
  .D SETSTAT(401)
 "RTN","RGNETWWW",254,0)
@@ -3121,7 +3121,7 @@ y^y^f^^^^n
 "BLD",8509,4,"B",996.57,996.57)
 
 "BLD",8509,6.3)
-54
+60
 "BLD",8509,"ABPKG")
 n
 "BLD",8509,"KRN",0)
@@ -3853,7 +3853,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETBAC",1,0)
 RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;05-Apr-2015 16:19;DKM
 "RTN","RGNETBAC",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBAC",3,0)
  ;=================================================================
 "RTN","RGNETBAC",4,0)
@@ -4133,7 +4133,7 @@ AUTHMETH(UCI) ;
 "RTN","RGNETBAS",1,0)
 RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;05-Apr-2015 16:20;DKM
 "RTN","RGNETBAS",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBAS",3,0)
  ;=================================================================
 "RTN","RGNETBAS",4,0)
@@ -4261,7 +4261,7 @@ STOPALL N ZTSK
 "RTN","RGNETBEV",1,0)
 RGNETBEV ;RI/CBMI/DKM - Event Support ;03-Apr-2015 09:57;DKM
 "RTN","RGNETBEV",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBEV",3,0)
  ;=================================================================
 "RTN","RGNETBEV",4,0)
@@ -4801,7 +4801,7 @@ RELATES(EVA,EVB) ;EP
 "RTN","RGNETBLG",1,0)
 RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
 "RTN","RGNETBLG",2,0)
- ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 54
+ ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 60
 "RTN","RGNETBLG",3,0)
  ;=================================================================
 "RTN","RGNETBLG",4,0)
@@ -4987,7 +4987,7 @@ ISACTIVE() ;
 "RTN","RGNETBRK",1,0)
 RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;05-Apr-2015 16:26;DKM
 "RTN","RGNETBRK",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBRK",3,0)
  ;=================================================================
 "RTN","RGNETBRK",4,0)
@@ -5145,7 +5145,7 @@ CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
 "RTN","RGNETBRP",1,0)
 RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;07-Apr-2015 15:13;DKM
 "RTN","RGNETBRP",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBRP",3,0)
  ;=================================================================
 "RTN","RGNETBRP",4,0)
@@ -5691,7 +5691,7 @@ TMPGBL(X) ;
 "RTN","RGNETBUT",1,0)
 RGNETBUT ;RI/CBMI/DKM - NETSERV RPC Broker Utilities ;01-Apr-2015 14:12;DKM
 "RTN","RGNETBUT",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 54
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
 "RTN","RGNETBUT",3,0)
  ;=================================================================
 "RTN","RGNETBUT",4,0)
@@ -6875,7 +6875,7 @@ y^y^f^^^^n
 "BLD",8511,4,"B",996.53,996.53)
 
 "BLD",8511,6.3)
-53
+59
 "BLD",8511,"ABPKG")
 n
 "BLD",8511,"KRN",0)
@@ -7139,7 +7139,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETOA",1,0)
 RGNETOA ;RI/CBMI/DKM - OAuth2 Support ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 53
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
 "RTN","RGNETOA",3,0)
  ;=================================================================
 "RTN","RGNETOA",4,0)
@@ -7293,7 +7293,7 @@ PUT(PN,VL,PF) ;
 "RTN","RGNETOAA",1,0)
 RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 53
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
 "RTN","RGNETOAA",3,0)
  ;=================================================================
 "RTN","RGNETOAA",4,0)
@@ -7397,7 +7397,7 @@ VALIDRDU()
 "RTN","RGNETOAT",1,0)
 RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAT",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 53
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
 "RTN","RGNETOAT",3,0)
  ;=================================================================
 "RTN","RGNETOAT",4,0)

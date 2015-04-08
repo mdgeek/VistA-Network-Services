@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 20:21;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 22:43;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -239,8 +239,8 @@ AUTH(TYPE,REQUIRED) ;
  N TP,CRED
  S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
  I '$L(TP),$G(DUZ) Q 1
- S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED)
  K RGNETREQ("HDR","authorization"),DUZ
+ S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED),DUZ=0
  I $L(TYPE),TP'=TYPE
  .S REQUIRED=1
  E  I TP="BASIC" D
@@ -249,7 +249,7 @@ AUTH(TYPE,REQUIRED) ;
  .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
  E  I TP="BEARER" D
  .S DUZ=$$ISVALID^RGSEOAUT(CRED)
- I '$G(DUZ),REQUIRED D  Q 0
+ I 'DUZ,REQUIRED D  Q 0
  .D SETSTAT(401)
  .D ADDHDR("WWW-Authenticate: "_TYPE)
  S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
