@@ -1,5 +1,5 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 12:59;DKM
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 28
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 20:21;DKM
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
 NETSERV(DUMMY) ;
@@ -280,13 +280,17 @@ URL2EP(METHOD,URL) ;
  S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
  Q IEN
 URL2EPX(METHOD,URL,URLX) ;
- Q:'$D(URLX) $O(^RGNET(996.52,"C",METHOD,URL,0))
- N RT,FND,PTRN,IEN
- S RT=URLX,FND=0
- F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
- .F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
- ..S:URL?@PTRN FND=IEN
- I 'FND,$E(URL,$L(URL))'="/" S FND=$$URL2EPX(METHOD,URL_"/",URLX)
+ N RT,FND,PTRN,IEN,URL2
+ S:$E(URL,$L(URL))'="/" URL2=URL_"/"
+ I '$D(URLX) D
+ .S FND=$O(^RGNET(996.52,"C",METHOD,URL,0))
+ .I 'FND,$D(URL2) S FND=$O(^RGNET(996.52,"C",METHOD,URL2,0))
+ E  D
+ .S RT=URLX,FND=0
+ .F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
+ ..F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
+ ...S:URL?@PTRN FND=IEN
+ ...I 'FND,$D(URL2),URL2?@PTRN S FND=IEN
  Q FND
  ; Returns the weighted value if content type matches an accepted type,
  ; or 0 if no match.

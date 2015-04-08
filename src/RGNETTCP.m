@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;04-Apr-2015 09:05;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;07-Apr-2015 15:21;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -32,7 +32,7 @@ LISTALL Q:$$OSCHECK
  .S RGCFG=LP
  .D GETCFG(.RGCFG)
  .S X=$$STATE
- .W RGCFG("name")," is",$S(X:"",1:" not")," running on port ",RGCFG("port"),".",!!
+ .W RGCFG("name")," (",RGCFG("port"),") is",$S(X:"",1:" not")," running.",!!
  Q
  ; Start/stop all registered listeners
  ; SS - 1 = start, 0 = stop
@@ -51,7 +51,7 @@ SSLIS(RGCFG,SS,SL) ;
  Q:'$$GETCFG(.RGCFG)
  S SL=$G(SL,$D(ZTQUEUED))
  S:'SL $ET="D SSERR^RGNETTCP"
- W:'SL RGCFG("name"),": "
+ W:'SL RGCFG("name")," (",RGCFG("port"),"): "
  S SAME=$$STATE=SS
  S:'SS @$$LOCKNODE(.RGCFG)=1
  I SAME W:'SL $S(SS:"already",1:"not")," running.",!!  Q
@@ -66,7 +66,7 @@ SSLIS(RGCFG,SS,SL) ;
  .W "."
  .S:$$STATE=SS LP=99
  I LP<99 W " failed to ",P1,".",!!
- E  W " ",P2," on port ",RGCFG("port"),".",!!
+ E  W " ",P2,".",!!
  Q
 SSERR W "failed: ",$$EC^%ZOSV,!!
  D UNWIND^%ZTER
