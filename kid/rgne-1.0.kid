@@ -1,11 +1,11 @@
-KIDS Distribution saved on Apr 07, 2015@22:48:21
+KIDS Distribution saved on Apr 09, 2015@19:25:48
 NETWORK SERVICES 1.0
 **KIDS**:NETWORK SERVICES 1.0^NETSERV CONNECTION MANAGER 1.0^NETSERV WEB SERVER 1.0^NETSERV RPC BROKER 1.0^NETSERV OAUTH2 SERVICE 1.0^
 
 **INSTALL NAME**
 NETWORK SERVICES 1.0
 "BLD",8510,0)
-NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150407^n
+NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150409^n
 "BLD",8510,1,0)
 ^^7^7^3150401.074118
 "BLD",8510,1,1,0)
@@ -23,7 +23,7 @@ NETSERV OATH2 SERVICE      - OAuth 2 implementation.
 "BLD",8510,1,7,0)
 
 "BLD",8510,6.3)
-20
+23
 "BLD",8510,10,0)
 ^9.63^400^4
 "BLD",8510,10,100,0)
@@ -135,9 +135,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150407
+1.0^3150409
 "PKG",225,22,1,1,0)
-^^7^7^3150407
+^^7^7^3150409
 "PKG",225,22,1,1,1,0)
 This is a suite of network services including:
 "PKG",225,22,1,1,2,0)
@@ -229,7 +229,7 @@ D XPZ2^XPDIQ
 **INSTALL NAME**
 NETSERV CONNECTION MANAGER 1.0
 "BLD",8506,0)
-NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150407^n
+NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150409^n
 "BLD",8506,1,0)
 ^^2^2^3150401.074349
 "BLD",8506,1,1,0)
@@ -247,7 +247,7 @@ y^y^f^^^^n^^
 "BLD",8506,4,"B",996.5,996.5)
 
 "BLD",8506,6.3)
-59
+68
 "BLD",8506,"ABPKG")
 n
 "BLD",8506,"KRN",0)
@@ -375,9 +375,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150407
+1.0^3150409
 "PKG",225,22,1,1,0)
-^^2^2^3150407
+^^2^2^3150409
 "PKG",225,22,1,1,1,0)
 Manages TCP connections for various network services.  Provides concurrent
 "PKG",225,22,1,1,2,0)
@@ -461,7 +461,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETTCP",1,0)
 RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;07-Apr-2015 15:21;DKM
 "RTN","RGNETTCP",2,0)
- ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 59
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 68
 "RTN","RGNETTCP",3,0)
  ;=================================================================
 "RTN","RGNETTCP",4,0)
@@ -1315,7 +1315,7 @@ process requests on a given TCP port via the specified handler.
 **INSTALL NAME**
 NETSERV WEB SERVER 1.0
 "BLD",8508,0)
-NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150407^n
+NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150409^n
 "BLD",8508,1,0)
 ^^3^3^3150401.074908
 "BLD",8508,1,1,0)
@@ -1349,7 +1349,7 @@ I $G(^RGNET(996.52,Y,10))["^RGNETW"
 "BLD",8508,4,"B",996.52,996.52)
 
 "BLD",8508,6.3)
-59
+68
 "BLD",8508,"ABPKG")
 n
 "BLD",8508,"KRN",0)
@@ -1377,7 +1377,7 @@ n
 "BLD",8508,"KRN",9.8,"NM",0)
 ^9.68A^3^2
 "BLD",8508,"KRN",9.8,"NM",2,0)
-RGNETWWW^^0^B84332119
+RGNETWWW^^0^B86662193
 "BLD",8508,"KRN",9.8,"NM",3,0)
 RGNETWRR^^0^B31409526
 "BLD",8508,"KRN",9.8,"NM","B","RGNETWRR",3)
@@ -1689,9 +1689,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150407
+1.0^3150409
 "PKG",225,22,1,1,0)
-^^3^3^3150407
+^^3^3^3150409
 "PKG",225,22,1,1,1,0)
 This is an implementation of a Web Server that uses the NETSERV connection
 "PKG",225,22,1,1,2,0)
@@ -1777,7 +1777,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETWRR",1,0)
 RGNETWRR ;RI/CBMI/DKM - Web endpoint for RPC and routine lookup ;01-Apr-2015 11:20;DKM
 "RTN","RGNETWRR",2,0)
- ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 59
+ ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 68
 "RTN","RGNETWRR",3,0)
  ;=================================================================
 "RTN","RGNETWRR",4,0)
@@ -2127,11 +2127,11 @@ ESCAPE(X) ;
 "RTN","RGNETWRR",176,0)
  Q $$ESCAPE^RGNETWWW(X)
 "RTN","RGNETWWW")
-0^2^B84332119
+0^2^B86662193
 "RTN","RGNETWWW",1,0)
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 22:43;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;08-Apr-2015 13:26;DKM
 "RTN","RGNETWWW",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 68
 "RTN","RGNETWWW",3,0)
  ;=================================================================
 "RTN","RGNETWWW",4,0)
@@ -2411,386 +2411,398 @@ ESCAPE(VALUE) ;
 "RTN","RGNETWWW",141,0)
  Q VALUE
 "RTN","RGNETWWW",142,0)
- ; Returns true if error condition is set
+ ; Returns true if the status code represents an error
 "RTN","RGNETWWW",143,0)
-ISERROR() ;
+ ;  STATUS = If not specified, the current status code is checked.
 "RTN","RGNETWWW",144,0)
- Q +$G(RGNETRSP("STATUS"))'<400
+ISERROR(STATUS) ;
 "RTN","RGNETWWW",145,0)
- ; Sets http status code
+ S:'$D(STATUS) STATUS=+$G(RGNETRSP("STATUS"))
 "RTN","RGNETWWW",146,0)
-SETSTAT(CODE,TEXT) ;
+ Q STATUS'<400
 "RTN","RGNETWWW",147,0)
- S:'$L($G(TEXT)) TEXT=$P(^RGNET(996.51,CODE,0),U,2)
+ ; Sets http status code
 "RTN","RGNETWWW",148,0)
- S RGNETRSP("STATUS")=CODE_" "_TEXT
+ ;  CODE  = HTTP status code
 "RTN","RGNETWWW",149,0)
- D:$$ISERROR RESET
+ ;  TEXT  = HTTP status text (uses default text for code if not specified)
 "RTN","RGNETWWW",150,0)
- Q
+ ;  RESET = If true, clear the output buffer.  If not specified, the output
 "RTN","RGNETWWW",151,0)
- ; Sets the content type
+ ;          buffer is cleared only if the status code represents an error.
 "RTN","RGNETWWW",152,0)
-SETCTYPE(CTYPE) ;
+SETSTAT(CODE,TEXT,RESET) ;
 "RTN","RGNETWWW",153,0)
- S RGNETRSP("CTYPE")=CTYPE
+ S:'$L($G(TEXT)) TEXT=$P(^RGNET(996.51,CODE,0),U,2)
 "RTN","RGNETWWW",154,0)
- Q
+ S RGNETRSP("STATUS")=CODE_" "_TEXT,RESET=$G(RESET,$$ISERROR)
 "RTN","RGNETWWW",155,0)
- ; Finishes a response by adding the necessary headers
+ D:RESET RESET
 "RTN","RGNETWWW",156,0)
-ENDRSP D ADDHDR("HTTP/1.1 "_$G(RGNETRSP("STATUS"),"200 OK"),-999)
+ Q
 "RTN","RGNETWWW",157,0)
- D ADDHDR("Date: "_$$WWWDATE,-998)
+ ; Sets the content type
 "RTN","RGNETWWW",158,0)
- D:$D(RGNETRSP("CTYPE"))#2 ADDHDR("Content-Type: "_RGNETRSP("CTYPE")_"; charset=utf-8",-998)
+SETCTYPE(CTYPE) ;
 "RTN","RGNETWWW",159,0)
- D ADDHDR("Content-Length: "_+$G(RGNETRSP("LEN")),-998)
+ S RGNETRSP("CTYPE")=CTYPE
 "RTN","RGNETWWW",160,0)
- D ADDHDR("",0)
+ Q
 "RTN","RGNETWWW",161,0)
- Q
+ ; Finishes a response by adding the necessary headers
 "RTN","RGNETWWW",162,0)
- ; Add to response buffer
+ENDRSP D ADDHDR("HTTP/1.1 "_$G(RGNETRSP("STATUS"),"200 OK"),-999)
 "RTN","RGNETWWW",163,0)
-ADD(X) N Y
+ D ADDHDR("Date: "_$$WWWDATE,-998)
 "RTN","RGNETWWW",164,0)
- S:'$$ISERROR Y=$O(@RGNETRSP@(""),-1)+1,@RGNETRSP@(Y)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+$L(X),RGNETRSP("LAST")=Y
+ D:$D(RGNETRSP("CTYPE"))#2 ADDHDR("Content-Type: "_RGNETRSP("CTYPE")_"; charset=utf-8",-998)
 "RTN","RGNETWWW",165,0)
- Q
+ D ADDHDR("Content-Length: "_+$G(RGNETRSP("LEN")),-998)
 "RTN","RGNETWWW",166,0)
- ; Add array to output buffer
+ D ADDHDR("",0)
 "RTN","RGNETWWW",167,0)
- ; RT  = Array root
+ Q
 "RTN","RGNETWWW",168,0)
- ; EOL = End of line character(s)
+ ; Add to response buffer
 "RTN","RGNETWWW",169,0)
-ADDARY(RT,EOL) ;
+ADD(X) N Y
 "RTN","RGNETWWW",170,0)
- N LP
+ S:'$$ISERROR Y=$O(@RGNETRSP@(""),-1)+1,@RGNETRSP@(Y)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+$L(X),RGNETRSP("LAST")=Y
 "RTN","RGNETWWW",171,0)
- S EOL=$G(EOL),LP=0
+ Q
 "RTN","RGNETWWW",172,0)
- F  S LP=$O(@RT@(LP)) Q:'LP  D
+ ; Add array to output buffer
 "RTN","RGNETWWW",173,0)
- .D ADD($G(@RT@(LP))_$G(@RT@(LP,0))_EOL)
+ ; RT  = Array root
 "RTN","RGNETWWW",174,0)
- Q
+ ; EOL = End of line character(s)
 "RTN","RGNETWWW",175,0)
- ; Add HTTP response header to output buffer
+ADDARY(RT,EOL) ;
 "RTN","RGNETWWW",176,0)
- ;  HDR = Properly formatted header
+ N LP
 "RTN","RGNETWWW",177,0)
- ;  SB  = Affects the position of the header in the output.  Typically, not specified.
+ S EOL=$G(EOL),LP=0
 "RTN","RGNETWWW",178,0)
-ADDHDR(HDR,SB) ;
+ F  S LP=$O(@RT@(LP)) Q:'LP  D
 "RTN","RGNETWWW",179,0)
- N NXT
+ .D ADD($G(@RT@(LP))_$G(@RT@(LP,0))_EOL)
 "RTN","RGNETWWW",180,0)
- S SB=+$G(SB,-1)
+ Q
 "RTN","RGNETWWW",181,0)
- S:SB>0 SB=-SB
+ ; Add HTTP response header to output buffer
 "RTN","RGNETWWW",182,0)
- S NXT=$O(@RGNETRSP@(SB,""),-1)+1,@RGNETRSP@(SB,NXT)=HDR_$C(13,10)
+ ;  HDR = Properly formatted header
 "RTN","RGNETWWW",183,0)
- Q
+ ;  SB  = Affects the position of the header in the output.  Typically, not specified.
 "RTN","RGNETWWW",184,0)
- ; Replace buffer contents at specified index, adjusting content length accordingly.
+ADDHDR(HDR,SB) ;
 "RTN","RGNETWWW",185,0)
-REPLACE(IDX,X) ;
+ N NXT
 "RTN","RGNETWWW",186,0)
- N Y
+ S SB=+$G(SB,-1)
 "RTN","RGNETWWW",187,0)
- S Y=$L(X)-$L(@RGNETRSP@(IDX)),@RGNETRSP@(IDX)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+Y
+ S:SB>0 SB=-SB
 "RTN","RGNETWWW",188,0)
- Q
+ S NXT=$O(@RGNETRSP@(SB,""),-1)+1,@RGNETRSP@(SB,NXT)=HDR_$C(13,10)
 "RTN","RGNETWWW",189,0)
- ; Returns the specified query parameter
+ Q
 "RTN","RGNETWWW",190,0)
- ; PN = Parameter name
+ ; Replace buffer contents at specified index, adjusting content length accordingly.
 "RTN","RGNETWWW",191,0)
- ; P1 = Parameter series - for duplicate parameters, specifies which among them (defaults to 1)
+REPLACE(IDX,X) ;
 "RTN","RGNETWWW",192,0)
- ; P2 = Parameter value  - for multivalued parameters, specifies which value (defaults to 1)
+ N Y
 "RTN","RGNETWWW",193,0)
-GETPARAM(PN,P1,P2) ;
+ S Y=$L(X)-$L(@RGNETRSP@(IDX)),@RGNETRSP@(IDX)=X,RGNETRSP("LEN")=RGNETRSP("LEN")+Y
 "RTN","RGNETWWW",194,0)
- Q $G(RGNETREQ("PARAMS",PN,$G(P1,1),$G(P2,1)))
+ Q
 "RTN","RGNETWWW",195,0)
- ; Initialize environment
+ ; Returns the specified query parameter
 "RTN","RGNETWWW",196,0)
-INIT S:'($D(RGNETRSP)#2) RGNETRSP=$$TMPGBL
+ ; PN = Parameter name
 "RTN","RGNETWWW",197,0)
- D RESET
+ ; P1 = Parameter series - for duplicate parameters, specifies which among them (defaults to 1)
 "RTN","RGNETWWW",198,0)
- Q
+ ; P2 = Parameter value  - for multivalued parameters, specifies which value (defaults to 1)
 "RTN","RGNETWWW",199,0)
- ; Reset the output buffer
+GETPARAM(PN,P1,P2) ;
 "RTN","RGNETWWW",200,0)
-RESET K @RGNETRSP
+ Q $G(RGNETREQ("PARAMS",PN,$G(P1,1),$G(P2,1)))
 "RTN","RGNETWWW",201,0)
- S (RGNETRSP("LAST"),RGNETRSP("LEN"))=0
+ ; Initialize environment
 "RTN","RGNETWWW",202,0)
- Q
+INIT S:'($D(RGNETRSP)#2) RGNETRSP=$$TMPGBL
 "RTN","RGNETWWW",203,0)
- ; Returns the host url (e.g., www.xyz.net)
+ D RESET
 "RTN","RGNETWWW",204,0)
-HOST(PATH,DFLT) ;
+ Q
 "RTN","RGNETWWW",205,0)
- N URL
+ ; Reset the output buffer
 "RTN","RGNETWWW",206,0)
- S URL=$G(PATH)
+RESET K @RGNETRSP
 "RTN","RGNETWWW",207,0)
- S:$E(URL)="*" URL=$G(DFLT)_$E(URL,2,9999)
+ S (RGNETRSP("LAST"),RGNETRSP("LEN"))=0
 "RTN","RGNETWWW",208,0)
- Q $$CONCAT(RGNETREQ("HOST"),URL)
+ Q
 "RTN","RGNETWWW",209,0)
- ; Returns host URL including the transport protocol (e.g., http://www.xyz.net)
+ ; Returns the host url (e.g., www.xyz.net)
 "RTN","RGNETWWW",210,0)
-HOSTURL(PATH) ;
+HOST(PATH,DFLT) ;
 "RTN","RGNETWWW",211,0)
- Q $G(RGNETREQ("HDR","x-forwarded-proto"),"http")_"://"_$$HOST(.PATH)
+ N URL
 "RTN","RGNETWWW",212,0)
- ; Prepend local system root to path
+ S URL=$G(PATH)
 "RTN","RGNETWWW",213,0)
-LOCALSYS(PATH) ;
+ S:$E(URL)="*" URL=$G(DFLT)_$E(URL,2,9999)
 "RTN","RGNETWWW",214,0)
- Q $$CONCAT("http://"_$$LOW^XLFSTR($$KSP^XUPARAM("WHERE")),.PATH)
+ Q $$CONCAT(RGNETREQ("HOST"),URL)
 "RTN","RGNETWWW",215,0)
- ; Return UUID for this system
+ ; Returns host URL including the transport protocol (e.g., http://www.xyz.net)
 "RTN","RGNETWWW",216,0)
-SYSUUID() ;
+HOSTURL(PATH) ;
 "RTN","RGNETWWW",217,0)
- S:'$L($G(^RGNET("SYS"))) ^("SYS")=$$UUID^RGUT
+ Q $G(RGNETREQ("HDR","x-forwarded-proto"),"http")_"://"_$$HOST(.PATH)
 "RTN","RGNETWWW",218,0)
- Q ^("SYS")
+ ; Prepend local system root to path
 "RTN","RGNETWWW",219,0)
- ; Concatenate path to url.
+LOCALSYS(PATH) ;
 "RTN","RGNETWWW",220,0)
-CONCAT(URL,PATH) ;
+ Q $$CONCAT("http://"_$$LOW^XLFSTR($$KSP^XUPARAM("WHERE")),.PATH)
 "RTN","RGNETWWW",221,0)
- Q:'$D(PATH) URL
+ ; Return UUID for this system
 "RTN","RGNETWWW",222,0)
- F  Q:$E(URL,$L(URL))'="/"  S $E(URL,$L(URL))=""
+SYSUUID() ;
 "RTN","RGNETWWW",223,0)
- F  Q:$E(PATH)'="/"  S $E(PATH)=""
+ S:'$L($G(^RGNET("SYS"))) ^("SYS")=$$UUID^RGUT
 "RTN","RGNETWWW",224,0)
- Q URL_"/"_PATH
+ Q ^("SYS")
 "RTN","RGNETWWW",225,0)
- ; Date (format per RFC 1123)
+ ; Concatenate path to url.
 "RTN","RGNETWWW",226,0)
-WWWDATE(DT) ;
+CONCAT(URL,PATH) ;
 "RTN","RGNETWWW",227,0)
- N TZ,H,M,SN
+ Q:'$D(PATH) URL
 "RTN","RGNETWWW",228,0)
- S:'$G(DT) DT=$$NOW^XLFDT
+ F  Q:$E(URL,$L(URL))'="/"  S $E(URL,$L(URL))=""
 "RTN","RGNETWWW",229,0)
- S TZ=$$TZ^XLFDT,H=+$E(TZ,2,3),M=+$E(TZ,4,5),SN=$S(TZ<0:1,1:-1)
+ F  Q:$E(PATH)'="/"  S $E(PATH)=""
 "RTN","RGNETWWW",230,0)
- S DT=$$FMADD^XLFDT(DT,0,H*SN,M*SN,0)
+ Q URL_"/"_PATH
 "RTN","RGNETWWW",231,0)
- Q $$FMTDATE^RGUTDATF(DT,"EEE, dd MMM YYYY HH:mm:ss 'GMT'")
+ ; Date (format per RFC 1123)
 "RTN","RGNETWWW",232,0)
- ; Returns true if request came from a browser
+WWWDATE(DT) ;
 "RTN","RGNETWWW",233,0)
-ISBROWSR() ;
+ N TZ,H,M,SN
 "RTN","RGNETWWW",234,0)
- Q $G(RGNETREQ("HDR","user-agent"))["Mozilla"
+ S:'$G(DT) DT=$$NOW^XLFDT
 "RTN","RGNETWWW",235,0)
- ; Attempt authentication if credentials available
+ S TZ=$$TZ^XLFDT,H=+$E(TZ,2,3),M=+$E(TZ,4,5),SN=$S(TZ<0:1,1:-1)
 "RTN","RGNETWWW",236,0)
- ; If REQUIRED is true, authentication must succeed.
+ S DT=$$FMADD^XLFDT(DT,0,H*SN,M*SN,0)
 "RTN","RGNETWWW",237,0)
- ; Returns true if successful
+ Q $$FMTDATE^RGUTDATF(DT,"EEE, dd MMM YYYY HH:mm:ss 'GMT'")
 "RTN","RGNETWWW",238,0)
-AUTH(TYPE,REQUIRED) ;
+ ; Returns true if request came from a browser
 "RTN","RGNETWWW",239,0)
- N TP,CRED
+ISBROWSR() ;
 "RTN","RGNETWWW",240,0)
- S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
+ Q $G(RGNETREQ("HDR","user-agent"))["Mozilla"
 "RTN","RGNETWWW",241,0)
- I '$L(TP),$G(DUZ) Q 1
+ ; Attempt authentication if credentials available
 "RTN","RGNETWWW",242,0)
- K RGNETREQ("HDR","authorization"),DUZ
+ ; If REQUIRED is true, authentication must succeed.
 "RTN","RGNETWWW",243,0)
- S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED),DUZ=0
+ ; Returns true if successful
 "RTN","RGNETWWW",244,0)
- I $L(TYPE),TP'=TYPE
+AUTH(TYPE,REQUIRED) ;
 "RTN","RGNETWWW",245,0)
- .S REQUIRED=1
+ N TP,CRED
 "RTN","RGNETWWW",246,0)
- E  I TP="BASIC" D
+ S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
 "RTN","RGNETWWW",247,0)
- .N IO,RTN
+ I '$L(TP),$G(DUZ) Q 1
 "RTN","RGNETWWW",248,0)
- .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
+ K RGNETREQ("HDR","authorization"),DUZ
 "RTN","RGNETWWW",249,0)
- .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
+ S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED),DUZ=0
 "RTN","RGNETWWW",250,0)
- E  I TP="BEARER" D
+ I $L(TYPE),TP'=TYPE
 "RTN","RGNETWWW",251,0)
- .S DUZ=$$ISVALID^RGSEOAUT(CRED)
+ .S REQUIRED=1
 "RTN","RGNETWWW",252,0)
- I 'DUZ,REQUIRED D  Q 0
+ E  I TP="BASIC" D
 "RTN","RGNETWWW",253,0)
- .D SETSTAT(401)
+ .N IO,RTN
 "RTN","RGNETWWW",254,0)
- .D ADDHDR("WWW-Authenticate: "_TYPE)
+ .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
 "RTN","RGNETWWW",255,0)
- S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
+ .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
 "RTN","RGNETWWW",256,0)
- Q 1
+ E  I TP="BEARER" D
 "RTN","RGNETWWW",257,0)
- ; Convert to pattern (Used for URL matching)
+ .S DUZ=$$ISVALID^RGSEOAUT(CRED)
 "RTN","RGNETWWW",258,0)
-TOPTRN(NM) ;
+ I 'DUZ,REQUIRED D  Q 0
 "RTN","RGNETWWW",259,0)
- N P,C,X,L
+ .D SETSTAT(401)
 "RTN","RGNETWWW",260,0)
- S (L,P)=""
+ .D ADDHDR("WWW-Authenticate: "_TYPE)
 "RTN","RGNETWWW",261,0)
- F X=1:1:$L(NM) D
+ S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
 "RTN","RGNETWWW",262,0)
- .S C=$E(NM,X)
+ Q 1
 "RTN","RGNETWWW",263,0)
- .I C="*" D TOPTRN2(".E") Q
+ ; Convert to pattern (Used for URL matching)
 "RTN","RGNETWWW",264,0)
- .I C="#" D TOPTRN2("1.N") Q
+TOPTRN(NM) ;
 "RTN","RGNETWWW",265,0)
- .S L=L_C
+ N P,C,X,L
 "RTN","RGNETWWW",266,0)
- D:$L(P) TOPTRN2("")
+ S (L,P)=""
 "RTN","RGNETWWW",267,0)
- Q P
+ F X=1:1:$L(NM) D
 "RTN","RGNETWWW",268,0)
-TOPTRN2(X) ;
+ .S C=$E(NM,X)
 "RTN","RGNETWWW",269,0)
- S:$L(L) P=P_"1"""_L_"""",L=""
+ .I C="*" D TOPTRN2(".E") Q
 "RTN","RGNETWWW",270,0)
- S P=P_X
+ .I C="#" D TOPTRN2("1.N") Q
 "RTN","RGNETWWW",271,0)
- Q
+ .S L=L_C
 "RTN","RGNETWWW",272,0)
- ; Looks up endpoint for URL
+ D:$L(P) TOPTRN2("")
 "RTN","RGNETWWW",273,0)
- ; Returns IEN of endpoint
+ Q P
 "RTN","RGNETWWW",274,0)
-URL2EP(METHOD,URL) ;
+TOPTRN2(X) ;
 "RTN","RGNETWWW",275,0)
- N IEN
+ S:$L(L) P=P_"1"""_L_"""",L=""
 "RTN","RGNETWWW",276,0)
- S:'$L(URL) URL="/"
+ S P=P_X
 "RTN","RGNETWWW",277,0)
- S IEN=$$URL2EPX(METHOD,URL)
-"RTN","RGNETWWW",278,0)
- S:'IEN IEN=$$URL2EPX(METHOD,URL,$E(URL))
-"RTN","RGNETWWW",279,0)
- S:'IEN IEN=$$URL2EPX(METHOD,URL,"#")
-"RTN","RGNETWWW",280,0)
- S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
-"RTN","RGNETWWW",281,0)
- Q IEN
-"RTN","RGNETWWW",282,0)
-URL2EPX(METHOD,URL,URLX) ;
-"RTN","RGNETWWW",283,0)
- N RT,FND,PTRN,IEN,URL2
-"RTN","RGNETWWW",284,0)
- S:$E(URL,$L(URL))'="/" URL2=URL_"/"
-"RTN","RGNETWWW",285,0)
- I '$D(URLX) D
-"RTN","RGNETWWW",286,0)
- .S FND=$O(^RGNET(996.52,"C",METHOD,URL,0))
-"RTN","RGNETWWW",287,0)
- .I 'FND,$D(URL2) S FND=$O(^RGNET(996.52,"C",METHOD,URL2,0))
-"RTN","RGNETWWW",288,0)
- E  D
-"RTN","RGNETWWW",289,0)
- .S RT=URLX,FND=0
-"RTN","RGNETWWW",290,0)
- .F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
-"RTN","RGNETWWW",291,0)
- ..F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
-"RTN","RGNETWWW",292,0)
- ...S:URL?@PTRN FND=IEN
-"RTN","RGNETWWW",293,0)
- ...I 'FND,$D(URL2),URL2?@PTRN S FND=IEN
-"RTN","RGNETWWW",294,0)
- Q FND
-"RTN","RGNETWWW",295,0)
- ; Returns the weighted value if content type matches an accepted type,
-"RTN","RGNETWWW",296,0)
- ; or 0 if no match.
-"RTN","RGNETWWW",297,0)
-ISCTYPE(MTYPE,ACCPT) ;
-"RTN","RGNETWWW",298,0)
- N AT,LP,MT,R,X,Q
-"RTN","RGNETWWW",299,0)
- S ACCPT=$TR(ACCPT," "),MTYPE=$TR(MTYPE," ")
-"RTN","RGNETWWW",300,0)
- F LP=1:1:$L(ACCPT,",") D
-"RTN","RGNETWWW",301,0)
- .S X=$P(ACCPT,",",LP),Q=$P(X,";",2),X=$P(X,";")
-"RTN","RGNETWWW",302,0)
- .S Q=$S($E(Q,1,2)="q=":+$E(Q,3,99),1:1)
-"RTN","RGNETWWW",303,0)
- .S:$L(X) AT(Q,X)=""
-"RTN","RGNETWWW",304,0)
- Q:'$D(AT) 1
-"RTN","RGNETWWW",305,0)
- S Q=""
-"RTN","RGNETWWW",306,0)
- F  S Q=$O(AT(Q),-1) Q:'Q  D  Q:$D(R)
-"RTN","RGNETWWW",307,0)
- .S AT=""
-"RTN","RGNETWWW",308,0)
- .F  S AT=$O(AT(Q,AT)) Q:'$L(AT)  D  Q:$D(R)
-"RTN","RGNETWWW",309,0)
- ..I AT="*/*" S R=Q Q
-"RTN","RGNETWWW",310,0)
- ..F LP=1:1:$L(MTYPE,",") D  Q:$D(R)
-"RTN","RGNETWWW",311,0)
- ...S MT=$P(MTYPE,",",LP)
-"RTN","RGNETWWW",312,0)
- ...I AT=MT S R=Q Q
-"RTN","RGNETWWW",313,0)
- ...I AT["/*",$P(AT,"/")=$P(MT,"/") S R=Q Q
-"RTN","RGNETWWW",314,0)
- ...I AT["*/",$P(AT,"/",2)=$P(MT,"/",2) S R=Q Q
-"RTN","RGNETWWW",315,0)
- Q $S($D(R):R,1:0)
-"RTN","RGNETWWW",316,0)
- ; Return unique temp global reference
-"RTN","RGNETWWW",317,0)
- ; If X is specified, returns the temp global at that index.
-"RTN","RGNETWWW",318,0)
- ; Otherwise, returns the next available global reference.
-"RTN","RGNETWWW",319,0)
-TMPGBL(X) ;
-"RTN","RGNETWWW",320,0)
- Q:$G(X) $NA(^TMP("RGNETWWW",$J,X))
-"RTN","RGNETWWW",321,0)
- F  S X=$G(^TMP("RGNETWWW",$J))+1,^($J)=X,X=$NA(^($J,X)) Q:'$D(@X)
-"RTN","RGNETWWW",322,0)
- Q X
-"RTN","RGNETWWW",323,0)
- ; Cleanup temp globals on completion
-"RTN","RGNETWWW",324,0)
-CLEANUP N LP,TMP,EXC
-"RTN","RGNETWWW",325,0)
- S TMP=$NA(^TMP("RGNETWWW",$J))
-"RTN","RGNETWWW",326,0)
- I TMP'=$NA(@RGNETRSP,2) K @TMP Q
-"RTN","RGNETWWW",327,0)
- S (@TMP,EXC)=$QS(RGNETRSP,3)
-"RTN","RGNETWWW",328,0)
- F LP=0:0 S LP=$O(@TMP@(LP)) Q:'LP  K:LP'=EXC @TMP@(LP)
-"RTN","RGNETWWW",329,0)
  Q
+"RTN","RGNETWWW",278,0)
+ ; Looks up endpoint for URL
+"RTN","RGNETWWW",279,0)
+ ; Returns IEN of endpoint
+"RTN","RGNETWWW",280,0)
+URL2EP(METHOD,URL) ;
+"RTN","RGNETWWW",281,0)
+ N IEN
+"RTN","RGNETWWW",282,0)
+ S:'$L(URL) URL="/"
+"RTN","RGNETWWW",283,0)
+ S IEN=$$URL2EPX(METHOD,URL)
+"RTN","RGNETWWW",284,0)
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,$E(URL))
+"RTN","RGNETWWW",285,0)
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,"#")
+"RTN","RGNETWWW",286,0)
+ S:'IEN IEN=$$URL2EPX(METHOD,URL,"*")
+"RTN","RGNETWWW",287,0)
+ Q IEN
+"RTN","RGNETWWW",288,0)
+URL2EPX(METHOD,URL,URLX) ;
+"RTN","RGNETWWW",289,0)
+ N RT,FND,PTRN,IEN,URL2
+"RTN","RGNETWWW",290,0)
+ S:$E(URL,$L(URL))'="/" URL2=URL_"/"
+"RTN","RGNETWWW",291,0)
+ I '$D(URLX) D
+"RTN","RGNETWWW",292,0)
+ .S FND=$O(^RGNET(996.52,"C",METHOD,URL,0))
+"RTN","RGNETWWW",293,0)
+ .I 'FND,$D(URL2) S FND=$O(^RGNET(996.52,"C",METHOD,URL2,0))
+"RTN","RGNETWWW",294,0)
+ E  D
+"RTN","RGNETWWW",295,0)
+ .S RT=URLX,FND=0
+"RTN","RGNETWWW",296,0)
+ .F  S URLX=$O(^RGNET(996.52,"C",METHOD,URLX)) Q:$E(URLX)'=RT  D  Q:FND
+"RTN","RGNETWWW",297,0)
+ ..F IEN=0:0 S IEN=$O(^RGNET(996.52,"C",METHOD,URLX,IEN)) Q:'IEN  S PTRN=^(IEN) D:$L(PTRN)  Q:FND
+"RTN","RGNETWWW",298,0)
+ ...S:URL?@PTRN FND=IEN
+"RTN","RGNETWWW",299,0)
+ ...I 'FND,$D(URL2),URL2?@PTRN S FND=IEN
+"RTN","RGNETWWW",300,0)
+ Q FND
+"RTN","RGNETWWW",301,0)
+ ; Returns the weighted value if content type matches an accepted type,
+"RTN","RGNETWWW",302,0)
+ ; or 0 if no match.
+"RTN","RGNETWWW",303,0)
+ISCTYPE(MTYPE,ACCPT) ;
+"RTN","RGNETWWW",304,0)
+ N AT,LP,MT,R,X,Q
+"RTN","RGNETWWW",305,0)
+ S ACCPT=$TR(ACCPT," "),MTYPE=$TR(MTYPE," ")
+"RTN","RGNETWWW",306,0)
+ F LP=1:1:$L(ACCPT,",") D
+"RTN","RGNETWWW",307,0)
+ .S X=$P(ACCPT,",",LP),Q=$P(X,";",2),X=$P(X,";")
+"RTN","RGNETWWW",308,0)
+ .S Q=$S($E(Q,1,2)="q=":+$E(Q,3,99),1:1)
+"RTN","RGNETWWW",309,0)
+ .S:$L(X) AT(Q,X)=""
+"RTN","RGNETWWW",310,0)
+ Q:'$D(AT) 1
+"RTN","RGNETWWW",311,0)
+ S Q=""
+"RTN","RGNETWWW",312,0)
+ F  S Q=$O(AT(Q),-1) Q:'Q  D  Q:$D(R)
+"RTN","RGNETWWW",313,0)
+ .S AT=""
+"RTN","RGNETWWW",314,0)
+ .F  S AT=$O(AT(Q,AT)) Q:'$L(AT)  D  Q:$D(R)
+"RTN","RGNETWWW",315,0)
+ ..I AT="*/*" S R=Q Q
+"RTN","RGNETWWW",316,0)
+ ..F LP=1:1:$L(MTYPE,",") D  Q:$D(R)
+"RTN","RGNETWWW",317,0)
+ ...S MT=$P(MTYPE,",",LP)
+"RTN","RGNETWWW",318,0)
+ ...I AT=MT S R=Q Q
+"RTN","RGNETWWW",319,0)
+ ...I AT["/*",$P(AT,"/")=$P(MT,"/") S R=Q Q
+"RTN","RGNETWWW",320,0)
+ ...I AT["*/",$P(AT,"/",2)=$P(MT,"/",2) S R=Q Q
+"RTN","RGNETWWW",321,0)
+ Q $S($D(R):R,1:0)
+"RTN","RGNETWWW",322,0)
+ ; Return unique temp global reference
+"RTN","RGNETWWW",323,0)
+ ; If X is specified, returns the temp global at that index.
+"RTN","RGNETWWW",324,0)
+ ; Otherwise, returns the next available global reference.
+"RTN","RGNETWWW",325,0)
+TMPGBL(X) ;
+"RTN","RGNETWWW",326,0)
+ Q:$G(X) $NA(^TMP("RGNETWWW",$J,X))
+"RTN","RGNETWWW",327,0)
+ F  S X=$G(^TMP("RGNETWWW",$J))+1,^($J)=X,X=$NA(^($J,X)) Q:'$D(@X)
+"RTN","RGNETWWW",328,0)
+ Q X
+"RTN","RGNETWWW",329,0)
+ ; Cleanup temp globals on completion
 "RTN","RGNETWWW",330,0)
- ; Returns description
+CLEANUP N LP,TMP,EXC
 "RTN","RGNETWWW",331,0)
-GREETING D ADDARY($NA(^RGNET(996.52,HANDLER,99)))
+ S TMP=$NA(^TMP("RGNETWWW",$J))
 "RTN","RGNETWWW",332,0)
+ I TMP'=$NA(@RGNETRSP,2) K @TMP Q
+"RTN","RGNETWWW",333,0)
+ S (@TMP,EXC)=$QS(RGNETRSP,3)
+"RTN","RGNETWWW",334,0)
+ F LP=0:0 S LP=$O(@TMP@(LP)) Q:'LP  K:LP'=EXC @TMP@(LP)
+"RTN","RGNETWWW",335,0)
+ Q
+"RTN","RGNETWWW",336,0)
+ ; Returns description
+"RTN","RGNETWWW",337,0)
+GREETING D ADDARY($NA(^RGNET(996.52,HANDLER,99)))
+"RTN","RGNETWWW",338,0)
  Q
 "SEC","^DIC",996.5,996.5,0,"AUDIT")
 @
@@ -3077,7 +3089,7 @@ and the request URL to the corresponding entry in this file.
 **INSTALL NAME**
 NETSERV RPC BROKER 1.0
 "BLD",8509,0)
-NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150407^n
+NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150409^n
 "BLD",8509,1,0)
 ^^3^3^3150401.075336
 "BLD",8509,1,1,0)
@@ -3121,9 +3133,13 @@ y^y^f^^^^n
 "BLD",8509,4,"B",996.57,996.57)
 
 "BLD",8509,6.3)
-60
+69
 "BLD",8509,"ABPKG")
 n
+"BLD",8509,"INI")
+PRE^RGNETBIN
+"BLD",8509,"INIT")
+POST^RGNETBIN
 "BLD",8509,"KRN",0)
 ^9.67PA^779.2^20
 "BLD",8509,"KRN",.4,0)
@@ -3138,6 +3154,116 @@ n
 .5
 "BLD",8509,"KRN",.84,0)
 .84
+"BLD",8509,"KRN",.84,"NM",0)
+^9.68A^27^27
+"BLD",8509,"KRN",.84,"NM",1,0)
+9965401^^0
+"BLD",8509,"KRN",.84,"NM",2,0)
+9965402^^0
+"BLD",8509,"KRN",.84,"NM",3,0)
+9965403^^0
+"BLD",8509,"KRN",.84,"NM",4,0)
+9965404^^0
+"BLD",8509,"KRN",.84,"NM",5,0)
+9965405^^0
+"BLD",8509,"KRN",.84,"NM",6,0)
+9965406^^0
+"BLD",8509,"KRN",.84,"NM",7,0)
+9965407^^0
+"BLD",8509,"KRN",.84,"NM",8,0)
+9965408^^0
+"BLD",8509,"KRN",.84,"NM",9,0)
+9965409^^0
+"BLD",8509,"KRN",.84,"NM",10,0)
+9965410^^0
+"BLD",8509,"KRN",.84,"NM",11,0)
+9965411^^0
+"BLD",8509,"KRN",.84,"NM",12,0)
+9965412^^0
+"BLD",8509,"KRN",.84,"NM",13,0)
+9965413^^0
+"BLD",8509,"KRN",.84,"NM",14,0)
+9965414^^0
+"BLD",8509,"KRN",.84,"NM",15,0)
+9965415^^0
+"BLD",8509,"KRN",.84,"NM",16,0)
+9965416^^0
+"BLD",8509,"KRN",.84,"NM",17,0)
+9965417^^0
+"BLD",8509,"KRN",.84,"NM",18,0)
+9965418^^0
+"BLD",8509,"KRN",.84,"NM",19,0)
+9965419^^0
+"BLD",8509,"KRN",.84,"NM",20,0)
+9965420^^0
+"BLD",8509,"KRN",.84,"NM",21,0)
+9965421^^0
+"BLD",8509,"KRN",.84,"NM",22,0)
+9965422^^0
+"BLD",8509,"KRN",.84,"NM",23,0)
+9965423^^0
+"BLD",8509,"KRN",.84,"NM",24,0)
+9965424^^0
+"BLD",8509,"KRN",.84,"NM",25,0)
+9965425^^0
+"BLD",8509,"KRN",.84,"NM",26,0)
+9965426^^0
+"BLD",8509,"KRN",.84,"NM",27,0)
+9965427^^0
+"BLD",8509,"KRN",.84,"NM","B",9965401,1)
+
+"BLD",8509,"KRN",.84,"NM","B",9965402,2)
+
+"BLD",8509,"KRN",.84,"NM","B",9965403,3)
+
+"BLD",8509,"KRN",.84,"NM","B",9965404,4)
+
+"BLD",8509,"KRN",.84,"NM","B",9965405,5)
+
+"BLD",8509,"KRN",.84,"NM","B",9965406,6)
+
+"BLD",8509,"KRN",.84,"NM","B",9965407,7)
+
+"BLD",8509,"KRN",.84,"NM","B",9965408,8)
+
+"BLD",8509,"KRN",.84,"NM","B",9965409,9)
+
+"BLD",8509,"KRN",.84,"NM","B",9965410,10)
+
+"BLD",8509,"KRN",.84,"NM","B",9965411,11)
+
+"BLD",8509,"KRN",.84,"NM","B",9965412,12)
+
+"BLD",8509,"KRN",.84,"NM","B",9965413,13)
+
+"BLD",8509,"KRN",.84,"NM","B",9965414,14)
+
+"BLD",8509,"KRN",.84,"NM","B",9965415,15)
+
+"BLD",8509,"KRN",.84,"NM","B",9965416,16)
+
+"BLD",8509,"KRN",.84,"NM","B",9965417,17)
+
+"BLD",8509,"KRN",.84,"NM","B",9965418,18)
+
+"BLD",8509,"KRN",.84,"NM","B",9965419,19)
+
+"BLD",8509,"KRN",.84,"NM","B",9965420,20)
+
+"BLD",8509,"KRN",.84,"NM","B",9965421,21)
+
+"BLD",8509,"KRN",.84,"NM","B",9965422,22)
+
+"BLD",8509,"KRN",.84,"NM","B",9965423,23)
+
+"BLD",8509,"KRN",.84,"NM","B",9965424,24)
+
+"BLD",8509,"KRN",.84,"NM","B",9965425,25)
+
+"BLD",8509,"KRN",.84,"NM","B",9965426,26)
+
+"BLD",8509,"KRN",.84,"NM","B",9965427,27)
+
 "BLD",8509,"KRN",3.6,0)
 3.6
 "BLD",8509,"KRN",3.8,0)
@@ -3356,6 +3482,8 @@ RGNETBRP SETVAR^^0
 
 "BLD",8509,"KRN","B",8994,8994)
 
+"BLD",8509,"PRE")
+RGNETBIN
 "BLD",8509,"QUES",0)
 ^9.62^^
 "BLD",8509,"REQB",0)
@@ -3470,6 +3598,346 @@ y^y^f^^^^n
 1.0^NETSERV RPC BROKER
 "FIA",996.57,996.57)
 0
+"INI")
+PRE^RGNETBIN
+"INIT")
+POST^RGNETBIN
+"KRN",.84,9965401,-1)
+0^1
+"KRN",.84,9965401,0)
+9965401^1^y^NETWORK SERVICES^Server error
+"KRN",.84,9965401,2,0)
+^^5^5^3021028.221459
+"KRN",.84,9965401,2,1,0)
+The server has reported the following error:
+"KRN",.84,9965401,2,2,0)
+
+"KRN",.84,9965401,2,3,0)
+|1|
+"KRN",.84,9965401,2,4,0)
+
+"KRN",.84,9965401,2,5,0)
+A detailed log of the error has been created.
+"KRN",.84,9965401,3,0)
+^.845^1^1
+"KRN",.84,9965401,3,1,0)
+1^M error text
+"KRN",.84,9965402,-1)
+0^2
+"KRN",.84,9965402,0)
+9965402^1^y^NETWORK SERVICES^Unknown context
+"KRN",.84,9965402,2,0)
+^^1^1^3021016.135912
+"KRN",.84,9965402,2,1,0)
+The specified RPC context (|1|) could not be found.
+"KRN",.84,9965402,3,0)
+^.845^1^1
+"KRN",.84,9965402,3,1,0)
+1^Context name
+"KRN",.84,9965403,-1)
+0^3
+"KRN",.84,9965403,0)
+9965403^1^y^NETWORK SERVICES^Unknown remote procedure
+"KRN",.84,9965403,2,0)
+^.844^1^1^3021016.141847
+"KRN",.84,9965403,2,1,0)
+Unknown remote procedure: |1|
+"KRN",.84,9965403,3,0)
+^.845^1^1
+"KRN",.84,9965403,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965404,-1)
+0^4
+"KRN",.84,9965404,0)
+9965404^1^y^NETWORK SERVICES^Access denied
+"KRN",.84,9965404,2,0)
+^^1^1^3021016.142047
+"KRN",.84,9965404,2,1,0)
+Access denied for remote procedure: |1|
+"KRN",.84,9965404,3,0)
+^.845^1^1
+"KRN",.84,9965404,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965405,-1)
+0^5
+"KRN",.84,9965405,0)
+9965405^1^y^NETWORK SERVICES^Inactive remote procedure
+"KRN",.84,9965405,2,0)
+^.844^1^1^3021016^
+"KRN",.84,9965405,2,1,0)
+The requested remote procedure is inactive: |1|
+"KRN",.84,9965405,3,0)
+^.845^1^1
+"KRN",.84,9965405,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965406,-1)
+0^6
+"KRN",.84,9965406,0)
+9965406^1^y^NETWORK SERVICES^Invalid remote procedure definition
+"KRN",.84,9965406,2,0)
+^^1^1^3021016.142346
+"KRN",.84,9965406,2,1,0)
+The requested remote procedure is improperly defined: |1|
+"KRN",.84,9965406,3,0)
+^.845^1^1
+"KRN",.84,9965406,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965407,-1)
+0^7
+"KRN",.84,9965407,0)
+9965407^1^y^NETWORK SERVICES^Too many arguments
+"KRN",.84,9965407,2,0)
+^^2^2^3021016.154446
+"KRN",.84,9965407,2,1,0)
+The number of arguments (|2|) passed to the remote procedure
+"KRN",.84,9965407,2,2,0)
+|1| exceeds the maximum limit of |3|.
+"KRN",.84,9965407,3,0)
+^.845^3^3
+"KRN",.84,9965407,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965407,3,2,0)
+2^Number of arguments
+"KRN",.84,9965407,3,3,0)
+3^Maximum number of arguments
+"KRN",.84,9965408,-1)
+0^8
+"KRN",.84,9965408,0)
+9965408^1^y^NETWORK SERVICES^Async RPC Failed
+"KRN",.84,9965408,2,0)
+^.844^1^1^3021017^
+"KRN",.84,9965408,2,1,0)
+Failed to start task for asynchronous RPC: |1|
+"KRN",.84,9965408,3,0)
+^.845^1^1
+"KRN",.84,9965408,3,1,0)
+1^Remote procedure name
+"KRN",.84,9965409,-1)
+0^9
+"KRN",.84,9965409,0)
+9965409^1^y^NETWORK SERVICES^Invalid Server Request
+"KRN",.84,9965409,2,0)
+^^1^1^3021018.233253
+"KRN",.84,9965409,2,1,0)
+The server rejected the requested action (|1|).
+"KRN",.84,9965409,3,0)
+^.845^1^1
+"KRN",.84,9965409,3,1,0)
+1^Action Code
+"KRN",.84,9965410,-1)
+0^10
+"KRN",.84,9965410,0)
+9965410^1^y^NETWORK SERVICES^Too Many Users
+"KRN",.84,9965410,2,0)
+^^1^1^3021021.090207
+"KRN",.84,9965410,2,1,0)
+There are too many users (|1|) logged on at this time.  Please try again later.
+"KRN",.84,9965410,3,0)
+^.845^2^2
+"KRN",.84,9965410,3,1,0)
+1^Number of Active Users
+"KRN",.84,9965410,3,2,0)
+2^Maximum Active Users
+"KRN",.84,9965411,-1)
+0^11
+"KRN",.84,9965411,0)
+9965411^1^^NETWORK SERVICES^Unknown Volume Set
+"KRN",.84,9965411,2,0)
+^^1^1^3021021.084612
+"KRN",.84,9965411,2,1,0)
+Cannot determine volume set for server child process.
+"KRN",.84,9965412,-1)
+0^12
+"KRN",.84,9965412,0)
+9965412^1^^NETWORK SERVICES^Cannot Start Child Process
+"KRN",.84,9965412,2,0)
+^^1^1^3021021.090533
+"KRN",.84,9965412,2,1,0)
+Unable to start child process.
+"KRN",.84,9965413,-1)
+0^13
+"KRN",.84,9965413,0)
+9965413^1^y^NETWORK SERVICES^Cannot Subscribe to Event
+"KRN",.84,9965413,2,0)
+^^1^1^3021021.160356
+"KRN",.84,9965413,2,1,0)
+You do not have the required key(s) to subscribe to the requested event: (|1|).
+"KRN",.84,9965413,3,0)
+^.845^1^1
+"KRN",.84,9965413,3,1,0)
+1^Event Name
+"KRN",.84,9965414,-1)
+0^14
+"KRN",.84,9965414,0)
+9965414^1^y^NETWORK SERVICES^Unknown UCI
+"KRN",.84,9965414,2,0)
+^^1^1^3021028.121952
+"KRN",.84,9965414,2,1,0)
+Unknown UCI: |1|
+"KRN",.84,9965414,3,0)
+^.845^1^1
+"KRN",.84,9965414,3,1,0)
+1^UCI Name
+"KRN",.84,9965415,-1)
+0^15
+"KRN",.84,9965415,0)
+9965415^1^y^NETWORK SERVICES^Unsupported OS
+"KRN",.84,9965415,2,0)
+^^1^1^3021030.121347
+"KRN",.84,9965415,2,1,0)
+Unsupported operating system: |1|.
+"KRN",.84,9965415,3,0)
+^.845^1^1
+"KRN",.84,9965415,3,1,0)
+1^Operating System Name
+"KRN",.84,9965416,-1)
+0^16
+"KRN",.84,9965416,0)
+9965416^1^y^NETWORK SERVICES^Mode Not Supported
+"KRN",.84,9965416,2,0)
+^^1^1^3021030.122454
+"KRN",.84,9965416,2,1,0)
+Mode |2| not supported by operating system |1|.
+"KRN",.84,9965416,3,0)
+^.845^2^2
+"KRN",.84,9965416,3,1,0)
+1^Operating System Name
+"KRN",.84,9965416,3,2,0)
+2^Mode
+"KRN",.84,9965417,-1)
+0^17
+"KRN",.84,9965417,0)
+9965417^1^^NETWORK SERVICES^Null Device Error
+"KRN",.84,9965417,2,0)
+^^1^1^3021030.122543
+"KRN",.84,9965417,2,1,0)
+The NULL device has not been properly setup.
+"KRN",.84,9965418,-1)
+0^18
+"KRN",.84,9965418,0)
+9965418^1^y^NETWORK SERVICES^Unknown Application
+"KRN",.84,9965418,2,0)
+^^1^1^3021104.094347
+"KRN",.84,9965418,2,1,0)
+Unknown application: |1|
+"KRN",.84,9965418,3,0)
+^.845^1^1
+"KRN",.84,9965418,3,1,0)
+1^Application Name
+"KRN",.84,9965419,-1)
+0^19
+"KRN",.84,9965419,0)
+9965419^1^y^NETWORK SERVICES^Logins Disabled
+"KRN",.84,9965419,2,0)
+^.844^1^1^3021203^
+"KRN",.84,9965419,2,1,0)
+Logins are disabled: |1|
+"KRN",.84,9965419,3,0)
+^.845^1^1
+"KRN",.84,9965419,3,1,0)
+1^Disable Message
+"KRN",.84,9965420,-1)
+0^20
+"KRN",.84,9965420,0)
+9965420^1^y^NETWORK SERVICES^Invalid option type
+"KRN",.84,9965420,2,0)
+^.844^1^1^3031209^
+"KRN",.84,9965420,2,1,0)
+The option specified (|1|) was not of the expected type (|2|).
+"KRN",.84,9965420,3,0)
+^.845^2^2
+"KRN",.84,9965420,3,1,0)
+1^Option name
+"KRN",.84,9965420,3,2,0)
+2^Expected type
+"KRN",.84,9965421,-1)
+0^21
+"KRN",.84,9965421,0)
+9965421^1^y^NETWORK SERVICES^Reverse key denies access
+"KRN",.84,9965421,2,0)
+^.844^1^1^3031209^^
+"KRN",.84,9965421,2,1,0)
+The |2| key prohibits access to the |1| option.
+"KRN",.84,9965421,3,0)
+^.845^2^2
+"KRN",.84,9965421,3,1,0)
+1^Option name
+"KRN",.84,9965421,3,2,0)
+2^Key name
+"KRN",.84,9965422,-1)
+0^22
+"KRN",.84,9965422,0)
+9965422^1^y^NETWORK SERVICES^Access requires key
+"KRN",.84,9965422,2,0)
+^.844^1^1^3031209^
+"KRN",.84,9965422,2,1,0)
+Access to the |1| option requires the |2| key.
+"KRN",.84,9965422,3,0)
+^.845^2^2
+"KRN",.84,9965422,3,1,0)
+1^Option name
+"KRN",.84,9965422,3,2,0)
+2^Key name
+"KRN",.84,9965423,-1)
+0^23
+"KRN",.84,9965423,0)
+9965423^1^y^NETWORK SERVICES^Access prohibited
+"KRN",.84,9965423,2,0)
+^.844^1^1^3031209^^
+"KRN",.84,9965423,2,1,0)
+Access to option |1| prohibited at this time.
+"KRN",.84,9965423,3,0)
+^.845^1^1
+"KRN",.84,9965423,3,1,0)
+1^Option name
+"KRN",.84,9965424,-1)
+0^24
+"KRN",.84,9965424,0)
+9965424^1^y^NETWORK SERVICES^Prohibited UCI
+"KRN",.84,9965424,2,0)
+^.844^1^1^3031209^
+"KRN",.84,9965424,2,1,0)
+Logins prohibited on |1|.
+"KRN",.84,9965424,3,0)
+^.845^1^1
+"KRN",.84,9965424,3,1,0)
+1^UCI name
+"KRN",.84,9965425,-1)
+0^25
+"KRN",.84,9965425,0)
+9965425^1^y^NETWORK SERVICES^Session context unavailable
+"KRN",.84,9965425,2,0)
+^^1^1^3031226.132723
+"KRN",.84,9965425,2,1,0)
+The reconnection attempt for session #|1| has failed.  The session context no longer exists.
+"KRN",.84,9965425,3,0)
+^.845^1^1
+"KRN",.84,9965425,3,1,0)
+1^Session ID
+"KRN",.84,9965426,-1)
+0^26
+"KRN",.84,9965426,0)
+9965426^1^y^NETWORK SERVICES^Session context locked
+"KRN",.84,9965426,2,0)
+^^1^1^3031226.132737
+"KRN",.84,9965426,2,1,0)
+The reconnection attempt for session #|1| has failed.  The session context is in use. 
+"KRN",.84,9965426,3,0)
+^.845^1^1
+"KRN",.84,9965426,3,1,0)
+1^Session ID
+"KRN",.84,9965427,-1)
+0^27
+"KRN",.84,9965427,0)
+9965427^1^y^NETWORK SERVICES^Session context invalid
+"KRN",.84,9965427,2,0)
+^^1^1^3031226.132749
+"KRN",.84,9965427,2,1,0)
+The reconnection attempt for session #|1| has failed.  The session was authenticated for a different user. 
+"KRN",.84,9965427,3,0)
+^.845^1^1
+"KRN",.84,9965427,3,1,0)
+1^Session ID
 "KRN",19,11325,-1)
 0^4
 "KRN",19,11325,0)
@@ -3740,6 +4208,10 @@ RGNETBRP LOCKRES^LOCKRES^RGNETBRP^4^^^^1
 RGNETBRP CVC^CVC^RGNETBRP^1^^^^1
 "MBREQ")
 1
+"ORD",9,.84)
+.84;9;;;EDEOUT^DIFROMSO(.84,DA,"",XPDA);FPRE^DIFROMSI(.84,"",XPDA);EPRE^DIFROMSI(.84,DA,"",XPDA,"",OLDA);;EPOST^DIFROMSI(.84,DA,"",XPDA);DEL^DIFROMSK(.84,"",%)
+"ORD",9,.84,0)
+DIALOG
 "ORD",16,8994)
 8994;16;1;;;;;;;RPCDEL^XPDIA1
 "ORD",16,8994,0)
@@ -3765,9 +4237,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150407
+1.0^3150409
 "PKG",225,22,1,1,0)
-^^3^3^3150407
+^^3^3^3150409
 "PKG",225,22,1,1,1,0)
 This is an implementation of a remote procedure call broker that uses the
 "PKG",225,22,1,1,2,0)
@@ -3776,6 +4248,8 @@ TCP connection manager.  It supports native asynchronous RPC calls and
 event propagation.
 "PKG",225,"VERSION")
 1.0
+"PRE")
+RGNETBIN
 "QUES","XPF1",0)
 Y
 "QUES","XPF1","??")
@@ -3847,13 +4321,13 @@ NO
 "QUES","XPZ2","M")
 D XPZ2^XPDIQ
 "RTN")
-7
+8
 "RTN","RGNETBAC")
 0^1^B22970905
 "RTN","RGNETBAC",1,0)
 RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;05-Apr-2015 16:19;DKM
 "RTN","RGNETBAC",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBAC",3,0)
  ;=================================================================
 "RTN","RGNETBAC",4,0)
@@ -4133,7 +4607,7 @@ AUTHMETH(UCI) ;
 "RTN","RGNETBAS",1,0)
 RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;05-Apr-2015 16:20;DKM
 "RTN","RGNETBAS",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBAS",3,0)
  ;=================================================================
 "RTN","RGNETBAS",4,0)
@@ -4261,7 +4735,7 @@ STOPALL N ZTSK
 "RTN","RGNETBEV",1,0)
 RGNETBEV ;RI/CBMI/DKM - Event Support ;03-Apr-2015 09:57;DKM
 "RTN","RGNETBEV",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBEV",3,0)
  ;=================================================================
 "RTN","RGNETBEV",4,0)
@@ -4796,12 +5270,38 @@ RELATES(EVA,EVB) ;EP
  .S EVB=$P(EVB,".",1,$L(EVB,".")-1)
 "RTN","RGNETBEV",269,0)
  Q $S(EVA'=EVB:0,$D(SWP):3,1:2)
+"RTN","RGNETBIN")
+0^^B139662
+"RTN","RGNETBIN",1,0)
+RGNETBIN ;RI/CBMI/DKM - NETSERV RPC Broker Inits ;09-Apr-2015 19:22;DKM
+"RTN","RGNETBIN",2,0)
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
+"RTN","RGNETBIN",3,0)
+ ;=================================================================
+"RTN","RGNETBIN",4,0)
+ ; Environment check
+"RTN","RGNETBIN",5,0)
+EC Q
+"RTN","RGNETBIN",6,0)
+ ; Pre-init
+"RTN","RGNETBIN",7,0)
+PRE Q
+"RTN","RGNETBIN",8,0)
+ ; Post-init
+"RTN","RGNETBIN",9,0)
+POST N Y
+"RTN","RGNETBIN",10,0)
+ X ^%ZOSF("UCI")
+"RTN","RGNETBIN",11,0)
+ D ADD^XPAR("SYS","RGNETB AUTHENTICATION",Y,0)
+"RTN","RGNETBIN",12,0)
+ Q
 "RTN","RGNETBLG")
 0^4^B10138528
 "RTN","RGNETBLG",1,0)
 RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
 "RTN","RGNETBLG",2,0)
- ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 60
+ ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 69
 "RTN","RGNETBLG",3,0)
  ;=================================================================
 "RTN","RGNETBLG",4,0)
@@ -4987,7 +5487,7 @@ ISACTIVE() ;
 "RTN","RGNETBRK",1,0)
 RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;05-Apr-2015 16:26;DKM
 "RTN","RGNETBRK",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBRK",3,0)
  ;=================================================================
 "RTN","RGNETBRK",4,0)
@@ -5145,7 +5645,7 @@ CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
 "RTN","RGNETBRP",1,0)
 RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;07-Apr-2015 15:13;DKM
 "RTN","RGNETBRP",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBRP",3,0)
  ;=================================================================
 "RTN","RGNETBRP",4,0)
@@ -5691,7 +6191,7 @@ TMPGBL(X) ;
 "RTN","RGNETBUT",1,0)
 RGNETBUT ;RI/CBMI/DKM - NETSERV RPC Broker Utilities ;01-Apr-2015 14:12;DKM
 "RTN","RGNETBUT",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 60
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 69
 "RTN","RGNETBUT",3,0)
  ;=================================================================
 "RTN","RGNETBUT",4,0)
@@ -6851,7 +7351,7 @@ NETSERV BROKER AUTHENTICATION^996.57
 **INSTALL NAME**
 NETSERV OAUTH2 SERVICE 1.0
 "BLD",8511,0)
-NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150407^n
+NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150409^n
 "BLD",8511,1,0)
 ^^2^2^3150401.080059
 "BLD",8511,1,1,0)
@@ -6875,7 +7375,7 @@ y^y^f^^^^n
 "BLD",8511,4,"B",996.53,996.53)
 
 "BLD",8511,6.3)
-59
+68
 "BLD",8511,"ABPKG")
 n
 "BLD",8511,"KRN",0)
@@ -7053,9 +7553,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150407
+1.0^3150409
 "PKG",225,22,1,1,0)
-^^2^2^3150407
+^^2^2^3150409
 "PKG",225,22,1,1,1,0)
 Provides an implementation of the OAuth 2 authentication protocol using the
 "PKG",225,22,1,1,2,0)
@@ -7139,7 +7639,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETOA",1,0)
 RGNETOA ;RI/CBMI/DKM - OAuth2 Support ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 68
 "RTN","RGNETOA",3,0)
  ;=================================================================
 "RTN","RGNETOA",4,0)
@@ -7293,7 +7793,7 @@ PUT(PN,VL,PF) ;
 "RTN","RGNETOAA",1,0)
 RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 68
 "RTN","RGNETOAA",3,0)
  ;=================================================================
 "RTN","RGNETOAA",4,0)
@@ -7397,7 +7897,7 @@ VALIDRDU()
 "RTN","RGNETOAT",1,0)
 RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAT",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 59
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 68
 "RTN","RGNETOAT",3,0)
  ;=================================================================
 "RTN","RGNETOAT",4,0)

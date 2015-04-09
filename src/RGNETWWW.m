@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;07-Apr-2015 22:43;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;08-Apr-2015 13:26;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -139,14 +139,20 @@ ESCAPE(VALUE) ;
  F LP="&;amp","<;lt",">;gt",$C(9)_";nbsp","|TAB|;nbsp" D
  .S VALUE=$$SUBST^RGUT(VALUE,$P(LP,";"),"&"_$P(LP,";",2)_";")
  Q VALUE
- ; Returns true if error condition is set
-ISERROR() ;
- Q +$G(RGNETRSP("STATUS"))'<400
+ ; Returns true if the status code represents an error
+ ;  STATUS = If not specified, the current status code is checked.
+ISERROR(STATUS) ;
+ S:'$D(STATUS) STATUS=+$G(RGNETRSP("STATUS"))
+ Q STATUS'<400
  ; Sets http status code
-SETSTAT(CODE,TEXT) ;
+ ;  CODE  = HTTP status code
+ ;  TEXT  = HTTP status text (uses default text for code if not specified)
+ ;  RESET = If true, clear the output buffer.  If not specified, the output
+ ;          buffer is cleared only if the status code represents an error.
+SETSTAT(CODE,TEXT,RESET) ;
  S:'$L($G(TEXT)) TEXT=$P(^RGNET(996.51,CODE,0),U,2)
- S RGNETRSP("STATUS")=CODE_" "_TEXT
- D:$$ISERROR RESET
+ S RGNETRSP("STATUS")=CODE_" "_TEXT,RESET=$G(RESET,$$ISERROR)
+ D:RESET RESET
  Q
  ; Sets the content type
 SETCTYPE(CTYPE) ;
