@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;07-Apr-2015 15:21;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;10-Apr-2015 15:39;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -162,7 +162,7 @@ PMPT(PMPT,HELP,DFLT) ;
  ; Determine operating system
  ; Returns 0 = Cache, 1 = GT.M, -1 = unknown
 OS() N OS
- S OS=$P($G(^%ZOSF("OS")),U)
+ S U="^",OS=$P($G(^%ZOSF("OS")),U)
  Q $S(OS["OpenM":0,OS["GT.M":1,1:-1)
  ; Displays function not available message for GT.M environments
  ; Returns 1 if function not available.
