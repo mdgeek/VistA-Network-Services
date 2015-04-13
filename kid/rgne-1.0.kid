@@ -1,4 +1,4 @@
-KIDS Distribution saved on Apr 13, 2015@06:06:57
+KIDS Distribution saved on Apr 13, 2015@07:11:22
 NETWORK SERVICES 1.0
 **KIDS**:NETWORK SERVICES 1.0^NETSERV CONNECTION MANAGER 1.0^NETSERV WEB SERVER 1.0^NETSERV RPC BROKER 1.0^NETSERV OAUTH2 SERVICE 1.0^
 
@@ -23,7 +23,7 @@ NETSERV OATH2 SERVICE      - OAuth 2 implementation.
 "BLD",8510,1,7,0)
 
 "BLD",8510,6.3)
-25
+26
 "BLD",8510,10,0)
 ^9.63^400^4
 "BLD",8510,10,100,0)
@@ -247,7 +247,7 @@ y^y^f^^^^n^^
 "BLD",8506,4,"B",996.5,996.5)
 
 "BLD",8506,6.3)
-74
+77
 "BLD",8506,"ABPKG")
 n
 "BLD",8506,"KRN",0)
@@ -461,7 +461,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETTCP",1,0)
 RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;10-Apr-2015 15:39;DKM
 "RTN","RGNETTCP",2,0)
- ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 74
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 77
 "RTN","RGNETTCP",3,0)
  ;=================================================================
 "RTN","RGNETTCP",4,0)
@@ -1349,7 +1349,7 @@ I $G(^RGNET(996.52,Y,10))["^RGNETW"
 "BLD",8508,4,"B",996.52,996.52)
 
 "BLD",8508,6.3)
-74
+77
 "BLD",8508,"ABPKG")
 n
 "BLD",8508,"KRN",0)
@@ -1777,7 +1777,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETWRR",1,0)
 RGNETWRR ;RI/CBMI/DKM - Web endpoint for RPC and routine lookup ;01-Apr-2015 11:20;DKM
 "RTN","RGNETWRR",2,0)
- ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 74
+ ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 77
 "RTN","RGNETWRR",3,0)
  ;=================================================================
 "RTN","RGNETWRR",4,0)
@@ -2131,7 +2131,7 @@ ESCAPE(X) ;
 "RTN","RGNETWWW",1,0)
 RGNETWWW ;RI/CBMI/DKM - HTTP support ;08-Apr-2015 13:26;DKM
 "RTN","RGNETWWW",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 74
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 77
 "RTN","RGNETWWW",3,0)
  ;=================================================================
 "RTN","RGNETWWW",4,0)
@@ -3133,7 +3133,7 @@ y^y^f^^^^n
 "BLD",8509,4,"B",996.57,996.57)
 
 "BLD",8509,6.3)
-75
+78
 "BLD",8509,"ABPKG")
 n
 "BLD",8509,"INI")
@@ -3275,11 +3275,11 @@ POST^RGNETBIN
 "BLD",8509,"KRN",9.8,"NM",0)
 ^9.68A^7^7
 "BLD",8509,"KRN",9.8,"NM",1,0)
-RGNETBAC^^0^B23013082
+RGNETBAC^^0^B23085451
 "BLD",8509,"KRN",9.8,"NM",2,0)
 RGNETBAS^^0^B5697779
 "BLD",8509,"KRN",9.8,"NM",3,0)
-RGNETBEV^^0^B59529202
+RGNETBEV^^0^B60270468
 "BLD",8509,"KRN",9.8,"NM",4,0)
 RGNETBLG^^0^B10138528
 "BLD",8509,"KRN",9.8,"NM",5,0)
@@ -4323,11 +4323,11 @@ D XPZ2^XPDIQ
 "RTN")
 8
 "RTN","RGNETBAC")
-0^1^B23013082
+0^1^B23085451
 "RTN","RGNETBAC",1,0)
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;13-Apr-2015 05:33;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;13-Apr-2015 06:58;DKM
 "RTN","RGNETBAC",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBAC",3,0)
  ;=================================================================
 "RTN","RGNETBAC",4,0)
@@ -4361,7 +4361,7 @@ ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS
 "RTN","RGNETBAC",18,0)
  .S X=+$O(^XTV(8989.3,1,4,"B",VOL,0)),X=$S(X:+$P($G(^XTV(8989.3,1,4,X,0)),U,3),1:0)
 "RTN","RGNETBAC",19,0)
- D INTRO^XUS1A("RGDATA")
+ D INTRO^XUS1A("RGDATA"),MONSTART^RGNETBEV
 "RTN","RGNETBAC",20,0)
  S RGDATA=CAPS
 "RTN","RGNETBAC",21,0)
@@ -4607,7 +4607,7 @@ AUTHMETH(UCI) ;
 "RTN","RGNETBAS",1,0)
 RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;13-Apr-2015 05:33;DKM
 "RTN","RGNETBAS",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBAS",3,0)
  ;=================================================================
 "RTN","RGNETBAS",4,0)
@@ -4731,11 +4731,11 @@ STOPALL N ZTSK
 "RTN","RGNETBAS",63,0)
  Q
 "RTN","RGNETBEV")
-0^3^B59529202
+0^3^B60270468
 "RTN","RGNETBEV",1,0)
-RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 05:33;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 07:06;DKM
 "RTN","RGNETBEV",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBEV",3,0)
  ;=================================================================
 "RTN","RGNETBEV",4,0)
@@ -4897,7 +4897,7 @@ SIGNAL(STUB) ;
 "RTN","RGNETBEV",82,0)
  ; Add an event to a process event queue
 "RTN","RGNETBEV",83,0)
-QUEUE(TYPE,STUB,UID) ;EP
+QUEUE(TYPE,STUB,UID,MON) ;EP
 "RTN","RGNETBEV",84,0)
  N Q
 "RTN","RGNETBEV",85,0)
@@ -4913,369 +4913,373 @@ QUEUE(TYPE,STUB,UID) ;EP
 "RTN","RGNETBEV",90,0)
  L -^XTMP("RGNETB",UID,"E")
 "RTN","RGNETBEV",91,0)
- Q:$Q 1
+ D:$G(MON,1) MONSTART
 "RTN","RGNETBEV",92,0)
- Q
+ Q:$Q 1
 "RTN","RGNETBEV",93,0)
- ; Lookup event type, returning IEN
+ Q
 "RTN","RGNETBEV",94,0)
-EVENTIEN(TYPE) ;EP
+ ; Lookup event type, returning IEN
 "RTN","RGNETBEV",95,0)
- N X,Y
+EVENTIEN(TYPE) ;EP
 "RTN","RGNETBEV",96,0)
- Q:TYPE=+TYPE!'$L(TYPE) +TYPE
+ N X,Y
 "RTN","RGNETBEV",97,0)
- S X=$E(TYPE,1,30),Y=0
+ Q:TYPE=+TYPE!'$L(TYPE) +TYPE
 "RTN","RGNETBEV",98,0)
- F  S Y=+$O(^RGNET(996.54,"B",X,Y)) Q:'Y!($P($G(^RGNET(996.54,Y,0)),U)=TYPE)
+ S X=$E(TYPE,1,30),Y=0
 "RTN","RGNETBEV",99,0)
- Q $S(Y:Y,1:$$EVENTIEN($P(TYPE,".",1,$L(TYPE,".")-1)))
+ F  S Y=+$O(^RGNET(996.54,"B",X,Y)) Q:'Y!($P($G(^RGNET(996.54,Y,0)),U)=TYPE)
 "RTN","RGNETBEV",100,0)
- ; Return event name, given IEN
+ Q $S(Y:Y,1:$$EVENTIEN($P(TYPE,".",1,$L(TYPE,".")-1)))
 "RTN","RGNETBEV",101,0)
-EVENTNAM(IEN) ;EP
+ ; Return event name, given IEN
 "RTN","RGNETBEV",102,0)
- Q $P($G(^RGNET(996.54,+IEN,0)),U)
+EVENTNAM(IEN) ;EP
 "RTN","RGNETBEV",103,0)
- ; Check to see if an event type is disabled
+ Q $P($G(^RGNET(996.54,+IEN,0)),U)
 "RTN","RGNETBEV",104,0)
-DISABLED(TYPE) ;EP
+ ; Check to see if an event type is disabled
 "RTN","RGNETBEV",105,0)
- N X,Y
+DISABLED(TYPE) ;EP
 "RTN","RGNETBEV",106,0)
- S X=$$EVENTIEN(TYPE),Y=$G(^RGNET(996.54,+X,0)),TYPE=$P(Y,U),Y=+$P(Y,U,2)
-"RTN","RGNETBEV",107,0)
- S:'Y Y=$$KEYCHECK(X,20)
-"RTN","RGNETBEV",108,0)
- Q $S(Y:Y,'X:0,1:$$DISABLED($P(TYPE,".",1,$L(TYPE,".")-1)))
-"RTN","RGNETBEV",109,0)
- ; Check to see if event type is protected by security key(s)
-"RTN","RGNETBEV",110,0)
- ; Returns true if user does not have required keys
-"RTN","RGNETBEV",111,0)
- ;   SB=20: Publication keys; SB=21: Subscription keys
-"RTN","RGNETBEV",112,0)
-KEYCHECK(TYPE,SB) ;EP
-"RTN","RGNETBEV",113,0)
- N X,Y,Z
-"RTN","RGNETBEV",114,0)
- S X=$$EVENTIEN(TYPE),(Y,Z)=0
-"RTN","RGNETBEV",115,0)
- F  S Z=$O(^RGNET(996.54,X,SB,"B",Z)) Q:'Z  D  Q:'Y
-"RTN","RGNETBEV",116,0)
- .S Y='$$HASKEY(Z)
-"RTN","RGNETBEV",117,0)
- Q Y
-"RTN","RGNETBEV",118,0)
- ; Return true if user has key
-"RTN","RGNETBEV",119,0)
-HASKEY(KEY) ;EP
-"RTN","RGNETBEV",120,0)
- S:KEY=+KEY KEY=$$LKUP^XPDKEY(KEY)
-"RTN","RGNETBEV",121,0)
- Q $S($L(KEY):''$$KCHK^XUSRB(KEY),1:0)
-"RTN","RGNETBEV",122,0)
- ; Signal an event to all or selected sessions
-"RTN","RGNETBEV",123,0)
- ; If called as extrinsic, returns # of events broadcast
-"RTN","RGNETBEV",124,0)
-BRDCAST(TYPE,STUB,USR,AID) ;EP
-"RTN","RGNETBEV",125,0)
- N X,C
-"RTN","RGNETBEV",126,0)
- S C=0
-"RTN","RGNETBEV",127,0)
- I '$$DISABLED(TYPE) D
-"RTN","RGNETBEV",128,0)
- .I $D(USR("DUZ"))>1 D
-"RTN","RGNETBEV",129,0)
- ..F  Q:'$$NXTUID^RGNETBUT(.X,-1,.AID)  D
-"RTN","RGNETBEV",130,0)
- ...S:$D(USR("DUZ",+$$GETVAR^RGNETBUT("DUZ",,,X))) USR("UID",X)=""
-"RTN","RGNETBEV",131,0)
- .S X=""
-"RTN","RGNETBEV",132,0)
- .F  D  Q:'X
-"RTN","RGNETBEV",133,0)
- ..I $D(USR)>1 S X=$O(USR("UID",X))
-"RTN","RGNETBEV",134,0)
- ..E  D NXTUID^RGNETBUT(.X,-1,.AID)
-"RTN","RGNETBEV",135,0)
- ..S:X C=C+$$QUEUE(.TYPE,.STUB,X)
-"RTN","RGNETBEV",136,0)
- .D LOG(TYPE,.STUB)
-"RTN","RGNETBEV",137,0)
- .D FPRTCOL(TYPE,.STUB)
-"RTN","RGNETBEV",138,0)
- Q:$Q C
-"RTN","RGNETBEV",139,0)
- Q
-"RTN","RGNETBEV",140,0)
- ; Fire Associated Event Protocol
-"RTN","RGNETBEV",141,0)
-FPRTCOL(TYPE,STUB) ;
-"RTN","RGNETBEV",142,0)
- N EVT,X
-"RTN","RGNETBEV",143,0)
- S EVT=$$EVENTIEN(TYPE)
-"RTN","RGNETBEV",144,0)
- Q:'EVT
-"RTN","RGNETBEV",145,0)
- S X=$P($G(^RGNET(996.54,+EVT,0)),U,7)_";ORD(101,"
-"RTN","RGNETBEV",146,0)
- Q:'X
-"RTN","RGNETBEV",147,0)
- D EN^XQOR
-"RTN","RGNETBEV",148,0)
- Q
-"RTN","RGNETBEV",149,0)
- ; Subscribe to / unsubscribe from a named event
-"RTN","RGNETBEV",150,0)
- ; Returns new subscription state
-"RTN","RGNETBEV",151,0)
-SUBSCR(TYPE,SUBSCR) ;EP
-"RTN","RGNETBEV",152,0)
- I '$L(TYPE) Q:$Q 0 Q
-"RTN","RGNETBEV",153,0)
- N CURRNT
-"RTN","RGNETBEV",154,0)
- S CURRNT=''$D(^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)),SUBSCR=''$G(SUBSCR)
-"RTN","RGNETBEV",155,0)
- I CURRNT'=SUBSCR D
-"RTN","RGNETBEV",156,0)
- .I SUBSCR D  Q:'SUBSCR
-"RTN","RGNETBEV",157,0)
- ..I $$KEYCHECK(TYPE,21) S SUBSCR=0
-"RTN","RGNETBEV",158,0)
- ..E  S ^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)=""
-"RTN","RGNETBEV",159,0)
- .E  D
-"RTN","RGNETBEV",160,0)
- ..K ^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)
-"RTN","RGNETBEV",161,0)
- ..D CLRVAR^RGNETBUT("EVENT."_TYPE)
-"RTN","RGNETBEV",162,0)
- .D BRDCAST($S(SUBSCR:"",1:"UN")_"SUBSCRIBE."_TYPE,$$SESSION^RGNETBUT)
-"RTN","RGNETBEV",163,0)
- Q:$Q SUBSCR
-"RTN","RGNETBEV",164,0)
- Q
-"RTN","RGNETBEV",165,0)
- ; Unsubscribe from all events (done at logout)
-"RTN","RGNETBEV",166,0)
-UNSUBALL ;EP
-"RTN","RGNETBEV",167,0)
- N TYPE
-"RTN","RGNETBEV",168,0)
- S TYPE=""
-"RTN","RGNETBEV",169,0)
- F  S TYPE=$O(^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)) Q:'$L(TYPE)  D
-"RTN","RGNETBEV",170,0)
- .D SUBSCR(TYPE,0)
-"RTN","RGNETBEV",171,0)
- Q
-"RTN","RGNETBEV",172,0)
- ; Returns true if session is a subscriber
-"RTN","RGNETBEV",173,0)
-ISSUBSCR(UID,TYPE) ;EP
-"RTN","RGNETBEV",174,0)
- Q $S('$$ISACTIVE^RGNETBUT(UID):0,1:$$ISSUBX(TYPE))
-"RTN","RGNETBEV",175,0)
-ISSUBX(TYPE) ;
-"RTN","RGNETBEV",176,0)
- Q $S('$L(TYPE):0,$D(^XTMP("RGNETB",UID,"S",TYPE)):1,1:$$ISSUBX($P(TYPE,".",1,$L(TYPE,".")-1)))
-"RTN","RGNETBEV",177,0)
- ; Returns list of subscribers to a given event type
-"RTN","RGNETBEV",178,0)
-GETSUBSC(DATA,TYPE) ;EP
-"RTN","RGNETBEV",179,0)
- N Z
-"RTN","RGNETBEV",180,0)
- D GETSESSN^RGNETBRP(.DATA)
-"RTN","RGNETBEV",181,0)
- F Z=0:0 S Z=$O(@DATA@(Z)) Q:'Z  K:'$$ISSUBSCR(+@DATA@(Z),TYPE) @DATA@(Z)
-"RTN","RGNETBEV",182,0)
- Q
-"RTN","RGNETBEV",183,0)
- ; Returns number of days to retain log entries for an event type.
-"RTN","RGNETBEV",184,0)
-ISLOGGED(TYPE) ;EP
-"RTN","RGNETBEV",185,0)
  N X,Y
+"RTN","RGNETBEV",107,0)
+ S X=$$EVENTIEN(TYPE),Y=$G(^RGNET(996.54,+X,0)),TYPE=$P(Y,U),Y=+$P(Y,U,2)
+"RTN","RGNETBEV",108,0)
+ S:'Y Y=$$KEYCHECK(X,20)
+"RTN","RGNETBEV",109,0)
+ Q $S(Y:Y,'X:0,1:$$DISABLED($P(TYPE,".",1,$L(TYPE,".")-1)))
+"RTN","RGNETBEV",110,0)
+ ; Check to see if event type is protected by security key(s)
+"RTN","RGNETBEV",111,0)
+ ; Returns true if user does not have required keys
+"RTN","RGNETBEV",112,0)
+ ;   SB=20: Publication keys; SB=21: Subscription keys
+"RTN","RGNETBEV",113,0)
+KEYCHECK(TYPE,SB) ;EP
+"RTN","RGNETBEV",114,0)
+ N X,Y,Z
+"RTN","RGNETBEV",115,0)
+ S X=$$EVENTIEN(TYPE),(Y,Z)=0
+"RTN","RGNETBEV",116,0)
+ F  S Z=$O(^RGNET(996.54,X,SB,"B",Z)) Q:'Z  D  Q:'Y
+"RTN","RGNETBEV",117,0)
+ .S Y='$$HASKEY(Z)
+"RTN","RGNETBEV",118,0)
+ Q Y
+"RTN","RGNETBEV",119,0)
+ ; Return true if user has key
+"RTN","RGNETBEV",120,0)
+HASKEY(KEY) ;EP
+"RTN","RGNETBEV",121,0)
+ S:KEY=+KEY KEY=$$LKUP^XPDKEY(KEY)
+"RTN","RGNETBEV",122,0)
+ Q $S($L(KEY):''$$KCHK^XUSRB(KEY),1:0)
+"RTN","RGNETBEV",123,0)
+ ; Signal an event to all or selected sessions
+"RTN","RGNETBEV",124,0)
+ ; If called as extrinsic, returns # of events broadcast
+"RTN","RGNETBEV",125,0)
+BRDCAST(TYPE,STUB,USR,AID) ;EP
+"RTN","RGNETBEV",126,0)
+ N X,C
+"RTN","RGNETBEV",127,0)
+ S C=0
+"RTN","RGNETBEV",128,0)
+ I '$$DISABLED(TYPE) D
+"RTN","RGNETBEV",129,0)
+ .I $D(USR("DUZ"))>1 D
+"RTN","RGNETBEV",130,0)
+ ..F  Q:'$$NXTUID^RGNETBUT(.X,-1,.AID)  D
+"RTN","RGNETBEV",131,0)
+ ...S:$D(USR("DUZ",+$$GETVAR^RGNETBUT("DUZ",,,X))) USR("UID",X)=""
+"RTN","RGNETBEV",132,0)
+ .S X=""
+"RTN","RGNETBEV",133,0)
+ .F  D  Q:'X
+"RTN","RGNETBEV",134,0)
+ ..I $D(USR)>1 S X=$O(USR("UID",X))
+"RTN","RGNETBEV",135,0)
+ ..E  D NXTUID^RGNETBUT(.X,-1,.AID)
+"RTN","RGNETBEV",136,0)
+ ..S:X C=C+$$QUEUE(.TYPE,.STUB,X,0)
+"RTN","RGNETBEV",137,0)
+ .D LOG(TYPE,.STUB)
+"RTN","RGNETBEV",138,0)
+ .D FPRTCOL(TYPE,.STUB)
+"RTN","RGNETBEV",139,0)
+ .D MONSTART
+"RTN","RGNETBEV",140,0)
+ Q:$Q C
+"RTN","RGNETBEV",141,0)
+ Q
+"RTN","RGNETBEV",142,0)
+ ; Fire Associated Event Protocol
+"RTN","RGNETBEV",143,0)
+FPRTCOL(TYPE,STUB) ;
+"RTN","RGNETBEV",144,0)
+ N EVT,X
+"RTN","RGNETBEV",145,0)
+ S EVT=$$EVENTIEN(TYPE)
+"RTN","RGNETBEV",146,0)
+ Q:'EVT
+"RTN","RGNETBEV",147,0)
+ S X=$P($G(^RGNET(996.54,+EVT,0)),U,7)_";ORD(101,"
+"RTN","RGNETBEV",148,0)
+ Q:'X
+"RTN","RGNETBEV",149,0)
+ D EN^XQOR
+"RTN","RGNETBEV",150,0)
+ Q
+"RTN","RGNETBEV",151,0)
+ ; Subscribe to / unsubscribe from a named event
+"RTN","RGNETBEV",152,0)
+ ; Returns new subscription state
+"RTN","RGNETBEV",153,0)
+SUBSCR(TYPE,SUBSCR) ;EP
+"RTN","RGNETBEV",154,0)
+ I '$L(TYPE) Q:$Q 0 Q
+"RTN","RGNETBEV",155,0)
+ N CURRNT
+"RTN","RGNETBEV",156,0)
+ S CURRNT=''$D(^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)),SUBSCR=''$G(SUBSCR)
+"RTN","RGNETBEV",157,0)
+ I CURRNT'=SUBSCR D
+"RTN","RGNETBEV",158,0)
+ .I SUBSCR D  Q:'SUBSCR
+"RTN","RGNETBEV",159,0)
+ ..I $$KEYCHECK(TYPE,21) S SUBSCR=0
+"RTN","RGNETBEV",160,0)
+ ..E  S ^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)=""
+"RTN","RGNETBEV",161,0)
+ .E  D
+"RTN","RGNETBEV",162,0)
+ ..K ^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)
+"RTN","RGNETBEV",163,0)
+ ..D CLRVAR^RGNETBUT("EVENT."_TYPE)
+"RTN","RGNETBEV",164,0)
+ .D BRDCAST($S(SUBSCR:"",1:"UN")_"SUBSCRIBE."_TYPE,$$SESSION^RGNETBUT)
+"RTN","RGNETBEV",165,0)
+ Q:$Q SUBSCR
+"RTN","RGNETBEV",166,0)
+ Q
+"RTN","RGNETBEV",167,0)
+ ; Unsubscribe from all events (done at logout)
+"RTN","RGNETBEV",168,0)
+UNSUBALL ;EP
+"RTN","RGNETBEV",169,0)
+ N TYPE
+"RTN","RGNETBEV",170,0)
+ S TYPE=""
+"RTN","RGNETBEV",171,0)
+ F  S TYPE=$O(^XTMP("RGNETB",RGNETB("UID"),"S",TYPE)) Q:'$L(TYPE)  D
+"RTN","RGNETBEV",172,0)
+ .D SUBSCR(TYPE,0)
+"RTN","RGNETBEV",173,0)
+ Q
+"RTN","RGNETBEV",174,0)
+ ; Returns true if session is a subscriber
+"RTN","RGNETBEV",175,0)
+ISSUBSCR(UID,TYPE) ;EP
+"RTN","RGNETBEV",176,0)
+ Q $S('$$ISACTIVE^RGNETBUT(UID):0,1:$$ISSUBX(TYPE))
+"RTN","RGNETBEV",177,0)
+ISSUBX(TYPE) ;
+"RTN","RGNETBEV",178,0)
+ Q $S('$L(TYPE):0,$D(^XTMP("RGNETB",UID,"S",TYPE)):1,1:$$ISSUBX($P(TYPE,".",1,$L(TYPE,".")-1)))
+"RTN","RGNETBEV",179,0)
+ ; Returns list of subscribers to a given event type
+"RTN","RGNETBEV",180,0)
+GETSUBSC(DATA,TYPE) ;EP
+"RTN","RGNETBEV",181,0)
+ N Z
+"RTN","RGNETBEV",182,0)
+ D GETSESSN^RGNETBRP(.DATA)
+"RTN","RGNETBEV",183,0)
+ F Z=0:0 S Z=$O(@DATA@(Z)) Q:'Z  K:'$$ISSUBSCR(+@DATA@(Z),TYPE) @DATA@(Z)
+"RTN","RGNETBEV",184,0)
+ Q
+"RTN","RGNETBEV",185,0)
+ ; Returns number of days to retain log entries for an event type.
 "RTN","RGNETBEV",186,0)
- S TYPE=$$EVENTIEN(TYPE)
+ISLOGGED(TYPE) ;EP
 "RTN","RGNETBEV",187,0)
- S:TYPE X=^RGNET(996.54,TYPE,0),Y=$P(X,U,4),X=$P(X,U)
+ N X,Y
 "RTN","RGNETBEV",188,0)
- Q $S('TYPE:0,'$L(Y):$$ISLOGGED($P(X,".",$L(X,".")-1)),1:Y)
+ S TYPE=$$EVENTIEN(TYPE)
 "RTN","RGNETBEV",189,0)
- ; Log an event
+ S:TYPE X=^RGNET(996.54,TYPE,0),Y=$P(X,U,4),X=$P(X,U)
 "RTN","RGNETBEV",190,0)
-LOG(TYPE,STUB) ;EP
+ Q $S('TYPE:0,'$L(Y):$$ISLOGGED($P(X,".",$L(X,".")-1)),1:Y)
 "RTN","RGNETBEV",191,0)
- N IEN,FDA,ERR,STB,X
+ ; Log an event
 "RTN","RGNETBEV",192,0)
- S IEN=$$ISACTIVE^RGNETBLG
+LOG(TYPE,STUB) ;EP
 "RTN","RGNETBEV",193,0)
- I IEN D
+ N IEN,FDA,ERR,STB,X
 "RTN","RGNETBEV",194,0)
- .S X=$$LOG^RGNETBLG(IEN,2,TYPE)
+ S IEN=$$ISACTIVE^RGNETBLG
 "RTN","RGNETBEV",195,0)
- .D:X ADD^RGNETBLG(IEN,X,"STUB")
+ I IEN D
 "RTN","RGNETBEV",196,0)
- Q:'$$ISLOGGED(TYPE)
+ .S X=$$LOG^RGNETBLG(IEN,2,TYPE)
 "RTN","RGNETBEV",197,0)
- S FDA=$NA(FDA(996.55,"+1,")),STB="STUB",X=0
+ .D:X ADD^RGNETBLG(IEN,X,"STUB")
 "RTN","RGNETBEV",198,0)
- F  D  Q:'$L(STB)
+ Q:'$$ISLOGGED(TYPE)
 "RTN","RGNETBEV",199,0)
- .S:$D(@STB)#2 X=X+1,STB(X)=@STB
+ S FDA=$NA(FDA(996.55,"+1,")),STB="STUB",X=0
 "RTN","RGNETBEV",200,0)
- .S STB=$Q(@STB)
+ F  D  Q:'$L(STB)
 "RTN","RGNETBEV",201,0)
- S @FDA@(.01)=$$NOW^XLFDT
+ .S:$D(@STB)#2 X=X+1,STB(X)=@STB
 "RTN","RGNETBEV",202,0)
- S @FDA@(1)=TYPE
+ .S STB=$Q(@STB)
 "RTN","RGNETBEV",203,0)
- S @FDA@(2)=DUZ
+ S @FDA@(.01)=$$NOW^XLFDT
 "RTN","RGNETBEV",204,0)
- S @FDA@(3)=$$GETUID^RGNETBUT
+ S @FDA@(1)=TYPE
 "RTN","RGNETBEV",205,0)
- S:X @FDA@(10)="STB"
+ S @FDA@(2)=DUZ
 "RTN","RGNETBEV",206,0)
- D UPDATE^DIE("U","FDA",,"ERR")
+ S @FDA@(3)=$$GETUID^RGNETBUT
 "RTN","RGNETBEV",207,0)
- Q
+ S:X @FDA@(10)="STB"
 "RTN","RGNETBEV",208,0)
- ; Purge event log.  Specify at least one of:
+ D UPDATE^DIE("U","FDA",,"ERR")
 "RTN","RGNETBEV",209,0)
- ;   DATE = Date before which entries will be purged.
+ Q
 "RTN","RGNETBEV",210,0)
- ;   TYPE = Event type to be purged.
+ ; Purge event log.  Specify at least one of:
 "RTN","RGNETBEV",211,0)
- ;   FLAG = If set, purges child events as well.
+ ;   DATE = Date before which entries will be purged.
 "RTN","RGNETBEV",212,0)
-PURGELOG(DATE,TYPE,FLAG) ;EP
+ ;   TYPE = Event type to be purged.
 "RTN","RGNETBEV",213,0)
- N IEN,CNT
+ ;   FLAG = If set, purges child events as well.
 "RTN","RGNETBEV",214,0)
- S CNT=0,TYPE=$G(TYPE),FLAG=$S($G(FLAG):12,1:1)
+PURGELOG(DATE,TYPE,FLAG) ;EP
 "RTN","RGNETBEV",215,0)
- S:TYPE=+TYPE TYPE=$$EVENTNAM(TYPE)
+ N IEN,CNT
 "RTN","RGNETBEV",216,0)
- I $G(DATE) D
+ S CNT=0,TYPE=$G(TYPE),FLAG=$S($G(FLAG):12,1:1)
 "RTN","RGNETBEV",217,0)
- .F  S DATE=$O(^RGNET(996.55,"B",DATE),-1),IEN=0 Q:'DATE  D
+ S:TYPE=+TYPE TYPE=$$EVENTNAM(TYPE)
 "RTN","RGNETBEV",218,0)
- ..F  S IEN=$O(^RGNET(996.55,"B",DATE,IEN)) Q:'IEN  D
+ I $G(DATE) D
 "RTN","RGNETBEV",219,0)
- ...I $L(TYPE),FLAG'[$$RELATES(TYPE,$P(^RGNET(996.55,IEN,0),U,2)) Q
+ .F  S DATE=$O(^RGNET(996.55,"B",DATE),-1),IEN=0 Q:'DATE  D
 "RTN","RGNETBEV",220,0)
- ...S CNT=CNT+$$DELLOG(IEN)
+ ..F  S IEN=$O(^RGNET(996.55,"B",DATE,IEN)) Q:'IEN  D
 "RTN","RGNETBEV",221,0)
- E  D
+ ...I $L(TYPE),FLAG'[$$RELATES(TYPE,$P(^RGNET(996.55,IEN,0),U,2)) Q
 "RTN","RGNETBEV",222,0)
- .N TYP
+ ...S CNT=CNT+$$DELLOG(IEN)
 "RTN","RGNETBEV",223,0)
- .S IEN=0,TYP=TYPE
+ E  D
 "RTN","RGNETBEV",224,0)
- .F  Q:'$L(TYPE)  D
+ .N TYP
 "RTN","RGNETBEV",225,0)
- ..F  S IEN=$O(^RGNET(996.55,"C",TYPE,IEN)) Q:'IEN  S CNT=CNT+$$DELLOG(IEN)
+ .S IEN=0,TYP=TYPE
 "RTN","RGNETBEV",226,0)
- ..S TYPE=$O(^RGNET(996.55,"C",TYPE))
+ .F  Q:'$L(TYPE)  D
 "RTN","RGNETBEV",227,0)
- ..S:FLAG'[$$RELATES(TYP,TYPE) TYPE=""
+ ..F  S IEN=$O(^RGNET(996.55,"C",TYPE,IEN)) Q:'IEN  S CNT=CNT+$$DELLOG(IEN)
 "RTN","RGNETBEV",228,0)
- Q:$Q CNT
+ ..S TYPE=$O(^RGNET(996.55,"C",TYPE))
 "RTN","RGNETBEV",229,0)
- Q
+ ..S:FLAG'[$$RELATES(TYP,TYPE) TYPE=""
 "RTN","RGNETBEV",230,0)
- ; Delete log entry corresponding to IEN
+ Q:$Q CNT
 "RTN","RGNETBEV",231,0)
-DELLOG(IEN) ;EP
+ Q
 "RTN","RGNETBEV",232,0)
- N FDA,ERR
+ ; Delete log entry corresponding to IEN
 "RTN","RGNETBEV",233,0)
- S FDA(996.55,IEN_",",.01)="@"
+DELLOG(IEN) ;EP
 "RTN","RGNETBEV",234,0)
- D FILE^DIE(,"FDA","ERR")
+ N FDA,ERR
 "RTN","RGNETBEV",235,0)
- Q:$Q '$D(ERR)
+ S FDA(996.55,IEN_",",.01)="@"
 "RTN","RGNETBEV",236,0)
- Q
+ D FILE^DIE(,"FDA","ERR")
 "RTN","RGNETBEV",237,0)
- ; Task purge in background
+ Q:$Q '$D(ERR)
 "RTN","RGNETBEV",238,0)
-TASKPRG ;EP
+ Q
 "RTN","RGNETBEV",239,0)
- N ZTSK
+ ; Task purge in background
 "RTN","RGNETBEV",240,0)
- S ZTSK=$$QUEUE^RGUTTSK("DOPURGE^RGNETBEV(1)","Purge RG EVENT LOG")
+TASKPRG ;EP
 "RTN","RGNETBEV",241,0)
- I ZTSK>0 W !,"RG EVENT LOG purge submitted as task #",ZTSK,!!
+ N ZTSK
 "RTN","RGNETBEV",242,0)
- E  W !,"Error submitting RG EVENT LOG purge.",!!
+ S ZTSK=$$QUEUE^RGUTTSK("DOPURGE^RGNETBEV(1)","Purge RG EVENT LOG")
 "RTN","RGNETBEV",243,0)
- Q
+ I ZTSK>0 W !,"RG EVENT LOG purge submitted as task #",ZTSK,!!
 "RTN","RGNETBEV",244,0)
- ; Purges event log according to retention settings
+ E  W !,"Error submitting RG EVENT LOG purge.",!!
 "RTN","RGNETBEV",245,0)
-DOPURGE(SILENT) ;EP
-"RTN","RGNETBEV",246,0)
- N IEN,TPNM,TPEN,DATE,CNT,TOT
-"RTN","RGNETBEV",247,0)
- S TPNM="",SILENT=+$G(SILENT),TOT=0
-"RTN","RGNETBEV",248,0)
- F  S TPNM=$O(^RGNET(996.55,"C",TPNM)) Q:'$L(TPNM)  D
-"RTN","RGNETBEV",249,0)
- .S TPEN=$$EVENTIEN(TPNM),DATE=+$P($G(^RGNET(996.54,TPEN,0)),U,5)
-"RTN","RGNETBEV",250,0)
- .S DATE=$$FMADD^XLFDT(DT,$S(DATE:1-DATE,1:-13))
-"RTN","RGNETBEV",251,0)
- .S CNT=$$PURGELOG(DATE,TPNM),TOT=TOT+CNT
-"RTN","RGNETBEV",252,0)
- .I CNT,'SILENT W $$SNGPLR^RGU(CNT,"event")," purged for ",TPNM,!
-"RTN","RGNETBEV",253,0)
- W:'SILENT !,"Total events purged: ",TOT,!!
-"RTN","RGNETBEV",254,0)
- S:$D(ZTQUEUED) ZTREQ="@"
-"RTN","RGNETBEV",255,0)
  Q
+"RTN","RGNETBEV",246,0)
+ ; Purges event log according to retention settings
+"RTN","RGNETBEV",247,0)
+DOPURGE(SILENT) ;EP
+"RTN","RGNETBEV",248,0)
+ N IEN,TPNM,TPEN,DATE,CNT,TOT
+"RTN","RGNETBEV",249,0)
+ S TPNM="",SILENT=+$G(SILENT),TOT=0
+"RTN","RGNETBEV",250,0)
+ F  S TPNM=$O(^RGNET(996.55,"C",TPNM)) Q:'$L(TPNM)  D
+"RTN","RGNETBEV",251,0)
+ .S TPEN=$$EVENTIEN(TPNM),DATE=+$P($G(^RGNET(996.54,TPEN,0)),U,5)
+"RTN","RGNETBEV",252,0)
+ .S DATE=$$FMADD^XLFDT(DT,$S(DATE:1-DATE,1:-13))
+"RTN","RGNETBEV",253,0)
+ .S CNT=$$PURGELOG(DATE,TPNM),TOT=TOT+CNT
+"RTN","RGNETBEV",254,0)
+ .I CNT,'SILENT W $$SNGPLR^RGU(CNT,"event")," purged for ",TPNM,!
+"RTN","RGNETBEV",255,0)
+ W:'SILENT !,"Total events purged: ",TOT,!!
 "RTN","RGNETBEV",256,0)
- ; Returns the relationship between event types
+ S:$D(ZTQUEUED) ZTREQ="@"
 "RTN","RGNETBEV",257,0)
- ;   0 = none
+ Q
 "RTN","RGNETBEV",258,0)
- ;   1 = same
+ ; Returns the relationship between event types
 "RTN","RGNETBEV",259,0)
- ;   2 = A is parent of B
+ ;   0 = none
 "RTN","RGNETBEV",260,0)
- ;   3 = B is parent of A
+ ;   1 = same
 "RTN","RGNETBEV",261,0)
-RELATES(EVA,EVB) ;EP
+ ;   2 = A is parent of B
 "RTN","RGNETBEV",262,0)
- N SWP,X
+ ;   3 = B is parent of A
 "RTN","RGNETBEV",263,0)
- S:EVA=+EVA EVA=$$EVENTNAM(EVA)
+RELATES(EVA,EVB) ;EP
 "RTN","RGNETBEV",264,0)
- S:EVB=+EVB EVB=$$EVENTNAM(EVB)
+ N SWP,X
 "RTN","RGNETBEV",265,0)
- S:$L(EVA)>$L(EVB) SWP=EVA,EVA=EVB,EVB=SWP
+ S:EVA=+EVA EVA=$$EVENTNAM(EVA)
 "RTN","RGNETBEV",266,0)
- Q:EVA=EVB 1
+ S:EVB=+EVB EVB=$$EVENTNAM(EVB)
 "RTN","RGNETBEV",267,0)
- F  D  Q:'$L(EVB)!(EVA=EVB)
+ S:$L(EVA)>$L(EVB) SWP=EVA,EVA=EVB,EVB=SWP
 "RTN","RGNETBEV",268,0)
- .S EVB=$P(EVB,".",1,$L(EVB,".")-1)
+ Q:EVA=EVB 1
 "RTN","RGNETBEV",269,0)
+ F  D  Q:'$L(EVB)!(EVA=EVB)
+"RTN","RGNETBEV",270,0)
+ .S EVB=$P(EVB,".",1,$L(EVB,".")-1)
+"RTN","RGNETBEV",271,0)
  Q $S(EVA'=EVB:0,$D(SWP):3,1:2)
 "RTN","RGNETBIN")
 0^^B139662
 "RTN","RGNETBIN",1,0)
 RGNETBIN ;RI/CBMI/DKM - NETSERV RPC Broker Inits ;09-Apr-2015 19:22;DKM
 "RTN","RGNETBIN",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBIN",3,0)
  ;=================================================================
 "RTN","RGNETBIN",4,0)
@@ -5301,7 +5305,7 @@ POST N Y
 "RTN","RGNETBLG",1,0)
 RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
 "RTN","RGNETBLG",2,0)
- ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 75
+ ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 78
 "RTN","RGNETBLG",3,0)
  ;=================================================================
 "RTN","RGNETBLG",4,0)
@@ -5487,7 +5491,7 @@ ISACTIVE() ;
 "RTN","RGNETBRK",1,0)
 RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;13-Apr-2015 06:04;DKM
 "RTN","RGNETBRK",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBRK",3,0)
  ;=================================================================
 "RTN","RGNETBRK",4,0)
@@ -5651,7 +5655,7 @@ CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
 "RTN","RGNETBRP",1,0)
 RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;07-Apr-2015 15:13;DKM
 "RTN","RGNETBRP",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBRP",3,0)
  ;=================================================================
 "RTN","RGNETBRP",4,0)
@@ -6197,7 +6201,7 @@ TMPGBL(X) ;
 "RTN","RGNETBUT",1,0)
 RGNETBUT ;RI/CBMI/DKM - NETSERV RPC Broker Utilities ;01-Apr-2015 14:12;DKM
 "RTN","RGNETBUT",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 75
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 78
 "RTN","RGNETBUT",3,0)
  ;=================================================================
 "RTN","RGNETBUT",4,0)
@@ -7381,7 +7385,7 @@ y^y^f^^^^n
 "BLD",8511,4,"B",996.53,996.53)
 
 "BLD",8511,6.3)
-74
+77
 "BLD",8511,"ABPKG")
 n
 "BLD",8511,"KRN",0)
@@ -7645,7 +7649,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETOA",1,0)
 RGNETOA ;RI/CBMI/DKM - OAuth2 Support ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 74
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 77
 "RTN","RGNETOA",3,0)
  ;=================================================================
 "RTN","RGNETOA",4,0)
@@ -7799,7 +7803,7 @@ PUT(PN,VL,PF) ;
 "RTN","RGNETOAA",1,0)
 RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 74
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 77
 "RTN","RGNETOAA",3,0)
  ;=================================================================
 "RTN","RGNETOAA",4,0)
@@ -7903,7 +7907,7 @@ VALIDRDU()
 "RTN","RGNETOAT",1,0)
 RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;01-Apr-2015 02:02;DKM
 "RTN","RGNETOAT",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 74
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 77
 "RTN","RGNETOAT",3,0)
  ;=================================================================
 "RTN","RGNETOAT",4,0)

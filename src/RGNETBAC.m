@@ -1,4 +1,4 @@
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;13-Apr-2015 05:33;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;13-Apr-2015 06:58;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Connect action
@@ -16,7 +16,7 @@ ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS
  .; Y=# active jobs, X=max active jobs
  .X ^%ZOSF("ACTJ")
  .S X=+$O(^XTV(8989.3,1,4,"B",VOL,0)),X=$S(X:+$P($G(^XTV(8989.3,1,4,X,0)),U,3),1:0)
- D INTRO^XUS1A("RGDATA")
+ D INTRO^XUS1A("RGDATA"),MONSTART^RGNETBEV
  S RGDATA=CAPS
  Q
  ; Disconnect action

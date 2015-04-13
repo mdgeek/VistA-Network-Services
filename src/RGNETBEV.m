@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 05:33;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 07:06;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -80,7 +80,7 @@ SIGNAL(STUB) ;
  D QUEUE(TYPE,.STUB)
  Q
  ; Add an event to a process event queue
-QUEUE(TYPE,STUB,UID) ;EP
+QUEUE(TYPE,STUB,UID,MON) ;EP
  N Q
  S:'$D(UID) UID=$G(RGNETB("UID"))
  I '$$ISSUBSCR(UID,TYPE) Q:$Q 0 Q
@@ -88,6 +88,7 @@ QUEUE(TYPE,STUB,UID) ;EP
  E  Q:$Q 0 Q
  S Q=1+$O(^XTMP("RGNETB",UID,"E",$C(1)),-1),^(Q,0)=TYPE_$C(13) M ^(1)=STUB
  L -^XTMP("RGNETB",UID,"E")
+ D:$G(MON,1) MONSTART
  Q:$Q 1
  Q
  ; Lookup event type, returning IEN
@@ -132,9 +133,10 @@ BRDCAST(TYPE,STUB,USR,AID) ;EP
  .F  D  Q:'X
  ..I $D(USR)>1 S X=$O(USR("UID",X))
  ..E  D NXTUID^RGNETBUT(.X,-1,.AID)
- ..S:X C=C+$$QUEUE(.TYPE,.STUB,X)
+ ..S:X C=C+$$QUEUE(.TYPE,.STUB,X,0)
  .D LOG(TYPE,.STUB)
  .D FPRTCOL(TYPE,.STUB)
+ .D MONSTART
  Q:$Q C
  Q
  ; Fire Associated Event Protocol
