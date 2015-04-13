@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;03-Apr-2015 09:57;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 05:33;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -10,7 +10,7 @@ EVTCHK() ;EP
  S RTN=+$O(^XTMP("RGNETB",RGNETB("UID"),"E",0)),X=$NA(^(RTN))
  I RTN D
  .D TCPWRITE^RGNETTCP($C(3))
- .D ARYOUT^RGNETBRK(X)
+ .D ARYOUT^RGNETBRK(X,,1)
 ERR1 L -^XTMP("RGNETB",RGNETB("UID"),"E")
  Q $G(RTN)
  ; Start monitor in background if not already running

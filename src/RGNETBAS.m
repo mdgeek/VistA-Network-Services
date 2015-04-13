@@ -1,4 +1,4 @@
-RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;05-Apr-2015 16:20;DKM
+RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;13-Apr-2015 05:33;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Background task for executing an asynchronous RPC
@@ -42,7 +42,7 @@ ASYCHK() N ZTSK,RGD,X
  S ZTSK=0
  F  S ZTSK=+$O(^XTMP("RGNETB",RGNETB("UID"),"T",ZTSK)) Q:'ZTSK  S X=$G(^(ZTSK)),RGD=$NA(^(ZTSK,0)) I X D  Q
  .D TCPWRITE^RGNETTCP($C(2)_X_$C(13))
- .D ARYOUT^RGNETBRK(RGD,$P(X,U,3))
+ .D ARYOUT^RGNETBRK(RGD,$P(X,U,3),1)
  .K ^XTMP("RGNETB",RGNETB("UID"),"T",ZTSK)
  Q ZTSK
  ; RPC: Stop a task

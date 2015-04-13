@@ -1,4 +1,4 @@
-RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;05-Apr-2015 16:26;DKM
+RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;13-Apr-2015 06:04;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Handler for broker I/O
@@ -11,7 +11,8 @@ NETSERV(RGNETB) ;
 DOACTION(VAC) ;
  N NM,SB,RT,VL,PR,RG,ACT,SEQ,ARG,RGERR,RGDATA,X
  S RGERR(0)=0
- S X=$$TCPREAD^RGNETTCP(8,10)
+ S X=$$TCPREAD^RGNETTCP(8,300)
+ I '$L(X),RGMODE'=3 D ACTD^RGNETBAC Q 0
  Q:$E(X,1,5)'="{RGN}" 0
  S ARG=0,RGNETB("EOD")=$E(X,6),SEQ=$E(X,7),ACT=$E(X,8)
  F  S NM=$$TCPREADL Q:'$L(NM)  S PR=NM=+NM,RT=$S(PR:"P"_NM,1:"RGNETB("""_NM_"""") N:PR&'$D(ARG(NM)) @RT D
@@ -55,23 +56,25 @@ REPLY(DATA,ACK) ;
  N MORE
  S MORE=$D(DATA)\10
  D TCPWRITE^RGNETTCP($C(+$G(ACK))_$G(DATA)_$S(MORE:$C(13),1:""))
- D:MORE ARYOUT("DATA",1)
+ D:MORE ARYOUT("DATA",1,1)
  D SNDEOD
  K DATA
  Q
  ; Send error information
 SNDERR N X
  D TCPWRITE^RGNETTCP($C(1))
- D ARYOUT("RGERR",1),SNDEOD
+ D ARYOUT("RGERR",1,1),SNDEOD
  S RGERR(0)=0
  Q
 SNDEOD D TCPWRITE^RGNETTCP($$CTL("EOD"))
  Q
  ; Send data from an array.
- ;  ARY = Array to send
- ;  EOL = If true, append line terminator
-ARYOUT(ARY,EOL) ;
+ ;  ARY  = Array to send
+ ;  EOL  = If true, append line terminator
+ ;  KILL = If true, kill the array after sending
+ARYOUT(ARY,EOL,KILL) ;
  D ARYOUT^RGNETTCP(ARY,$S($G(EOL):$C(13),1:""))
+ K:$G(KILL) @ARY
  Q
  ; Return control byte
 CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
