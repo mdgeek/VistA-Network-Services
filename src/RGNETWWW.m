@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;08-Apr-2015 13:26;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;13-Apr-2015 12:24;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -20,15 +20,16 @@ PROCESS(SOURCE) ;
  D INIT,PROCX,ENDRSP,CLEANUP
  Q:$Q RGNETRSP
  Q
-PROCX N HANDLER,EP,AUTH,X,$ET,$ES
+PROCX N HANDLER,EP,AUTH,ACE,X,$ET,$ES
  S $ET="D ETRAP^RGNETWWW"
  S X=$$PARSEREQ(SOURCE,.RGNETREQ)
  I X D SETSTAT(X) Q
  S HANDLER=$$URL2EP(RGNETREQ("METHOD"),RGNETREQ("PATH"))
  I 'HANDLER D SETSTAT(404,"No endpoint") Q
- S EP=$G(^RGNET(996.52,HANDLER,10)),AUTH=$P(^(0),U,3)
+ S EP=$G(^RGNET(996.52,HANDLER,10)),AUTH=$P(^(0),U,3),ACE=$G(^(20,"ACE"))
  I '$L(EP) D SETSTAT(404,"No handler") Q
  Q:'$$AUTH(AUTH,$L(AUTH))
+ I $L(ACE),'$$ACEEVAL(ACE) D SETSTAT(403) Q
  D @EP
  Q
  ; Trap an expected error, returning it as a 500 status code.
@@ -275,6 +276,44 @@ TOPTRN2(X) ;
  S:$L(L) P=P_"1"""_L_"""",L=""
  S P=P_X
  Q
+ ; Compiles an access constraint expression
+ACECOMP(ACE,SILENT) ;
+ Q:";"[$E(ACE) ""
+ N POS,EXP,TKN,RES,ERR,C
+ S (EXP,TKN)="",(ST,PRN)=0,SILENT=$G(SILENT)!$G(DIQUIET)
+ F POS=1:1:$L(ACE)+1 D  Q:$D(ERR)
+ .S C=$E(ACE,POS)
+ .I C="\" S POS=POS+1,TKN=TKN_$E(ACE,POS)
+ .E  I "()&!'"[C S EXP=EXP_$$ACECOMP2(TKN,.ERR)_C,TKN=""
+ .E  S TKN=TKN_C
+ I '$D(ERR) D
+ .S RES=$$ENTRY^RGUTSTX("I "_EXP)
+ .S:RES ERR=$P(RES,U,3)_" @ "_$P(RES,U,2)
+ I $D(ERR) D
+ .W:'SILENT ERR,!
+ .S ACE=";"_ACE,EXP=""
+ Q EXP
+ ; Process a name token
+ACECOMP2(TKN,ERR) ;
+ Q:'$L(TKN) ""
+ N TP,NM,FN,RT
+ S TP=$P(TKN,"."),NM=$P(TKN,".",2,999)
+ S:'$L(NM) NM="?"
+ S FN=$S(TP="K":"HASKEY^DIC(19.1)",TP="O":"HASOPT^DIC(19)",TP="P":"HASPRM^XTV(8989.51)",1:"")
+ I '$L(FN) S ERR="Unrecognized token: "_TKN Q ""
+ S RT=U_$P(FN,U,2),FN=$P(FN,U)
+ I '$D(@RT@("B",NM)) S ERR=$P(@RT@(0),U)_" "_NM_" not found." Q ""
+ Q "$$"_FN_"("""_NM_""")"
+ ; Evaluates a compiled access constraint expression
+ACEEVAL(EXP) ;
+ I $G(DUZ),@EXP
+ Q $T
+HASKEY(VL) ;
+ Q $D(^XUSEC(VL,DUZ))
+HASOPT(VL) ;
+ Q $$ACCESS^XQCHK(DUZ,VL)>0
+HASPRM(VL) ;
+ Q ''$$GET^XPAR("USR^PKG^SYS",VL,,"Q")
  ; Looks up endpoint for URL
  ; Returns IEN of endpoint
 URL2EP(METHOD,URL) ;
