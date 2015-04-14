@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;13-Apr-2015 12:24;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;13-Apr-2015 14:08;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -277,6 +277,8 @@ TOPTRN2(X) ;
  S P=P_X
  Q
  ; Compiles an access constraint expression
+ ;  ACE    = An access constraint expression
+ ;  SILENT = If true, suppress error output
 ACECOMP(ACE,SILENT) ;
  Q:";"[$E(ACE) ""
  N POS,EXP,TKN,RES,ERR,C
@@ -294,6 +296,9 @@ ACECOMP(ACE,SILENT) ;
  .S ACE=";"_ACE,EXP=""
  Q EXP
  ; Process a name token
+ ;  TKN = A name token of the form <type>.<name> where <type> is one of
+ ;         K = security key, O = option, P = parameter
+ ;  ERR = Set to error text if an error occurs.
 ACECOMP2(TKN,ERR) ;
  Q:'$L(TKN) ""
  N TP,NM,FN,RT
@@ -305,13 +310,19 @@ ACECOMP2(TKN,ERR) ;
  I '$D(@RT@("B",NM)) S ERR=$P(@RT@(0),U)_" "_NM_" not found." Q ""
  Q "$$"_FN_"("""_NM_""")"
  ; Evaluates a compiled access constraint expression
+ ;  EXP = compiled expression
+ ; Returns true if access is granted
 ACEEVAL(EXP) ;
  I $G(DUZ),@EXP
  Q $T
+ ; Returns true if the user possesses the specified security key.
 HASKEY(VL) ;
  Q $D(^XUSEC(VL,DUZ))
+ ; Returns true if the user has access to the specified option.
 HASOPT(VL) ;
  Q $$ACCESS^XQCHK(DUZ,VL)>0
+ ; Returns true if the user has a setting of true for the specified
+ ; parameter.
 HASPRM(VL) ;
  Q ''$$GET^XPAR("USR^PKG^SYS",VL,,"Q")
  ; Looks up endpoint for URL
