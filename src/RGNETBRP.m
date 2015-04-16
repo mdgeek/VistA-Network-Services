@@ -1,4 +1,4 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;07-Apr-2015 15:13;DKM
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;15-Apr-2015 07:25;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; RPC: User authentication
@@ -153,15 +153,15 @@ AUTOLOG(SID) ;
  S SID=$E(SID,10,999)
  Q:SID<1000 0
  N X
- S X=$$FIND1^DIC(996.57,"","QX",SID)
- Q $S(X:+$P($G(^RGNET(996.57,X,0)),U,2),1:"")
+ S X=$$FIND1^DIC(996.513,"","QX",SID)
+ Q $S(X:+$P($G(^RGNET(996.513,X,0)),U,2),1:"")
  ; Cache NT authentication information
 AUTOSET(SID) ;
  Q:$$AUTOLOG(.SID)'=""
  N FLD
- S FLD(996.57,"+1,",.01)=SID
- S FLD(996.57,"+1,",1)=DUZ
- S FLD(996.57,"+1,",2)=$$NOW^XLFDT
+ S FLD(996.513,"+1,",.01)=SID
+ S FLD(996.513,"+1,",1)=DUZ
+ S FLD(996.513,"+1,",2)=$$NOW^XLFDT
  D UPDATE^DIE("","FLD")
  Q
  ; RPC: Get list of active RPCs

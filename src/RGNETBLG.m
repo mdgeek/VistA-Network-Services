@@ -1,4 +1,4 @@
-RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;03-Apr-2015 09:47;DKM
+RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;15-Apr-2015 07:25;DKM
  ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 144
  ;=================================================================
  ; Open a log entry.  The return value is the IEN of the new entry.
@@ -9,21 +9,21 @@ OPEN(UID,USER,WID) ;EP
  N IEN,NOW,X
  S NOW=$$NOW^XLFDT
  S:$G(WID)="" WID="UNKNOWN"
- L +^RGNET(996.56,0):2
- S X=1+$P(^RGNET(996.56,0),U,3),IEN=$O(^($C(1)),-1)+1,$P(^(0),U,3,4)=X_U_IEN,^(IEN,0)=UID_U_USER_U_WID_U_NOW_U_U_DUZ(2)
- L -^RGNET(996.56,0)
- S ^RGNET(996.56,"B",UID,IEN)=""
- S ^RGNET(996.56,"BUSER",USER,IEN)=""
- S ^RGNET(996.56,"BWID",WID,IEN)=""
- S ^RGNET(996.56,"BLOGIN",NOW,IEN)=""
- S ^RGNET(996.56,"BDIV",DUZ(2),IEN)=""
+ L +^RGNET(996.512,0):2
+ S X=1+$P(^RGNET(996.512,0),U,3),IEN=$O(^($C(1)),-1)+1,$P(^(0),U,3,4)=X_U_IEN,^(IEN,0)=UID_U_USER_U_WID_U_NOW_U_U_DUZ(2)
+ L -^RGNET(996.512,0)
+ S ^RGNET(996.512,"B",UID,IEN)=""
+ S ^RGNET(996.512,"BUSER",USER,IEN)=""
+ S ^RGNET(996.512,"BWID",WID,IEN)=""
+ S ^RGNET(996.512,"BLOGIN",NOW,IEN)=""
+ S ^RGNET(996.512,"BDIV",DUZ(2),IEN)=""
  Q IEN
  ; Close a log entry.
  ;  IEN = IEN of the entry.
 CLOSE(IEN) ;EP
  N NOW
  S NOW=$$NOW^XLFDT
- S:$D(^RGNET(996.56,+IEN,0)) $P(^(0),U,5)=NOW,^RGNET(996.56,"BLOGOUT",NOW,IEN)=""
+ S:$D(^RGNET(996.512,+IEN,0)) $P(^(0),U,5)=NOW,^RGNET(996.512,"BLOGOUT",NOW,IEN)=""
  Q
  ; Log an activity
  ;  IEN  = IEN of log entry
@@ -32,9 +32,9 @@ CLOSE(IEN) ;EP
  ;  Returns subfile IEN
 LOG(IEN,TYPE,NAME) ;EP
  N SUB,NOW
- Q:'$D(^RGNET(996.56,IEN)) 0
+ Q:'$D(^RGNET(996.512,IEN)) 0
  S NOW=$$NOW^XLFDT
- S SUB=$O(^RGNET(996.56,IEN,10,$C(1)),-1)+1,^(0)="^996.561D^"_SUB_U_SUB,^(SUB,0)=NOW_U_TYPE_U_NAME
+ S SUB=$O(^RGNET(996.512,IEN,10,$C(1)),-1)+1,^(0)="^996.5121D^"_SUB_U_SUB,^(SUB,0)=NOW_U_TYPE_U_NAME
  Q SUB
  ; Add an entry to the specified activity
  ;  IEN = IEN of log entry
@@ -43,7 +43,7 @@ LOG(IEN,TYPE,NAME) ;EP
  ;  INC = Include variable name with output (optional)
 ADD(IEN,SUB,ARY,INC) ;EP
  N ROOT,WP,A,L,P,X,Y,Z
- S ROOT=$NA(^RGNET(996.56,IEN,10,SUB,10))
+ S ROOT=$NA(^RGNET(996.512,IEN,10,SUB,10))
  S WP=$O(@ROOT@($C(1)),-1),WP(0)=WP,INC=+$G(INC),(A,ARY)=$NA(@ARY),L=$QL(ARY)
  F  D:$D(@A)#2  S A=$Q(@A) Q:'$L(A)  Q:$NA(@A,L)'=ARY
  .S X=@A,P=$S(INC:A_" = ",1:"")
@@ -56,9 +56,9 @@ ADD(IEN,SUB,ARY,INC) ;EP
  Q
  ; Delete a log entry
 DELETE(DA) ;
- Q:'$D(^RGNET(996.56,DA))
+ Q:'$D(^RGNET(996.512,DA))
  N DIK
- S DIK="^RGNET(996.56,"
+ S DIK="^RGNET(996.512,"
  D ^DIK
  Q
  ; Task purge in background
@@ -72,9 +72,9 @@ DOPURGE N DAYS,LP,IEN
  S DAYS=$$GET^XPAR("ALL","RGNETB ACTIVITY RETENTION")
  Q:'DAYS
  S LP=$$FMADD^XLFDT(DT,-DAYS)
- F  S LP=$O(^RGNET(996.56,"BLOGIN",LP),-1) Q:'LP  D
+ F  S LP=$O(^RGNET(996.512,"BLOGIN",LP),-1) Q:'LP  D
  .S IEN=0
- .F  S IEN=$O(^RGNET(996.56,"BLOGIN",LP,IEN)) Q:'IEN  D
+ .F  S IEN=$O(^RGNET(996.512,"BLOGIN",LP,IEN)) Q:'IEN  D
  ..D DELETE(IEN)
  Q
  ; Returns true if activity logging is active

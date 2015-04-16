@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;13-Apr-2015 07:06;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;15-Apr-2015 07:25;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -31,7 +31,7 @@ MONITOR ;EP
  Q:$$MONCHECK(1)
  F  D  Q:IDLE<1!$$S^%ZTLOAD
  .H 5
- .F IEN=0:0 S IEN=$O(^RGNET(996.54,IEN)) Q:'IEN  D
+ .F IEN=0:0 S IEN=$O(^RGNET(996.51,IEN)) Q:'IEN  D
  ..S X=$G(^(IEN,0)),TYPE=$P(X,U),PMETH=$P(X,U,6),EXE=$G(^(1))          ; Note: NR set above
  ..I $L(EXE),'$P(X,U,2),$$CHKINT(+$P(X,U,3)) D
  ...I PMETH D EXEMON Q
@@ -58,7 +58,7 @@ EXERUN N IEN,IDLE
  ; Log any errors
 EXEERR N ERT,ERD,X
  S ERT=$TR($$EC^%ZOSV,U,"~"),ERD=$$NOW^XLFDT
- S X=$G(^RGNET(996.54,IEN,100)),^(100)=ERD_U_ERT
+ S X=$G(^RGNET(996.51,IEN,100)),^(100)=ERD_U_ERT
  D:(ERD\1'=(X\1))!($P(X,U,2)'=ERT) ^%ZTER
  Q
 EXEVAR(VAR) ;
@@ -96,15 +96,15 @@ EVENTIEN(TYPE) ;EP
  N X,Y
  Q:TYPE=+TYPE!'$L(TYPE) +TYPE
  S X=$E(TYPE,1,30),Y=0
- F  S Y=+$O(^RGNET(996.54,"B",X,Y)) Q:'Y!($P($G(^RGNET(996.54,Y,0)),U)=TYPE)
+ F  S Y=+$O(^RGNET(996.51,"B",X,Y)) Q:'Y!($P($G(^RGNET(996.51,Y,0)),U)=TYPE)
  Q $S(Y:Y,1:$$EVENTIEN($P(TYPE,".",1,$L(TYPE,".")-1)))
  ; Return event name, given IEN
 EVENTNAM(IEN) ;EP
- Q $P($G(^RGNET(996.54,+IEN,0)),U)
+ Q $P($G(^RGNET(996.51,+IEN,0)),U)
  ; Check to see if an event type is disabled
 DISABLED(TYPE) ;EP
  N X,Y
- S X=$$EVENTIEN(TYPE),Y=$G(^RGNET(996.54,+X,0)),TYPE=$P(Y,U),Y=+$P(Y,U,2)
+ S X=$$EVENTIEN(TYPE),Y=$G(^RGNET(996.51,+X,0)),TYPE=$P(Y,U),Y=+$P(Y,U,2)
  S:'Y Y=$$KEYCHECK(X,20)
  Q $S(Y:Y,'X:0,1:$$DISABLED($P(TYPE,".",1,$L(TYPE,".")-1)))
  ; Check to see if event type is protected by security key(s)
@@ -113,7 +113,7 @@ DISABLED(TYPE) ;EP
 KEYCHECK(TYPE,SB) ;EP
  N X,Y,Z
  S X=$$EVENTIEN(TYPE),(Y,Z)=0
- F  S Z=$O(^RGNET(996.54,X,SB,"B",Z)) Q:'Z  D  Q:'Y
+ F  S Z=$O(^RGNET(996.51,X,SB,"B",Z)) Q:'Z  D  Q:'Y
  .S Y='$$HASKEY(Z)
  Q Y
  ; Return true if user has key
@@ -144,7 +144,7 @@ FPRTCOL(TYPE,STUB) ;
  N EVT,X
  S EVT=$$EVENTIEN(TYPE)
  Q:'EVT
- S X=$P($G(^RGNET(996.54,+EVT,0)),U,7)_";ORD(101,"
+ S X=$P($G(^RGNET(996.51,+EVT,0)),U,7)_";ORD(101,"
  Q:'X
  D EN^XQOR
  Q
@@ -186,7 +186,7 @@ GETSUBSC(DATA,TYPE) ;EP
 ISLOGGED(TYPE) ;EP
  N X,Y
  S TYPE=$$EVENTIEN(TYPE)
- S:TYPE X=^RGNET(996.54,TYPE,0),Y=$P(X,U,4),X=$P(X,U)
+ S:TYPE X=^RGNET(996.51,TYPE,0),Y=$P(X,U,4),X=$P(X,U)
  Q $S('TYPE:0,'$L(Y):$$ISLOGGED($P(X,".",$L(X,".")-1)),1:Y)
  ; Log an event
 LOG(TYPE,STUB) ;EP
@@ -196,7 +196,7 @@ LOG(TYPE,STUB) ;EP
  .S X=$$LOG^RGNETBLG(IEN,2,TYPE)
  .D:X ADD^RGNETBLG(IEN,X,"STUB")
  Q:'$$ISLOGGED(TYPE)
- S FDA=$NA(FDA(996.55,"+1,")),STB="STUB",X=0
+ S FDA=$NA(FDA(996.511,"+1,")),STB="STUB",X=0
  F  D  Q:'$L(STB)
  .S:$D(@STB)#2 X=X+1,STB(X)=@STB
  .S STB=$Q(@STB)
@@ -216,23 +216,23 @@ PURGELOG(DATE,TYPE,FLAG) ;EP
  S CNT=0,TYPE=$G(TYPE),FLAG=$S($G(FLAG):12,1:1)
  S:TYPE=+TYPE TYPE=$$EVENTNAM(TYPE)
  I $G(DATE) D
- .F  S DATE=$O(^RGNET(996.55,"B",DATE),-1),IEN=0 Q:'DATE  D
- ..F  S IEN=$O(^RGNET(996.55,"B",DATE,IEN)) Q:'IEN  D
- ...I $L(TYPE),FLAG'[$$RELATES(TYPE,$P(^RGNET(996.55,IEN,0),U,2)) Q
+ .F  S DATE=$O(^RGNET(996.511,"B",DATE),-1),IEN=0 Q:'DATE  D
+ ..F  S IEN=$O(^RGNET(996.511,"B",DATE,IEN)) Q:'IEN  D
+ ...I $L(TYPE),FLAG'[$$RELATES(TYPE,$P(^RGNET(996.511,IEN,0),U,2)) Q
  ...S CNT=CNT+$$DELLOG(IEN)
  E  D
  .N TYP
  .S IEN=0,TYP=TYPE
  .F  Q:'$L(TYPE)  D
- ..F  S IEN=$O(^RGNET(996.55,"C",TYPE,IEN)) Q:'IEN  S CNT=CNT+$$DELLOG(IEN)
- ..S TYPE=$O(^RGNET(996.55,"C",TYPE))
+ ..F  S IEN=$O(^RGNET(996.511,"C",TYPE,IEN)) Q:'IEN  S CNT=CNT+$$DELLOG(IEN)
+ ..S TYPE=$O(^RGNET(996.511,"C",TYPE))
  ..S:FLAG'[$$RELATES(TYP,TYPE) TYPE=""
  Q:$Q CNT
  Q
  ; Delete log entry corresponding to IEN
 DELLOG(IEN) ;EP
  N FDA,ERR
- S FDA(996.55,IEN_",",.01)="@"
+ S FDA(996.511,IEN_",",.01)="@"
  D FILE^DIE(,"FDA","ERR")
  Q:$Q '$D(ERR)
  Q
@@ -247,8 +247,8 @@ TASKPRG ;EP
 DOPURGE(SILENT) ;EP
  N IEN,TPNM,TPEN,DATE,CNT,TOT
  S TPNM="",SILENT=+$G(SILENT),TOT=0
- F  S TPNM=$O(^RGNET(996.55,"C",TPNM)) Q:'$L(TPNM)  D
- .S TPEN=$$EVENTIEN(TPNM),DATE=+$P($G(^RGNET(996.54,TPEN,0)),U,5)
+ F  S TPNM=$O(^RGNET(996.511,"C",TPNM)) Q:'$L(TPNM)  D
+ .S TPEN=$$EVENTIEN(TPNM),DATE=+$P($G(^RGNET(996.51,TPEN,0)),U,5)
  .S DATE=$$FMADD^XLFDT(DT,$S(DATE:1-DATE,1:-13))
  .S CNT=$$PURGELOG(DATE,TPNM),TOT=TOT+CNT
  .I CNT,'SILENT W $$SNGPLR^RGU(CNT,"event")," purged for ",TPNM,!
