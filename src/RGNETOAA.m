@@ -1,4 +1,4 @@
-RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;01-Apr-2015 02:02;DKM
+RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;17-Apr-2015 12:34;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 1
  ;=================================================================
  ; GET method handler
@@ -46,6 +46,6 @@ GETAUTH(AUTH) ;
  D GETOBJ^RGNETOA(.AUTH,"AUTH",1)
  Q
  ; Validates the redirect uri
-VALIDRDU() 
+VALIDRDU() ;
  I CLIENT("redirect_uri")'=$$GETPARAM^RGNETWWW("redirect_uri") D SETSTAT^RGNETWWW(404) Q 0
  Q 1

@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;15-Apr-2015 07:25;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;17-Apr-2015 12:24;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -251,7 +251,7 @@ DOPURGE(SILENT) ;EP
  .S TPEN=$$EVENTIEN(TPNM),DATE=+$P($G(^RGNET(996.51,TPEN,0)),U,5)
  .S DATE=$$FMADD^XLFDT(DT,$S(DATE:1-DATE,1:-13))
  .S CNT=$$PURGELOG(DATE,TPNM),TOT=TOT+CNT
- .I CNT,'SILENT W $$SNGPLR^RGU(CNT,"event")," purged for ",TPNM,!
+ .I CNT,'SILENT W $$SNGPLR^RGUT(CNT,"event")," purged for ",TPNM,!
  W:'SILENT !,"Total events purged: ",TOT,!!
  S:$D(ZTQUEUED) ZTREQ="@"
  Q

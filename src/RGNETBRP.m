@@ -1,4 +1,4 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;15-Apr-2015 07:25;DKM
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;17-Apr-2015 12:31;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; RPC: User authentication
@@ -50,7 +50,6 @@ AUTH(DATA,AID,WID,SID,AVC,WIP,DIV) ;
  ..S UID=RGNETB("UID"),RGNETB("UID")=0
  ..I '$D(^XTMP("RGNETB",UID)),$$CHK(25,5,UID) Q
  ..I $$SESSION^RGNETBUT(UID,"DUZ")'=DUZ,$$CHK(27,4,UID) Q
- ..D:$$ISACTIVE^RGNETBUT(UID) FORCEEX(RGCFG("port")_":"_$$GETVAR^RGNETBUT("JOB"))
  ..I $$ISACTIVE^RGNETBUT(UID,1,60),$$CHK(26,4,UID) Q
  ..S RGNETB("UID")=UID
  ..D RESVAR^RGNETBUT,SETVAR^RGNETBUT("JOB",$J)
@@ -64,10 +63,6 @@ AUTH(DATA,AID,WID,SID,AVC,WIP,DIV) ;
  .D AUTOSET(SID),STSAVE^RGNETTCP(1)
  I +DATA(0)=4 D
  .S DATA(1)=$P(XUENV,U,3)_U_$P(XUVOL,U)_U_XUCI_U_+RGCFG("port")
- Q
- ; Force exit disconnected broker session
-FORCEEX(RGPORT) ;
- S @$$LOCKNODE^RGNETBRK=-1
  Q
  ; Transform ID values
 ID(ID) Q $E($TR($G(ID),U,"~"),1,40)
@@ -211,7 +206,7 @@ GETINFO(DATA,TYPE,UID) ;
  .F  S EV=$O(^XTMP("RGNETB",UID,"S",EV)) Q:'$L(EV)  D
  ..S CN=CN+1,@DATA@(CN)=EV
  I TYPE=1 D  Q
- .D CAPTURE^RGUHFS("ZWRITE  N X F X=""$ET"",""$EC"",""$ES"",""$J"",""$ZE"",""$ZT"" W !,X,""="",@X",DATA,99999)
+ .D CAPTURE^RGUTHFS("ZWRITE  N X F X=""$ET"",""$EC"",""$ES"",""$J"",""$ZE"",""$ZT"" W !,X,""="",@X",DATA,99999)
  I TYPE=2 D  Q
  .N NS,VN,VL,CN
  .S NS="",CN=0

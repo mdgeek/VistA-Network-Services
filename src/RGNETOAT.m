@@ -1,4 +1,4 @@
-RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;01-Apr-2015 02:02;DKM
+RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;17-Apr-2015 12:37;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 1
  ;=================================================================
  ; POST method
@@ -24,7 +24,7 @@ GTAC N CLIENT,AUTH,REDIRECT,SECRET,ATKN,RTKN
  ; Grant type = refresh_token
 GTRT N RTKN,ATKN
  S RTKN=$G(POST("refresh_token",1,1))
- S ATKN=$$REFTKN(RTKN)
+ S ATKN=$$REFATKN(RTKN)
  I '$L(ATKN) D SETSTAT^RGNETWWW(404) Q
  D BLDRSP^RGNETOA(.ATKN)
  Q
@@ -37,7 +37,7 @@ GETRTKN(RTKN) ;
  D GETOBJ^RGNETOA(.RTKN,"RTKN")
  Q
  ; Writes an access token to the data store
-SETATKN(ATKN) 
+SETATKN(ATKN) ;
  D SETOBJ^RGNETOA(.ATKN,"ATKN")
  Q
  ; Writes a refresh token to the data store
