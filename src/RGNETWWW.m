@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;16-Apr-2015 11:17;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;23-Apr-2015 13:59;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -28,7 +28,7 @@ PROCX N HANDLER,EP,AUTH,ACE,X,$ET,$ES
  I 'HANDLER D SETSTAT(404,"No endpoint") Q
  S EP=$G(^RGNET(996.52,HANDLER,10)),AUTH=$P(^(0),U,3),ACE=$G(^(20,"ACE"))
  I '$L(EP) D SETSTAT(404,"No handler") Q
- Q:'$$AUTH(AUTH,$L(AUTH))
+ Q:'$$AUTH(AUTH,$L(AUTH)&'$G(DUZ))
  I $L(ACE),'$$ACEEVAL(ACE) D SETSTAT(403) Q
  D @EP
  Q
@@ -229,7 +229,7 @@ CONCAT(URL,PATH) ;
  Q:'$D(PATH) URL
  F  Q:$E(URL,$L(URL))'="/"  S $E(URL,$L(URL))=""
  F  Q:$E(PATH)'="/"  S $E(PATH)=""
- Q URL_"/"_PATH
+ Q $S($L(PATH):URL_"/"_PATH,1:URL)
  ; Date (format per RFC 1123)
 WWWDATE(DT) ;
  N TZ,H,M,SN
@@ -246,22 +246,24 @@ ISBROWSR() ;
 AUTH(TYPE,REQUIRED) ;
  N TP,CRED
  S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
- I '$L(TP),$G(DUZ) Q 1
- K RGNETREQ("HDR","authorization"),DUZ
- S TYPE=$G(TYPE),REQUIRED=+$G(REQUIRED),DUZ=0
- I $L(TYPE),TP'=TYPE D
- .S REQUIRED=1
+ K RGNETREQ("HDR","authorization")
+ I '$L(TP),'REQUIRED Q 1
+ K DUZ
+ S DUZ=0
+ S:TYPE="ANY" TYPE=TP
+ I $L(TYPE),TP'=TYPE
  E  I TP="BASIC" D
  .N IO,RTN
  .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
  .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
  E  I TP="BEARER" D
  .S DUZ=$$ISVALID^RGNETOAT(CRED)
- I 'DUZ,REQUIRED D  Q 0
+ I 'DUZ D
  .D SETSTAT(401)
+ .S:'$L(TYPE) TYPE="Basic"
  .D ADDHDR("WWW-Authenticate: "_TYPE)
  S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
- Q 1
+ Q DUZ
  ; Convert to pattern (Used for URL matching)
 TOPTRN(NM) ;
  N P,C,X,L
