@@ -1,4 +1,4 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;17-Apr-2015 12:31;DKM
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;24-Apr-2015 08:56;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; RPC: User authentication
@@ -262,6 +262,11 @@ LOCKCNT(GBL,INC) ;
  I Y>0 S ^(GBL)=Y
  E  K ^(GBL)
  Q X
+ ; RPC: Process an HTTP request via broker call
+HTTPREQ(DATA,REQUEST) ;
+ S:$D(REQUEST)=1 REQUEST(1)=REQUEST
+ S DATA=$$ENTRYARY^RGNETWWW(.REQUEST)
+ Q
  ; Get temp global reference
 TMPGBL(X) ;
  K ^TMP("RGNETBTMP"_$G(X),$J) Q $NA(^($J))
