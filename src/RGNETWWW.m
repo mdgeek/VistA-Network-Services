@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;25-Apr-2015 06:06;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;25-Apr-2015 11:22;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -262,8 +262,7 @@ AUTH(TYPE,REQUIRED) ;
  S:'DUZ(2) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
  Q 1
 AUTH1() N X,Y
- D XUVOL^XUS
- S XOPT=$$STATE^XWBSEC("XUS XOPT")
+ D XUVOL^XUS,XOPT^XUS
  Q '$$INHIBIT^XUSRB
 AUTH2() I $L(TYPE),TP'=TYPE Q 0
  I TP="BASIC" D
