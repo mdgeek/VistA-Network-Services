@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;24-Apr-2015 08:56;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;25-Apr-2015 06:06;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -25,9 +25,9 @@ PROCX N HANDLER,EP,AUTH,ACE,X,$ET,$ES
  S X=$$PARSEREQ(SOURCE,.RGNETREQ)
  I X D SETSTAT(X) Q
  S HANDLER=$$URL2EP(RGNETREQ("METHOD"),RGNETREQ("PATH"))
- I 'HANDLER D SETSTAT(404,"No endpoint") Q
+ I 'HANDLER D SETSTAT(404,"No Endpoint") Q
  S EP=$G(^RGNET(996.52,HANDLER,10)),AUTH=$P(^(0),U,3),ACE=$G(^(20,"ACE"))
- I '$L(EP) D SETSTAT(404,"No handler") Q
+ I '$L(EP) D SETSTAT(404,"No Handler") Q
  Q:'$$AUTH(AUTH,$L(AUTH)&'$G(DUZ))
  I $L(ACE),'$$ACEEVAL(ACE) D SETSTAT(403) Q
  D @EP
@@ -246,24 +246,34 @@ ISBROWSR() ;
 AUTH(TYPE,REQUIRED) ;
  N TP,CRED
  S TP=$G(RGNETREQ("HDR","authorization")),CRED=$P(TP," ",2),TP=$$UP^XLFSTR($P(TP," "))
- K RGNETREQ("HDR","authorization")
  I '$L(TP),'REQUIRED Q 1
- K DUZ
+ K RGNETREQ("HDR","authorization"),DUZ
  S DUZ=0
- S:TYPE="ANY" TYPE=TP
- I $L(TYPE),TP'=TYPE
- E  I TP="BASIC" D
- .N IO,RTN
- .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999),IO=$P
- .D SETUP^XUSRB(),VALIDAV^XUSRB(.RTN,$$ENCRYP^XUSRB1(CRED))
- E  I TP="BEARER" D
- .S DUZ=$$ISVALID^RGNETOAT(CRED)
- I 'DUZ D
+ I '$$AUTH1 D  Q 0
+ .D SETSTAT(403,"Logins Disabled")
+ S:TYPE="ANY" TYPE=""
+ I '$$AUTH2 D  Q 0
  .D SETSTAT(401)
  .S:'$L(TYPE) TYPE="Basic"
  .D ADDHDR("WWW-Authenticate: "_TYPE)
- S:'$D(DUZ(2)) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
+ I '$$AUTH3 D  Q 0
+ .D SETSTAT(403,"Credentials Expired")
+ S DUZ(2)=+$$CHKDIV^XUS1
+ S:'DUZ(2) DUZ(2)=$P(^XTV(8989.3,1,"XUS"),U,17)
+ Q 1
+AUTH1() N X,Y
+ D XUVOL^XUS
+ S XOPT=$$STATE^XWBSEC("XUS XOPT")
+ Q '$$INHIBIT^XUSRB
+AUTH2() I $L(TYPE),TP'=TYPE Q 0
+ I TP="BASIC" D
+ .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999)
+ .S DUZ=$$CHECKAV^XUSRB(CRED)
+ E  I TP="BEARER" D
+ .S DUZ=$$ISVALID^RGNETOAT(CRED)
  Q DUZ
+AUTH3() N XUSER
+ Q '$$VCHG^XUS1
  ; Convert to pattern (Used for URL matching)
 TOPTRN(NM) ;
  N P,C,X,L

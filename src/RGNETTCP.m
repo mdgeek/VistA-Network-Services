@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;15-Apr-2015 07:25;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;25-Apr-2015 06:17;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -111,7 +111,7 @@ JOB(RGMODE,RGCFG) ;
  ;     3: debug listener     - debug mode listener
  ;   RGCFG = Listener name or IEN
 EN(RGMODE,RGCFG) ;
- N RGTDEV,RGQUIT,RGRETRY,RGOS,$ET,$ES
+ N RGTDEV,RGQUIT,RGRETRY,RGOS,DUZ,$ET,$ES
  S U="^",DT=$$DT^XLFDT,$ET="D ETRAP1^RGNETTCP"
  D:'$$GETCFG(.RGCFG) RAISE("Unknown listener.")
  Q:RGCFG("disabled")
@@ -123,7 +123,7 @@ EN(RGMODE,RGCFG) ;
  D CLEANUP,STSAVE(0),NULLOPEN,STSAVE(1)                                ; Initialize environment
  D CHPRN(.RGCFG)                                                       ; Change process name
  F  D LISTEN Q:RGQUIT>0!RGMODE                                         ; Main loop
- D STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP,LOGOUT^XUSRB:$G(DUZ)
+ D STATE(0),STREST(1),^%ZISC,STREST(0),CLEANUP
  Q
  ; Entry point for interactive debugging
 DEBUG N PORT,CFG
@@ -189,7 +189,8 @@ WAIT N X
  ; Return temp global root
 TMPGBL() Q $NA(^TMP("RGNETTCP",$J))
  ; Cleanup environment
-CLEANUP K @$$TMPGBL,^XUTL("XQ",$J),@$$LOCKNODE(.RGCFG)
+CLEANUP K @$$TMPGBL,@$$LOCKNODE(.RGCFG)
+ D XUTL^XUSCLEAN
  Q
  ; Returns true if listener should quit
 QUIT() S:'RGQUIT RGQUIT=RGRETRY>5

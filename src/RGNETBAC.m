@@ -1,4 +1,4 @@
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;13-Apr-2015 06:58;DKM
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;25-Apr-2015 06:20;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Connect action
@@ -20,7 +20,7 @@ ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS
  S RGDATA=CAPS
  Q
  ; Disconnect action
-ACTD D RESET^RGNETBRP()
+ACTD D RESET^RGNETBRP(),LOGOUT^XUSRB:$G(DUZ)
  S RGDATA=1,RGQUIT=1
  Q
  ; Query action
