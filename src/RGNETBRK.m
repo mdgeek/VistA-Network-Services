@@ -1,5 +1,5 @@
-RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;13-Apr-2015 06:04;DKM
- ;;1.0;NETWORK SERVICES;;01-Apr-2015
+RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;08-Jun-2015 10:16;AA
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 133
  ;=================================================================
  ; Handler for broker I/O
 NETSERV(RGNETB) ;
@@ -9,12 +9,13 @@ NETSERV(RGNETB) ;
  ;  VAC = List of valid action codes
  ; Returns true if valid inputs
 DOACTION(VAC) ;
- N NM,SB,RT,VL,PR,RG,ACT,SEQ,ARG,RGERR,RGDATA,X
+ N NM,SB,RT,VL,PR,ACT,SEQ,ARG,RGERR,RGDATA,X
  S RGERR(0)=0
  S X=$$TCPREAD^RGNETTCP(8,300)
  I '$L(X),RGMODE'=3 D ACTD^RGNETBAC Q 0
- Q:$E(X,1,5)'="{RGN}" 0
- S ARG=0,RGNETB("EOD")=$E(X,6),SEQ=$E(X,7),ACT=$E(X,8)
+ S ARG=0,PR=$E(X,1,5),RGNETB("EOD")=$E(X,6),SEQ=$E(X,7),ACT=$E(X,8)
+ I PR="{CIA}" S RGNETB("LEGACY")=1
+ E  Q:PR'="{RGN}" 0
  F  S NM=$$TCPREADL Q:'$L(NM)  S PR=NM=+NM,RT=$S(PR:"P"_NM,1:"RGNETB("""_NM_"""") N:PR&'$D(ARG(NM)) @RT D
  .S:PR ARG=$S(NM>ARG:NM,1:ARG),ARG(NM)=""
  .S SB=$$TCPREADL,VL=$$TCPREADL
@@ -50,6 +51,10 @@ ETRAP2 N ECSAV
  S $ET="D UNWIND^RGNETBRK Q:$Q 0 Q",ECSAV=$$EC^%ZOSV,RGRETRY=RGRETRY+1
  D:RGRETRY=1 ^%ZTER,ERRCHK^RGNETBAC(1,1,ECSAV)
  S $EC=ECSAV
+ Q
+ ; Unwind stack
+UNWIND Q:$ES>1
+ S $EC=""
  Q
  ; Send a reply
 REPLY(DATA,ACK) ;

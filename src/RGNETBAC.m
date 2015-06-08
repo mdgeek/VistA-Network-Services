@@ -1,16 +1,18 @@
-RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;25-Apr-2015 06:20;DKM
- ;;1.0;NETWORK SERVICES;;01-Apr-2015
+RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;20-May-2015 22:15;AA
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 133
  ;=================================================================
  ; Connect action
  ; Data is returned to client as:
  ;   debug flag^authentication method^server version^case sensitive^cipher key
-ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS
+ACTC N X,Y,VOL,UCI,VER,AUTH,CAPS,CS,CK
  S Y=$$GETUCI,UCI(0)=Y,UCI=$$UP^XLFSTR($G(RGNETB("UCI"),Y)),VOL=$P(UCI,",",2),VER=$P($T(+2),";",3)
  S:'$L(UCI) UCI=Y
  S:'$L(VOL) VOL=$P(Y,",",2),$P(UCI,",",2)=VOL
  I UCI'=UCI(0),$$ERRCHK(0[$$UCICHECK^%ZOSV(UCI),14,UCI) Q
  Q:$$ERRCHK('$L(VOL),11)
- S AUTH=$$AUTHMETH(UCI),CAPS=(RGMODE=3)_U_AUTH_U_VER_U_$$GET^XPAR("SYS","XU VC CASE SENSITIVE")_U_$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
+ S AUTH=$$AUTHMETH(UCI),CS=$$GET^XPAR("SYS","XU VC CASE SENSITIVE"),CK=$E($P($T(Z+1^XUSRB1),";;",2,999),1,4)
+ I '$G(RGNETB("LEGACY")) S CAPS=(RGMODE=3)_U_AUTH_U_VER_U_CS_U_CK
+ E  S CAPS="1^"_AUTH_U_VER_U_CS_"^1^"
  Q:$$ERRCHK('$L(AUTH),24,UCI)
  I $D(^%ZOSF("ACTJ")) D  Q:$$ERRCHK(X'>Y&X,10,Y,X)
  .; Y=# active jobs, X=max active jobs
@@ -41,7 +43,9 @@ ACTR N RPC,RTN,RGD,XWBWRAP,XWBPTYPE,I
  I '$D(RGNETB("CTX")) S RGNETB("CTX")=$$GETVAR^RGNETBUT("CTX")
  E  D SETVAR^RGNETBUT("CTX",RGNETB("CTX"))
  S:RGNETB("CTX")="" RGNETB("CTX")=$$GETVAR^RGNETBUT("AID")
- S RPC=$$FIND1^DIC(8994,,"QX",$G(RGNETB("RPC")))
+ S RPC=$G(RGNETB("RPC"))
+ I $G(RGNETB("LEGACY")),$E(RPC,1,5)="CIANB" S (RPC,RGNETB("RPC"))="RGNETB"_$E(RPC,6,7)_$E(RPC,9,999)
+ S RPC=$$FIND1^DIC(8994,,"QX",RPC)
  Q:$$ERRCHK('RPC,3)
  S I=$G(^XWB(8994,RPC,0)),RTN=$P(I,U,2,3),XWBWRAP=+$P(I,U,8),XWBPTYPE=$P(I,U,4)
  Q:$$ERRCHK($S($E($P(RTN,U,2),1,6)="RGNETB":0,1:'$$CANRUN(RPC,RGNETB("CTX"))),4,RGNETB("RPC"),RGNETB("CTX"))

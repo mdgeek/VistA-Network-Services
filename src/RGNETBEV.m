@@ -1,4 +1,4 @@
-RGNETBEV ;RI/CBMI/DKM - Event Support ;17-Apr-2015 12:24;DKM
+RGNETBEV ;RI/CBMI/DKM - Event Support ;19-May-2015 09:09;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015
  ;=================================================================
  ; Check for the occurrence of host events
@@ -145,8 +145,7 @@ FPRTCOL(TYPE,STUB) ;
  S EVT=$$EVENTIEN(TYPE)
  Q:'EVT
  S X=$P($G(^RGNET(996.51,+EVT,0)),U,7)_";ORD(101,"
- Q:'X
- D EN^XQOR
+ D:X EN^XQOR
  Q
  ; Subscribe to / unsubscribe from a named event
  ; Returns new subscription state

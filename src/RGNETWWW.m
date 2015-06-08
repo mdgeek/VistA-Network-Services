@@ -1,4 +1,4 @@
-RGNETWWW ;RI/CBMI/DKM - HTTP support ;25-Apr-2015 11:22;DKM
+RGNETWWW ;RI/CBMI/DKM - HTTP support ;28-May-2015 09:34;DKM
  ;;1.0;NETWORK SERVICES;;14-March-2014;Build 49
  ;=================================================================
  ; This is the TCP I/O handler entry point
@@ -75,7 +75,7 @@ ARYSTRM(LN,ARYREF) ;
  ;  PATH   = Request path
  ;  HOST   = Request URL (less protocol)
 PARSEREQ(STREAM,RGNETREQ) ;
- N METHOD,PATH,HEADERS,LP,LN,CNT,QRY,X
+ N METHOD,PATH,HEADERS,NEXT,LP,LN,CNT,QRY,X
  S CNT=0,NEXT="X="_STREAM
  F  S @NEXT Q:'X  D
  .I '$D(METHOD) S METHOD=LN Q
@@ -132,7 +132,7 @@ UNESCURL(X) ;
  .N P,C,H
  .F P=1:1 S C=$E(X,P) Q:'$L(C)  D
  ..I C="+" S $E(X,P)=" "
- ..E  I C="%" S H=$E(X,P+1,P+2),$E(X,P,P+2)=$$UNHEX^XTHCUTL(H)
+ ..E  I C="%" S H=$E(X,P+1,P+2),$E(X,P,P+2)=$C($$DEC^XLFUTL(H,16))
  Q X
  ; Escape reserved characters
 ESCAPE(VALUE) ;
@@ -251,11 +251,10 @@ AUTH(TYPE,REQUIRED) ;
  S DUZ=0
  I '$$AUTH1 D  Q 0
  .D SETSTAT(403,"Logins Disabled")
- S:TYPE="ANY" TYPE=""
  I '$$AUTH2 D  Q 0
  .D SETSTAT(401)
- .S:'$L(TYPE) TYPE="Basic"
- .D ADDHDR("WWW-Authenticate: "_TYPE)
+ .S:'$L(TYPE) TYPE="BASIC^BEARER"
+ .F TP=1:1:$L(TYPE,U) D ADDHDR("WWW-Authenticate: "_$P(TYPE,U,TP))
  I '$$AUTH3 D  Q 0
  .D SETSTAT(403,"Credentials Expired")
  S DUZ(2)=+$$CHKDIV^XUS1
@@ -264,12 +263,13 @@ AUTH(TYPE,REQUIRED) ;
 AUTH1() N X,Y
  D XUVOL^XUS,XOPT^XUS
  Q '$$INHIBIT^XUSRB
-AUTH2() I $L(TYPE),TP'=TYPE Q 0
+AUTH2() S:TYPE="ANY" TYPE=""
+ I $L(TYPE),TP'=TYPE Q 0
  I TP="BASIC" D
  .S CRED=$$DECODE^RGUTUU(CRED),CRED=$P(CRED,":")_";"_$P(CRED,":",2,9999)
- .S DUZ=$$CHECKAV^XUSRB(CRED)
+ .S DUZ=$$CHECKAV^XUSRB(CRED),TYPE=TP
  E  I TP="BEARER" D
- .S DUZ=$$ISVALID^RGNETOAT(CRED)
+ .S DUZ=$$ISVALID^RGNETOAT(CRED),TYPE=TP
  Q DUZ
 AUTH3() N XUSER
  Q '$$VCHG^XUS1

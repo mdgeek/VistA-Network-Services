@@ -1,5 +1,5 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;24-Apr-2015 08:56;DKM
- ;;1.0;NETWORK SERVICES;;01-Apr-2015
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;20-May-2015 23:04;AA
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 133
  ;=================================================================
  ; RPC: User authentication
  ; AID = Application ID
@@ -63,6 +63,7 @@ AUTH(DATA,AID,WID,SID,AVC,WIP,DIV) ;
  .D AUTOSET(SID),STSAVE^RGNETTCP(1)
  I +DATA(0)=4 D
  .S DATA(1)=$P(XUENV,U,3)_U_$P(XUVOL,U)_U_XUCI_U_+RGCFG("port")
+ .D:$G(RGNETB("LEGACY")) INTRO^XUS1A("DATA(2)")
  Q
  ; Transform ID values
 ID(ID) Q $E($TR($G(ID),U,"~"),1,40)
