@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;25-Apr-2015 06:17;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;08-Jun-2015 15:13;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -11,7 +11,6 @@ STOP(RGCFG) ;
  Q
  ; Restart a primary listener
 RESTART(RGCFG) ;
- Q:$$OSCHECK
  D STOP(.RGCFG),START(.RGCFG)
  Q
  ; Start all primary listeners
@@ -21,12 +20,10 @@ STARTALL D SSALL(1)
 STOPALL D SSALL(0)
  Q
  ; Restart all primary listeners
-RESTALL Q:$$OSCHECK
- D STOPALL,STARTALL
+RESTALL D STOPALL,STARTALL
  Q
  ; List the status of all primary listeners
-LISTALL Q:$$OSCHECK
- N RGCFG,LP,X
+LISTALL N RGCFG,LP,X
  F LP=0:0 S LP=$O(^RGNET(996.5,LP)) Q:'LP  D
  .K RGCFG
  .S RGCFG=LP
@@ -38,7 +35,6 @@ LISTALL Q:$$OSCHECK
  ; SS - 1 = start, 0 = stop
  ; SL - true = silent mode
 SSALL(SS,SL) ;
- Q:$$OSCHECK(.SL)
  N RGCFG
  F RGCFG=0:0 S RGCFG=$O(^RGNET(996.5,RGCFG)) Q:'RGCFG  D SSLIS(RGCFG,SS,.SL)
  Q
@@ -46,7 +42,6 @@ SSALL(SS,SL) ;
  ; SS - 1 = start, 0 = stop
  ; SL - true = silent mode
 SSLIS(RGCFG,SS,SL) ;
- Q:$$OSCHECK(.SL)
  N $ET,SAME,RGMODE
  Q:'$$GETCFG(.RGCFG)
  S SL=$G(SL,$D(ZTQUEUED))
@@ -76,6 +71,7 @@ SSERR W "failed: ",$$EC^%ZOSV,!!
  ; Returns listener IEN
 GETCFG(RGCFG) ;
  Q:$D(RGCFG)=11 RGCFG
+ S U="^"
  S:RGCFG'=+RGCFG RGCFG=+$O(^RGNET(996.5,"B",RGCFG,0))
  I RGCFG D
  .N N0,LP
@@ -93,8 +89,16 @@ JOB(RGMODE,RGCFG) ;
  I RGMODE>1 S SUCCESS=0
  E  I '$$GETCFG(.RGCFG) S SUCCESS=0
  E  I RGMODE=1 D
- .X "J EN^RGNETTCP(RGMODE,RGCFG):(:4:RGTDEV:RGTDEV):15"
- .S SUCCESS=$T
+ .I RGOS D
+ ..N SOCK
+ ..S SOCK=$P($KEY,"|",2)
+ ..X "U RGTDEV:detach=SOCK"
+ ..S SOCK="""SOCKET:"_SOCK_""""
+ ..X "J EN^RGNETTCP(RGMODE,RGCFG):(input="_SOCK_":output="_SOCK_")"
+ ..S SUCCESS=$T
+ .E  D
+ ..X "J EN^RGNETTCP(RGMODE,RGCFG):(:4:RGTDEV:RGTDEV):15"
+ ..S SUCCESS=$T
  E  I $L(RGCFG("uci")) D
  .X "J EN^RGNETTCP(RGMODE,RGCFG)[RGCFG(""uci"")]"
  .S SUCCESS=$T
@@ -112,14 +116,13 @@ JOB(RGMODE,RGCFG) ;
  ;   RGCFG = Listener name or IEN
 EN(RGMODE,RGCFG) ;
  N RGTDEV,RGQUIT,RGRETRY,RGOS,DUZ,$ET,$ES
- S U="^",DT=$$DT^XLFDT,$ET="D ETRAP1^RGNETTCP"
+ S DT=$$DT^XLFDT,$ET="D ETRAP1^RGNETTCP"
  D:'$$GETCFG(.RGCFG) RAISE("Unknown listener.")
  Q:RGCFG("disabled")
  S (RGQUIT,RGRETRY)=0,RGOS=$$OS
  D:RGOS<0 RAISE("Unsupported operating system.")
- I RGOS,RGMODE'>1 D BADMODE                                            ; GT.M supports only modes 2 and 3
  I 'RGOS,RGMODE=2 D BADMODE                                            ; Cache does not support mode 2
- Q:'$$STATE(1)                                                         ; Quit if listener already running
+ Q:$$STATE                                                             ; Quit if listener already running
  D CLEANUP,STSAVE(0),NULLOPEN,STSAVE(1)                                ; Initialize environment
  D CHPRN(.RGCFG)                                                       ; Change process name
  F  D LISTEN Q:RGQUIT>0!RGMODE                                         ; Main loop
@@ -164,15 +167,11 @@ PMPT(PMPT,HELP,DFLT) ;
 OS() N OS
  S U="^",OS=$P($G(^%ZOSF("OS")),U)
  Q $S(OS["OpenM":0,OS["GT.M":1,1:-1)
- ; Displays function not available message for GT.M environments
- ; Returns 1 if function not available.
-OSCHECK(SL) ;
- Q:'$$OS 0
- W:'$G(SL) "That function is not available for this environment.",!
- Q 1
  ; Main loop
 LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
  S $ET="D ETRAP2^RGNETTCP",RGQUIT='$$TCPOPEN,RGOUT=""
+ Q:RGQUIT
+ Q:'$$STATE(1)
  S HNDLR=RGCFG("handler")_"(.RGSTATE)"
  F  Q:$$QUIT  D
  .D TCPUSE
@@ -182,9 +181,14 @@ LISTEN N $ET,$ES,RGOUT,RGSTATE,HNDLR
  D TCPCLOSE
  Q
  ; Wait for connection request, then spawn handler (RGMODE = 0)
-WAIT N X
- R X:10
- D:$T JOB(1,.RGCFG)
+WAIT N X,OK
+ I RGOS D
+ .X "W /WAIT(10)"
+ .S OK=$P($KEY,"|")="CONNECT"
+ E  D
+ .R X:10
+ .S OK=$T
+ D:OK JOB(1,.RGCFG)
  Q
  ; Return temp global root
 TMPGBL() Q $NA(^TMP("RGNETTCP",$J))
@@ -247,7 +251,13 @@ TCPOPEN() ;
  ..S @"$ZINTERRUPT=""I $$JOBEXAM^ZU($ZPOSITION)"""
  ..X "U RGTDEV:(nowrap:nodelimiter:ioerror=""ETRAP2^RGNETTCP"")"
  E  D
- .I 'RGOS D
+ .I RGOS D
+ ..S @"$ZINTERRUPT=""I $$JOBEXAM^ZU($ZPOSITION)"""
+ ..S RGTDEV="SCK$"_RGCFG("port")
+ ..X "O RGTDEV:(zlisten=RGCFG(""port"")_"":TCP"":nowrap:nodelimiter:attach=""server""):5:""socket"""
+ ..S POP='$T
+ ..X:'POP "U RGTDEV W /LISTEN(5)"
+ .E  D
  ..S RGTDEV="|TCP|"_RGCFG("port")
  ..X "O RGTDEV:(:RGCFG(""port""):""ADS""):5"
  ..S POP='$T
