@@ -1,11 +1,11 @@
-KIDS Distribution saved on Jun 09, 2015@11:44:32
+KIDS Distribution saved on Jun 17, 2015@11:46:54
 NETWORK SERVICES 1.0
 **KIDS**:NETWORK SERVICES 1.0^NETSERV CONNECTION MANAGER 1.0^NETSERV WEB SERVER 1.0^NETSERV RPC BROKER 1.0^NETSERV OAUTH2 SERVICE 1.0^
 
 **INSTALL NAME**
 NETWORK SERVICES 1.0
 "BLD",8510,0)
-NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150609^n
+NETWORK SERVICES 1.0^NETWORK SERVICES^1^3150617^n
 "BLD",8510,1,0)
 ^^7^7^3150401.074118
 "BLD",8510,1,1,0)
@@ -23,7 +23,7 @@ NETSERV OATH2 SERVICE      - OAuth 2 implementation.
 "BLD",8510,1,7,0)
 
 "BLD",8510,6.3)
-56
+59
 "BLD",8510,10,0)
 ^9.63^400^4
 "BLD",8510,10,100,0)
@@ -135,9 +135,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150609
+1.0^3150617
 "PKG",225,22,1,1,0)
-^^7^7^3150609
+^^7^7^3150617
 "PKG",225,22,1,1,1,0)
 This is a suite of network services including:
 "PKG",225,22,1,1,2,0)
@@ -229,7 +229,7 @@ D XPZ2^XPDIQ
 **INSTALL NAME**
 NETSERV CONNECTION MANAGER 1.0
 "BLD",8506,0)
-NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150609^n
+NETSERV CONNECTION MANAGER 1.0^NETWORK SERVICES^0^3150617^n
 "BLD",8506,1,0)
 ^^2^2^3150401.074349
 "BLD",8506,1,1,0)
@@ -247,7 +247,7 @@ y^y^f^^^^n^^
 "BLD",8506,4,"B",996.5,996.5)
 
 "BLD",8506,6.3)
-167
+176
 "BLD",8506,"ABPKG")
 n
 "BLD",8506,"KRN",0)
@@ -275,7 +275,7 @@ n
 "BLD",8506,"KRN",9.8,"NM",0)
 ^9.68A^1^1
 "BLD",8506,"KRN",9.8,"NM",1,0)
-RGNETTCP^^0^B87219057
+RGNETTCP^^0^B87266902
 "BLD",8506,"KRN",9.8,"NM","B","RGNETTCP",1)
 
 "BLD",8506,"KRN",19,0)
@@ -375,9 +375,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150609
+1.0^3150617
 "PKG",225,22,1,1,0)
-^^2^2^3150609
+^^2^2^3150617
 "PKG",225,22,1,1,1,0)
 Manages TCP connections for various network services.  Provides concurrent
 "PKG",225,22,1,1,2,0)
@@ -457,11 +457,11 @@ D XPZ2^XPDIQ
 "RTN")
 1
 "RTN","RGNETTCP")
-0^1^B87219057
+0^1^B87266902
 "RTN","RGNETTCP",1,0)
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;08-Jun-2015 15:13;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;17-Jun-2015 09:21;DKM
 "RTN","RGNETTCP",2,0)
- ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 167
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 176
 "RTN","RGNETTCP",3,0)
  ;=================================================================
 "RTN","RGNETTCP",4,0)
@@ -881,7 +881,7 @@ QUIT3() N X
 "RTN","RGNETTCP",211,0)
 STSAVE(ST) ;
 "RTN","RGNETTCP",212,0)
- D SAVE^XUS1
+ D SAVEVAR^%ZIS
 "RTN","RGNETTCP",213,0)
  K @$$TMPGBL@(ST)
 "RTN","RGNETTCP",214,0)
@@ -1337,7 +1337,7 @@ process requests on a given TCP port via the specified handler.
 **INSTALL NAME**
 NETSERV WEB SERVER 1.0
 "BLD",8508,0)
-NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150609^n
+NETSERV WEB SERVER 1.0^NETWORK SERVICES^0^3150617^n
 "BLD",8508,1,0)
 ^^3^3^3150401.074908
 "BLD",8508,1,1,0)
@@ -1377,7 +1377,7 @@ y^y^f^^n^^y^o^n
 "BLD",8508,4,"B",996.522,996.522)
 
 "BLD",8508,6.3)
-167
+176
 "BLD",8508,"ABPKG")
 n
 "BLD",8508,"KRN",0)
@@ -4463,9 +4463,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150609
+1.0^3150617
 "PKG",225,22,1,1,0)
-^^3^3^3150609
+^^3^3^3150617
 "PKG",225,22,1,1,1,0)
 This is an implementation of a Web Server that uses the NETSERV connection
 "PKG",225,22,1,1,2,0)
@@ -4551,7 +4551,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETWRR",1,0)
 RGNETWRR ;RI/CBMI/DKM - Web endpoint for RPC and routine lookup ;01-Apr-2015 11:20;DKM
 "RTN","RGNETWRR",2,0)
- ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 167
+ ;;1.0;RGSERV WEB SERVER;;1-Apr-2015;Build 176
 "RTN","RGNETWRR",3,0)
  ;=================================================================
 "RTN","RGNETWRR",4,0)
@@ -4905,7 +4905,7 @@ ESCAPE(X) ;
 "RTN","RGNETWWW",1,0)
 RGNETWWW ;RI/CBMI/DKM - HTTP support ;28-May-2015 09:34;DKM
 "RTN","RGNETWWW",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 167
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 176
 "RTN","RGNETWWW",3,0)
  ;=================================================================
 "RTN","RGNETWWW",4,0)
@@ -6129,7 +6129,7 @@ correct content type when a file is retrieved.
 **INSTALL NAME**
 NETSERV RPC BROKER 1.0
 "BLD",8509,0)
-NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150609^n
+NETSERV RPC BROKER 1.0^NETWORK SERVICES^0^3150617^n
 "BLD",8509,1,0)
 ^^3^3^3150401.075336
 "BLD",8509,1,1,0)
@@ -6173,7 +6173,7 @@ y^y^f^^^^n
 "BLD",8509,4,"B",996.513,996.513)
 
 "BLD",8509,6.3)
-168
+177
 "BLD",8509,"ABPKG")
 n
 "BLD",8509,"INI")
@@ -6325,7 +6325,7 @@ RGNETBLG^^0^B10216441
 "BLD",8509,"KRN",9.8,"NM",5,0)
 RGNETBRK^^0^B6080317
 "BLD",8509,"KRN",9.8,"NM",6,0)
-RGNETBRP^^0^B62429843
+RGNETBRP^^0^B64590541
 "BLD",8509,"KRN",9.8,"NM",7,0)
 RGNETBUT^^0^B38250970
 "BLD",8509,"KRN",9.8,"NM","B","RGNETBAC",1)
@@ -7289,9 +7289,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150609
+1.0^3150617
 "PKG",225,22,1,1,0)
-^^3^3^3150609
+^^3^3^3150617
 "PKG",225,22,1,1,1,0)
 This is an implementation of a remote procedure call broker that uses the
 "PKG",225,22,1,1,2,0)
@@ -7379,7 +7379,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETBAC",1,0)
 RGNETBAC ;RI/CBMI/DKM - NETSERV RPC Broker Actions;20-May-2015 22:15;AA
 "RTN","RGNETBAC",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBAC",3,0)
  ;=================================================================
 "RTN","RGNETBAC",4,0)
@@ -7667,7 +7667,7 @@ AUTHMETH(UCI) ;
 "RTN","RGNETBAS",1,0)
 RGNETBAS ;RI/CBMI/DKM - Asynchronous RPC calls ;13-Apr-2015 05:33;DKM
 "RTN","RGNETBAS",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBAS",3,0)
  ;=================================================================
 "RTN","RGNETBAS",4,0)
@@ -7795,7 +7795,7 @@ STOPALL N ZTSK
 "RTN","RGNETBEV",1,0)
 RGNETBEV ;RI/CBMI/DKM - Event Support ;19-May-2015 09:09;DKM
 "RTN","RGNETBEV",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBEV",3,0)
  ;=================================================================
 "RTN","RGNETBEV",4,0)
@@ -8337,7 +8337,7 @@ RELATES(EVA,EVB) ;EP
 "RTN","RGNETBIN",1,0)
 RGNETBIN ;RI/CBMI/DKM - NETSERV RPC Broker Inits ;09-Apr-2015 19:22;DKM
 "RTN","RGNETBIN",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBIN",3,0)
  ;=================================================================
 "RTN","RGNETBIN",4,0)
@@ -8363,7 +8363,7 @@ POST N Y
 "RTN","RGNETBLG",1,0)
 RGNETBLG ;RI/CBMI/DKM - NETSERV RPC Broker Activity Log Support ;15-Apr-2015 07:25;DKM
 "RTN","RGNETBLG",2,0)
- ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 168
+ ;;1.0;NETWORK SERVICES;;Jan 3, 2008;Build 177
 "RTN","RGNETBLG",3,0)
  ;=================================================================
 "RTN","RGNETBLG",4,0)
@@ -8549,7 +8549,7 @@ ISACTIVE() ;
 "RTN","RGNETBRK",1,0)
 RGNETBRK ;RI/CBMI/DKM - NETSERV RPC Broker ;08-Jun-2015 10:16;AA
 "RTN","RGNETBRK",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBRK",3,0)
  ;=================================================================
 "RTN","RGNETBRK",4,0)
@@ -8719,11 +8719,11 @@ CTL(X) I $D(RGNETB(X)) N Y S Y=RGNETB(X) K RGNETB(X) Q Y
 "RTN","RGNETBRK",86,0)
  Q ""
 "RTN","RGNETBRP")
-0^6^B62429843
+0^6^B64590541
 "RTN","RGNETBRP",1,0)
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;20-May-2015 23:04;AA
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;16-Jun-2015 21:51;DKM
 "RTN","RGNETBRP",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBRP",3,0)
  ;=================================================================
 "RTN","RGNETBRP",4,0)
@@ -8869,409 +8869,421 @@ CVC(DATA,OLD,NEW) ;
 "RTN","RGNETBRP",74,0)
  Q
 "RTN","RGNETBRP",75,0)
- ; RPC: Get division list
+ ; RPC: Get division list and default
 "RTN","RGNETBRP",76,0)
 DIVGET(DATA) ;
 "RTN","RGNETBRP",77,0)
- N X,P,G
+ N DIV,DEF,PRI,GBL,USR
 "RTN","RGNETBRP",78,0)
- S X=0,G=$S(DUZ:$NA(^VA(200,DUZ,2)),1:$NA(^DG(40.8,"AD"))),P=0
+ S (DIV,PRI)=0,USR=+$G(DUZ),GBL=$S(USR:$NA(^VA(200,USR,2)),1:$NA(^DG(40.8,"AD")))
 "RTN","RGNETBRP",79,0)
- F  S X=$O(@G@(X)) Q:'X  S:DUZ P=$P(^(X,0),U,2) D
+ S DEF=+$S(USR:$G(DUZ(2)),1:$P($G(^XTV(8989.3,1,"XUS")),U,17))
 "RTN","RGNETBRP",80,0)
- .N X0,X99
+ F  S DIV=$O(@GBL@(DIV)) Q:'DIV  S:USR PRI=$P(^(DIV,0),U,2) D
 "RTN","RGNETBRP",81,0)
- .S X0=$G(^DIC(4,X,0)),X99=$G(^(99))
+ .S DATA(DIV)=$$DIVINFO(DIV)
 "RTN","RGNETBRP",82,0)
- .S DATA(X)=X_U_$P(X0,U)_U_$P(X99,U)_U_$P(X0,U,5)
+ .S:PRI DEF=DIV
 "RTN","RGNETBRP",83,0)
- .S:P DATA(0)=X
+ S:'DEF DEF=+$O(DATA(0))
 "RTN","RGNETBRP",84,0)
- S:'$D(DATA(0)) DATA(0)=+$O(DATA(0))
+ I DEF,'$D(DATA(DEF)) S DATA(DEF)=$$DIVINFO(DEF)
 "RTN","RGNETBRP",85,0)
- I 'DATA(0),$G(DUZ(2)) S DATA(0)=DUZ(2),DATA(DUZ(2))=DUZ(2)_U_$$NS^XUAF4(DUZ(2))
+ S DATA(0)=DEF
 "RTN","RGNETBRP",86,0)
- D:DATA(0) DIVSET(,DATA(0))
+ D:DEF DIVSET(,DIV)
 "RTN","RGNETBRP",87,0)
  Q
 "RTN","RGNETBRP",88,0)
- ; RPC: Set division
+ ; Return division info as
 "RTN","RGNETBRP",89,0)
-DIVSET(DATA,DIV) ;
+ ; IEN ^ NAME ^ STATION # ^ SHORT NAME
 "RTN","RGNETBRP",90,0)
- S DUZ(2)=+DIV,DATA=1
+DIVINFO(DIV) ;
 "RTN","RGNETBRP",91,0)
- D SETVAR^RGNETBUT("DUZ2",DUZ(2))
+ N X0,X99
 "RTN","RGNETBRP",92,0)
- D SETVAR^RGNETBUT("DUZ(2)",DUZ(2),-1)
+ S X0=$G(^DIC(4,DIV,0)),X99=$G(^(99))
 "RTN","RGNETBRP",93,0)
- Q
+ Q DIV_U_$P(X0,U)_U_$P(X99,U)_U_$P(X0,U,5)
 "RTN","RGNETBRP",94,0)
- ; RPC: Get dialog text
+ ; RPC: Set division
 "RTN","RGNETBRP",95,0)
-DIALOG(DATA,DLG,P1,P2,P3) ;
+DIVSET(DATA,DIV) ;
 "RTN","RGNETBRP",96,0)
- D GETDLG^RGNETBUT(DLG,.DATA,.P1,.P2,.P3)
+ S DUZ(2)=+DIV,DATA=1
 "RTN","RGNETBRP",97,0)
- Q
+ D SETVAR^RGNETBUT("DUZ2",DUZ(2))
 "RTN","RGNETBRP",98,0)
- ; RPC: Reset session
+ D SETVAR^RGNETBUT("DUZ(2)",DUZ(2),-1)
 "RTN","RGNETBRP",99,0)
-RESET(LOGIN) ;
+ Q
 "RTN","RGNETBRP",100,0)
- Q:'$G(RGNETB("UID"))
+ ; RPC: Get dialog text
 "RTN","RGNETBRP",101,0)
- D STOPALL^RGNETBAS,UNSUBALL^RGNETBEV
+DIALOG(DATA,DLG,P1,P2,P3) ;
 "RTN","RGNETBRP",102,0)
- S LOGIN=+$G(LOGIN)
+ D GETDLG^RGNETBUT(DLG,.DATA,.P1,.P2,.P3)
 "RTN","RGNETBRP",103,0)
- N DUZ2
+ Q
 "RTN","RGNETBRP",104,0)
- S DUZ2=$$GETVAR^RGNETBUT("DUZ2")
+ ; RPC: Reset session
 "RTN","RGNETBRP",105,0)
- I 'LOGIN D
+RESET(LOGIN) ;
 "RTN","RGNETBRP",106,0)
- .D CLOSE^RGNETBLG($$GETVAR^RGNETBUT("ALOG"_$S(DUZ2:":"_DUZ2,1:"")))
+ Q:'$G(RGNETB("UID"))
 "RTN","RGNETBRP",107,0)
- .S IO("IP")=$$GETVAR^RGNETBUT("WIP")
+ D STOPALL^RGNETBAS,UNSUBALL^RGNETBEV
 "RTN","RGNETBRP",108,0)
- .D BRDCAST^RGNETBEV("LOGOUT",$$SESSION^RGNETBUT)
+ S LOGIN=+$G(LOGIN)
 "RTN","RGNETBRP",109,0)
- .K ^XTMP("RGNETB",RGNETB("UID"))
+ N DUZ2
 "RTN","RGNETBRP",110,0)
- .L -^XTMP("RGNETB",RGNETB("UID"),0)
+ S DUZ2=$$GETVAR^RGNETBUT("DUZ2")
 "RTN","RGNETBRP",111,0)
- .D BYE^XUSCLEAN
+ I 'LOGIN D
 "RTN","RGNETBRP",112,0)
- E  D
+ .D CLOSE^RGNETBLG($$GETVAR^RGNETBUT("ALOG"_$S(DUZ2:":"_DUZ2,1:"")))
 "RTN","RGNETBRP",113,0)
- .N ENV,X,Y,V
-"RTN","RGNETBRP",114,0)
- .K ^XTMP("RGNETB",RGNETB("UID"))
-"RTN","RGNETBRP",115,0)
- .F ENV=0:1 S X=$P($T(ENVDATA+ENV),";;",2) Q:'$L(X)  D
-"RTN","RGNETBRP",116,0)
- ..S V=$P(X,";",2),@("Y="_V)
-"RTN","RGNETBRP",117,0)
- ..D SETVAR^RGNETBUT($P(X,";"),Y)
-"RTN","RGNETBRP",118,0)
- ..D:$P(X,";",3) SETVAR^RGNETBUT(V,Y,-1)
-"RTN","RGNETBRP",119,0)
- .D BRDCAST^RGNETBEV("LOGIN",$$SESSION^RGNETBUT)
-"RTN","RGNETBRP",120,0)
  .S IO("IP")=$$GETVAR^RGNETBUT("WIP")
+"RTN","RGNETBRP",114,0)
+ .D BRDCAST^RGNETBEV("LOGOUT",$$SESSION^RGNETBUT)
+"RTN","RGNETBRP",115,0)
+ .K ^XTMP("RGNETB",RGNETB("UID"))
+"RTN","RGNETBRP",116,0)
+ .L -^XTMP("RGNETB",RGNETB("UID"),0)
+"RTN","RGNETBRP",117,0)
+ .D BYE^XUSCLEAN
+"RTN","RGNETBRP",118,0)
+ E  D
+"RTN","RGNETBRP",119,0)
+ .N ENV,X,Y,V
+"RTN","RGNETBRP",120,0)
+ .K ^XTMP("RGNETB",RGNETB("UID"))
 "RTN","RGNETBRP",121,0)
- .I $$ISACTIVE^RGNETBLG
+ .F ENV=0:1 S X=$P($T(ENVDATA+ENV),";;",2) Q:'$L(X)  D
 "RTN","RGNETBRP",122,0)
- .D LOG^XUS1                                                           ;creates handle with client agent
+ ..S V=$P(X,";",2),@("Y="_V)
 "RTN","RGNETBRP",123,0)
- Q
+ ..D SETVAR^RGNETBUT($P(X,";"),Y)
 "RTN","RGNETBRP",124,0)
- ; Environment data to save
+ ..D:$P(X,";",3) SETVAR^RGNETBUT(V,Y,-1)
 "RTN","RGNETBRP",125,0)
- ;;Name;Value;Local
+ .D BRDCAST^RGNETBEV("LOGIN",$$SESSION^RGNETBUT)
 "RTN","RGNETBRP",126,0)
-ENVDATA ;;DUZ;DUZ
+ .S IO("IP")=$$GETVAR^RGNETBUT("WIP")
 "RTN","RGNETBRP",127,0)
- ;;DUZ0;DUZ(0);1
+ .I $$ISACTIVE^RGNETBLG
 "RTN","RGNETBRP",128,0)
- ;;DUZ2;DUZ(2);1
+ .D LOG^XUS1                                                           ;creates handle with client agent
 "RTN","RGNETBRP",129,0)
- ;;USER;$P($G(^VA(200,DUZ,0)),U)
+ Q
 "RTN","RGNETBRP",130,0)
- ;;RDEV;$$RESDEV^RGNETBUT
+ ; Environment data to save
 "RTN","RGNETBRP",131,0)
- ;;LDT;$H
+ ;;Name;Value;Local
 "RTN","RGNETBRP",132,0)
- ;;JOB;$J
+ENVDATA ;;DUZ;DUZ
 "RTN","RGNETBRP",133,0)
- ;;AID;AID
+ ;;DUZ0;DUZ(0);1
 "RTN","RGNETBRP",134,0)
- ;;AID0;AID(0)
+ ;;DUZ2;DUZ(2);1
 "RTN","RGNETBRP",135,0)
- ;;WID;WID
+ ;;USER;$P($G(^VA(200,DUZ,0)),U)
 "RTN","RGNETBRP",136,0)
- ;;WIP;WIP
+ ;;RDEV;$$RESDEV^RGNETBUT
 "RTN","RGNETBRP",137,0)
- ;;UID;RGNETB("UID")
+ ;;LDT;$H
 "RTN","RGNETBRP",138,0)
- ;;
+ ;;JOB;$J
 "RTN","RGNETBRP",139,0)
- ; Check error code
+ ;;AID;AID
 "RTN","RGNETBRP",140,0)
-CHK(ERR,RTN,P1,P2,P3) ;
+ ;;AID0;AID(0)
 "RTN","RGNETBRP",141,0)
- I ERR S DATA(0)=RTN_U_$S(ERR<0:$$TXT^XUS3(-ERR),1:$$GETDLG^RGNETBUT(ERR,,.P1,.P2,.P3)) S:RTN>1 DUZ=0
+ ;;WID;WID
 "RTN","RGNETBRP",142,0)
- Q ERR
+ ;;WIP;WIP
 "RTN","RGNETBRP",143,0)
- ; Attempt autoauthenticate using SID
+ ;;UID;RGNETB("UID")
 "RTN","RGNETBRP",144,0)
- ; Returns DUZ if SID has been authenticated, 0 if prohibited from
+ ;;
 "RTN","RGNETBRP",145,0)
- ; being authenticated, or null if never been authenticated.
+ ; Check error code
 "RTN","RGNETBRP",146,0)
-AUTOLOG(SID) ;
+CHK(ERR,RTN,P1,P2,P3) ;
 "RTN","RGNETBRP",147,0)
- S SID=$S($L($G(SID))<3:"",1:$$DECRYP^XUSRB1(SID))
+ I ERR S DATA(0)=RTN_U_$S(ERR<0:$$TXT^XUS3(-ERR),1:$$GETDLG^RGNETBUT(ERR,,.P1,.P2,.P3)) S:RTN>1 DUZ=0
 "RTN","RGNETBRP",148,0)
- Q:$E(SID,1,9)'="S-1-5-21-" 0
+ Q ERR
 "RTN","RGNETBRP",149,0)
- S SID=$E(SID,10,999)
+ ; Attempt autoauthenticate using SID
 "RTN","RGNETBRP",150,0)
- Q:SID<1000 0
+ ; Returns DUZ if SID has been authenticated, 0 if prohibited from
 "RTN","RGNETBRP",151,0)
- N X
+ ; being authenticated, or null if never been authenticated.
 "RTN","RGNETBRP",152,0)
- S X=$$FIND1^DIC(996.513,"","QX",SID)
+AUTOLOG(SID) ;
 "RTN","RGNETBRP",153,0)
- Q $S(X:+$P($G(^RGNET(996.513,X,0)),U,2),1:"")
+ S SID=$S($L($G(SID))<3:"",1:$$DECRYP^XUSRB1(SID))
 "RTN","RGNETBRP",154,0)
- ; Cache NT authentication information
+ Q:$E(SID,1,9)'="S-1-5-21-" 0
 "RTN","RGNETBRP",155,0)
-AUTOSET(SID) ;
+ S SID=$E(SID,10,999)
 "RTN","RGNETBRP",156,0)
- Q:$$AUTOLOG(.SID)'=""
+ Q:SID<1000 0
 "RTN","RGNETBRP",157,0)
- N FLD
-"RTN","RGNETBRP",158,0)
- S FLD(996.513,"+1,",.01)=SID
-"RTN","RGNETBRP",159,0)
- S FLD(996.513,"+1,",1)=DUZ
-"RTN","RGNETBRP",160,0)
- S FLD(996.513,"+1,",2)=$$NOW^XLFDT
-"RTN","RGNETBRP",161,0)
- D UPDATE^DIE("","FLD")
-"RTN","RGNETBRP",162,0)
- Q
-"RTN","RGNETBRP",163,0)
- ; RPC: Get list of active RPCs
-"RTN","RGNETBRP",164,0)
-GETRPCS(DATA) ;
-"RTN","RGNETBRP",165,0)
  N X
+"RTN","RGNETBRP",158,0)
+ S X=$$FIND1^DIC(996.513,"","QX",SID)
+"RTN","RGNETBRP",159,0)
+ Q $S(X:+$P($G(^RGNET(996.513,X,0)),U,2),1:"")
+"RTN","RGNETBRP",160,0)
+ ; Cache NT authentication information
+"RTN","RGNETBRP",161,0)
+AUTOSET(SID) ;
+"RTN","RGNETBRP",162,0)
+ Q:$$AUTOLOG(.SID)'=""
+"RTN","RGNETBRP",163,0)
+ N FLD
+"RTN","RGNETBRP",164,0)
+ S FLD(996.513,"+1,",.01)=SID
+"RTN","RGNETBRP",165,0)
+ S FLD(996.513,"+1,",1)=DUZ
 "RTN","RGNETBRP",166,0)
- D LIST^DIC(8994,,".01","Q",,,,,"I ""03""[$P(^(0),U,6)",,.DATA)
+ S FLD(996.513,"+1,",2)=$$NOW^XLFDT
 "RTN","RGNETBRP",167,0)
- S X=""
+ D UPDATE^DIE("","FLD")
 "RTN","RGNETBRP",168,0)
- F  S X=$O(@DATA@(X)) Q:'$L(X)  K:X'="ID" @DATA@(X)
+ Q
 "RTN","RGNETBRP",169,0)
- Q
+ ; RPC: Get list of active RPCs
 "RTN","RGNETBRP",170,0)
- ; RPC: Can RPC be executed in current context
+GETRPCS(DATA) ;
 "RTN","RGNETBRP",171,0)
-CANRUN(DATA,RPC) ;
+ N X
 "RTN","RGNETBRP",172,0)
- S DATA=$$CANRUN^RGNETBAC($$FIND1^DIC(8994,,"QX",RPC),RGNETB("CTX"))
+ D LIST^DIC(8994,,".01","Q",,,,,"I ""03""[$P(^(0),U,6)",,.DATA)
 "RTN","RGNETBRP",173,0)
- Q
+ S X=""
 "RTN","RGNETBRP",174,0)
- ; RPC: Retrieve list of active sessions
+ F  S X=$O(@DATA@(X)) Q:'$L(X)  K:X'="ID" @DATA@(X)
 "RTN","RGNETBRP",175,0)
-GETSESSN(DATA,VAR,AID) ;
+ Q
 "RTN","RGNETBRP",176,0)
- N X,Z,C
+ ; RPC: Can RPC be executed in current context
 "RTN","RGNETBRP",177,0)
- S DATA=$$TMPGBL
+CANRUN(DATA,RPC) ;
 "RTN","RGNETBRP",178,0)
- F C=1:1 Q:'$$NXTUID^RGNETBUT(.X,,.AID)  S @DATA@(C)=$$SESSION^RGNETBUT(X,.VAR)
+ S DATA=$$CANRUN^RGNETBAC($$FIND1^DIC(8994,,"QX",RPC),RGNETB("CTX"))
 "RTN","RGNETBRP",179,0)
  Q
 "RTN","RGNETBRP",180,0)
- ; RPC: Get stored variable(s)
+ ; RPC: Retrieve list of active sessions
 "RTN","RGNETBRP",181,0)
-GETVAR(DATA,LIST,NMSP) ;
+GETSESSN(DATA,VAR,AID) ;
 "RTN","RGNETBRP",182,0)
- N CNT
+ N X,Z,C
 "RTN","RGNETBRP",183,0)
- S:$L($G(LIST)) LIST(-99)=LIST
+ S DATA=$$TMPGBL
 "RTN","RGNETBRP",184,0)
- S LIST="",CNT=0
+ F C=1:1 Q:'$$NXTUID^RGNETBUT(.X,,.AID)  S @DATA@(C)=$$SESSION^RGNETBUT(X,.VAR)
 "RTN","RGNETBRP",185,0)
- S:0[$G(NMSP) NMSP="@"
+ Q
 "RTN","RGNETBRP",186,0)
- F  S LIST=$O(LIST(LIST)) Q:'$L(LIST)  D
+ ; RPC: Get stored variable(s)
 "RTN","RGNETBRP",187,0)
- .S CNT=CNT+1,DATA(CNT)=LIST(LIST)_"="_$$GETVAR^RGNETBUT(LIST(LIST),,NMSP)
+GETVAR(DATA,LIST,NMSP) ;
 "RTN","RGNETBRP",188,0)
- Q
+ N CNT
 "RTN","RGNETBRP",189,0)
- ; RPC: Set stored variable(s)
-"RTN","RGNETBRP",190,0)
-SETVAR(DATA,LIST,NMSP,RESET) ;
-"RTN","RGNETBRP",191,0)
  S:$L($G(LIST)) LIST(-99)=LIST
-"RTN","RGNETBRP",192,0)
- S LIST="",DATA=0
-"RTN","RGNETBRP",193,0)
+"RTN","RGNETBRP",190,0)
+ S LIST="",CNT=0
+"RTN","RGNETBRP",191,0)
  S:0[$G(NMSP) NMSP="@"
-"RTN","RGNETBRP",194,0)
- D:$G(RESET) CLRVAR^RGNETBUT(NMSP)
-"RTN","RGNETBRP",195,0)
+"RTN","RGNETBRP",192,0)
  F  S LIST=$O(LIST(LIST)) Q:'$L(LIST)  D
+"RTN","RGNETBRP",193,0)
+ .S CNT=CNT+1,DATA(CNT)=LIST(LIST)_"="_$$GETVAR^RGNETBUT(LIST(LIST),,NMSP)
+"RTN","RGNETBRP",194,0)
+ Q
+"RTN","RGNETBRP",195,0)
+ ; RPC: Set stored variable(s)
 "RTN","RGNETBRP",196,0)
- .S DATA=DATA+1
+SETVAR(DATA,LIST,NMSP,RESET) ;
 "RTN","RGNETBRP",197,0)
- .D SETVAR^RGNETBUT($P(LIST(LIST),"="),$P(LIST(LIST),"=",2,9999),NMSP)
+ S:$L($G(LIST)) LIST(-99)=LIST
 "RTN","RGNETBRP",198,0)
- Q
+ S LIST="",DATA=0
 "RTN","RGNETBRP",199,0)
- ; RPC: Get requested session info
+ S:0[$G(NMSP) NMSP="@"
 "RTN","RGNETBRP",200,0)
- ; TYPE = 0=subscriptions, 1=local vars, 2=session vars, 3=locks, 4=pending async RPCs
+ D:$G(RESET) CLRVAR^RGNETBUT(NMSP)
 "RTN","RGNETBRP",201,0)
- ; UID  = Session ID (defaults to current session)
+ F  S LIST=$O(LIST(LIST)) Q:'$L(LIST)  D
 "RTN","RGNETBRP",202,0)
-GETINFO(DATA,TYPE,UID) ;
+ .S DATA=DATA+1
 "RTN","RGNETBRP",203,0)
- S UID=$G(UID,$G(RGNETB("UID")))
+ .D SETVAR^RGNETBUT($P(LIST(LIST),"="),$P(LIST(LIST),"=",2,9999),NMSP)
 "RTN","RGNETBRP",204,0)
- I TYPE=0 D  Q
+ Q
 "RTN","RGNETBRP",205,0)
- .N EV,CN
+ ; RPC: Get requested session info
 "RTN","RGNETBRP",206,0)
- .S EV="",CN=0
+ ; TYPE = 0=subscriptions, 1=local vars, 2=session vars, 3=locks, 4=pending async RPCs
 "RTN","RGNETBRP",207,0)
- .F  S EV=$O(^XTMP("RGNETB",UID,"S",EV)) Q:'$L(EV)  D
+ ; UID  = Session ID (defaults to current session)
 "RTN","RGNETBRP",208,0)
- ..S CN=CN+1,@DATA@(CN)=EV
+GETINFO(DATA,TYPE,UID) ;
 "RTN","RGNETBRP",209,0)
- I TYPE=1 D  Q
+ S UID=$G(UID,$G(RGNETB("UID")))
 "RTN","RGNETBRP",210,0)
- .D CAPTURE^RGUTHFS("ZWRITE  N X F X=""$ET"",""$EC"",""$ES"",""$J"",""$ZE"",""$ZT"" W !,X,""="",@X",DATA,99999)
+ I TYPE=0 D  Q
 "RTN","RGNETBRP",211,0)
- I TYPE=2 D  Q
+ .N EV,CN
 "RTN","RGNETBRP",212,0)
- .N NS,VN,VL,CN
+ .S EV="",CN=0
 "RTN","RGNETBRP",213,0)
- .S NS="",CN=0
+ .F  S EV=$O(^XTMP("RGNETB",UID,"S",EV)) Q:'$L(EV)  D
 "RTN","RGNETBRP",214,0)
- .F  S NS=$O(^XTMP("RGNETB",UID,"V",NS)),VN="" Q:'$L(NS)  D
+ ..S CN=CN+1,@DATA@(CN)=EV
 "RTN","RGNETBRP",215,0)
- ..F  S VN=$O(^XTMP("RGNETB",UID,"V",NS,VN)) Q:'$L(VN)  S VL=$G(^(VN)) D
+ I TYPE=1 D  Q
 "RTN","RGNETBRP",216,0)
- ...S CN=CN+1,@DATA@(CN)=$S(NS=0:"<default>",NS=-1:"<mapped>",1:NS)_U_VN_U_VL
+ .D CAPTURE^RGUTHFS("ZWRITE  N X F X=""$ET"",""$EC"",""$ES"",""$J"",""$ZE"",""$ZT"" W !,X,""="",@X",DATA,99999)
 "RTN","RGNETBRP",217,0)
- I TYPE=3 D  Q
+ I TYPE=2 D  Q
 "RTN","RGNETBRP",218,0)
- .N GBL,CN,VL
+ .N NS,VN,VL,CN
 "RTN","RGNETBRP",219,0)
- .S GBL="",CN=0
+ .S NS="",CN=0
 "RTN","RGNETBRP",220,0)
- .F  S GBL=$O(^XTMP("RGNETB",UID,"L",GBL)) Q:'$L(GBL)  S VL=$G(^(GBL)) D
+ .F  S NS=$O(^XTMP("RGNETB",UID,"V",NS)),VN="" Q:'$L(NS)  D
 "RTN","RGNETBRP",221,0)
- ..S CN=CN+1,@DATA@(CN)=$TR(GBL,U,"~")_U_VL
+ ..F  S VN=$O(^XTMP("RGNETB",UID,"V",NS,VN)) Q:'$L(VN)  S VL=$G(^(VN)) D
 "RTN","RGNETBRP",222,0)
- I TYPE=4 D  Q
+ ...S CN=CN+1,@DATA@(CN)=$S(NS=0:"<default>",NS=-1:"<mapped>",1:NS)_U_VN_U_VL
 "RTN","RGNETBRP",223,0)
- .N TSK,CN
+ I TYPE=3 D  Q
 "RTN","RGNETBRP",224,0)
- .S (TSK,CN)=0
+ .N GBL,CN,VL
 "RTN","RGNETBRP",225,0)
- .F  S TSK=$O(^XTMP("RGNETB",UID,"T",TSK)) Q:'TSK  D
+ .S GBL="",CN=0
 "RTN","RGNETBRP",226,0)
- ..S CN=CN+1,@DATA@(CN)=TSK_U_$G(^%ZTSK(TSK,.03),"Unknown")
+ .F  S GBL=$O(^XTMP("RGNETB",UID,"L",GBL)) Q:'$L(GBL)  S VL=$G(^(GBL)) D
 "RTN","RGNETBRP",227,0)
- S @DATA@(1)="Unknown request type: "_TYPE
+ ..S CN=CN+1,@DATA@(CN)=$TR(GBL,U,"~")_U_VL
 "RTN","RGNETBRP",228,0)
- Q
+ I TYPE=4 D  Q
 "RTN","RGNETBRP",229,0)
- ; Lock/unlock global reference
+ .N TSK,CN
 "RTN","RGNETBRP",230,0)
- ; GBL  = Global reference
+ .S (TSK,CN)=0
 "RTN","RGNETBRP",231,0)
- ; OPR  = Operation to perform:
+ .F  S TSK=$O(^XTMP("RGNETB",UID,"T",TSK)) Q:'TSK  D
 "RTN","RGNETBRP",232,0)
- ;        >=0: Value is timeout for lock operation.  Returns success.
+ ..S CN=CN+1,@DATA@(CN)=TSK_U_$G(^%ZTSK(TSK,.03),"Unknown")
 "RTN","RGNETBRP",233,0)
- ;         <0: Returns # of active locks for node.
+ S @DATA@(1)="Unknown request type: "_TYPE
 "RTN","RGNETBRP",234,0)
- ;    missing: Performs unlock operation.  Returns success.
+ Q
 "RTN","RGNETBRP",235,0)
- ; DATA = Returns status according to value of OPR.
+ ; Lock/unlock global reference
 "RTN","RGNETBRP",236,0)
-LOCK(DATA,GBL,OPR) ;
+ ; GBL  = Global reference
 "RTN","RGNETBRP",237,0)
- N LCK
+ ; OPR  = Operation to perform:
 "RTN","RGNETBRP",238,0)
- S LCK=$D(OPR),OPR=+$G(OPR),GBL=$NA(@GBL)
+ ;        >=0: Value is timeout for lock operation.  Returns success.
 "RTN","RGNETBRP",239,0)
- I OPR<0 S DATA=$$LOCKCNT(GBL)
+ ;         <0: Returns # of active locks for node.
 "RTN","RGNETBRP",240,0)
- E  I LCK D
+ ;    missing: Performs unlock operation.  Returns success.
 "RTN","RGNETBRP",241,0)
- .L +@GBL:OPR
+ ; DATA = Returns status according to value of OPR.
 "RTN","RGNETBRP",242,0)
- .S DATA=$T
+LOCK(DATA,GBL,OPR) ;
 "RTN","RGNETBRP",243,0)
- .I DATA,$$LOCKCNT(GBL,1)
+ N LCK
 "RTN","RGNETBRP",244,0)
- E  D
+ S LCK=$D(OPR),OPR=+$G(OPR),GBL=$NA(@GBL)
 "RTN","RGNETBRP",245,0)
- .S DATA=''$$LOCKCNT(GBL,-1)
+ I OPR<0 S DATA=$$LOCKCNT(GBL)
 "RTN","RGNETBRP",246,0)
- .L:DATA -@GBL
+ E  I LCK D
 "RTN","RGNETBRP",247,0)
- Q
+ .L +@GBL:OPR
 "RTN","RGNETBRP",248,0)
- ; RPC: Restore locks (after reconnect)
+ .S DATA=$T
 "RTN","RGNETBRP",249,0)
- ; Data returns list of locks that could not be restored.
+ .I DATA,$$LOCKCNT(GBL,1)
 "RTN","RGNETBRP",250,0)
-LOCKRES(DATA) ;
+ E  D
 "RTN","RGNETBRP",251,0)
- N GBL,CNT,X
+ .S DATA=''$$LOCKCNT(GBL,-1)
 "RTN","RGNETBRP",252,0)
- S GBL="",X=0
+ .L:DATA -@GBL
 "RTN","RGNETBRP",253,0)
- F  S GBL=$O(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)) Q:'$L(GBL)  S CNT=+$G(^(GBL))  D
+ Q
 "RTN","RGNETBRP",254,0)
- .F CNT=CNT:-1:1 L +@GBL:1 E  D  Q
+ ; RPC: Restore locks (after reconnect)
 "RTN","RGNETBRP",255,0)
- ..S X=X+1,@DATA@(X)=GBL
+ ; Data returns list of locks that could not be restored.
 "RTN","RGNETBRP",256,0)
- ..K ^XTMP("RGNETB",RGNETB("UID"),"L",GBL)
+LOCKRES(DATA) ;
 "RTN","RGNETBRP",257,0)
- Q
+ N GBL,CNT,X
 "RTN","RGNETBRP",258,0)
- ; Return lock count.  Optionally increment/decrement afterwards.
+ S GBL="",X=0
 "RTN","RGNETBRP",259,0)
- ; Note use of naked reference.
+ F  S GBL=$O(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)) Q:'$L(GBL)  S CNT=+$G(^(GBL))  D
 "RTN","RGNETBRP",260,0)
-LOCKCNT(GBL,INC) ;
+ .F CNT=CNT:-1:1 L +@GBL:1 E  D  Q
 "RTN","RGNETBRP",261,0)
- N X,Y
+ ..S X=X+1,@DATA@(X)=GBL
 "RTN","RGNETBRP",262,0)
- S X=+$G(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)),Y=X+$G(INC)                  ; Sets naked reference
+ ..K ^XTMP("RGNETB",RGNETB("UID"),"L",GBL)
 "RTN","RGNETBRP",263,0)
- I Y>0 S ^(GBL)=Y
-"RTN","RGNETBRP",264,0)
- E  K ^(GBL)
-"RTN","RGNETBRP",265,0)
- Q X
-"RTN","RGNETBRP",266,0)
- ; RPC: Process an HTTP request via broker call
-"RTN","RGNETBRP",267,0)
-HTTPREQ(DATA,REQUEST) ;
-"RTN","RGNETBRP",268,0)
- S:$D(REQUEST)=1 REQUEST(1)=REQUEST
-"RTN","RGNETBRP",269,0)
- S DATA=$$ENTRYARY^RGNETWWW(.REQUEST)
-"RTN","RGNETBRP",270,0)
  Q
+"RTN","RGNETBRP",264,0)
+ ; Return lock count.  Optionally increment/decrement afterwards.
+"RTN","RGNETBRP",265,0)
+ ; Note use of naked reference.
+"RTN","RGNETBRP",266,0)
+LOCKCNT(GBL,INC) ;
+"RTN","RGNETBRP",267,0)
+ N X,Y
+"RTN","RGNETBRP",268,0)
+ S X=+$G(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)),Y=X+$G(INC)            ; Sets naked reference
+"RTN","RGNETBRP",269,0)
+ I Y>0 S ^(GBL)=Y
+"RTN","RGNETBRP",270,0)
+ E  K ^(GBL)
 "RTN","RGNETBRP",271,0)
- ; Get temp global reference
+ Q X
 "RTN","RGNETBRP",272,0)
-TMPGBL(X) ;
+ ; RPC: Process an HTTP request via broker call
 "RTN","RGNETBRP",273,0)
+HTTPREQ(DATA,REQUEST) ;
+"RTN","RGNETBRP",274,0)
+ S:$D(REQUEST)=1 REQUEST(1)=REQUEST
+"RTN","RGNETBRP",275,0)
+ S DATA=$$ENTRYARY^RGNETWWW(.REQUEST)
+"RTN","RGNETBRP",276,0)
+ Q
+"RTN","RGNETBRP",277,0)
+ ; Get temp global reference
+"RTN","RGNETBRP",278,0)
+TMPGBL(X) ;
+"RTN","RGNETBRP",279,0)
  K ^TMP("RGNETBTMP"_$G(X),$J) Q $NA(^($J))
 "RTN","RGNETBUT")
 0^7^B38250970
 "RTN","RGNETBUT",1,0)
 RGNETBUT ;RI/CBMI/DKM - NETSERV RPC Broker Utilities ;01-Apr-2015 14:12;DKM
 "RTN","RGNETBUT",2,0)
- ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 168
+ ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 177
 "RTN","RGNETBUT",3,0)
  ;=================================================================
 "RTN","RGNETBUT",4,0)
@@ -10431,7 +10443,7 @@ NETSERV BROKER AUTHENTICATION^996.513
 **INSTALL NAME**
 NETSERV OAUTH2 SERVICE 1.0
 "BLD",8511,0)
-NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150609^n
+NETSERV OAUTH2 SERVICE 1.0^NETWORK SERVICES^0^3150617^n
 "BLD",8511,1,0)
 ^^2^2^3150401.080059
 "BLD",8511,1,1,0)
@@ -10455,7 +10467,7 @@ y^y^f^^^^n
 "BLD",8511,4,"B",996.53,996.53)
 
 "BLD",8511,6.3)
-167
+176
 "BLD",8511,"ABPKG")
 n
 "BLD",8511,"KRN",0)
@@ -10633,9 +10645,9 @@ NETWORK SERVICES^RGNE^Network services
 "PKG",225,22,0)
 ^9.49I^1^1
 "PKG",225,22,1,0)
-1.0^3150609
+1.0^3150617
 "PKG",225,22,1,1,0)
-^^2^2^3150609
+^^2^2^3150617
 "PKG",225,22,1,1,1,0)
 Provides an implementation of the OAuth 2 authentication protocol using the
 "PKG",225,22,1,1,2,0)
@@ -10719,7 +10731,7 @@ D XPZ2^XPDIQ
 "RTN","RGNETOA",1,0)
 RGNETOA ;RI/CBMI/DKM - OAuth2 Support ;17-Apr-2015 12:41;DKM
 "RTN","RGNETOA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 167
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 176
 "RTN","RGNETOA",3,0)
  ;=================================================================
 "RTN","RGNETOA",4,0)
@@ -10873,7 +10885,7 @@ PUT(PN,VL,PF) ;
 "RTN","RGNETOAA",1,0)
 RGNETOAA ;RI/CBMI/DKM - OAuth2 Authorization Endpoint ;17-Apr-2015 12:34;DKM
 "RTN","RGNETOAA",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 167
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 176
 "RTN","RGNETOAA",3,0)
  ;=================================================================
 "RTN","RGNETOAA",4,0)
@@ -10977,7 +10989,7 @@ VALIDRDU() ;
 "RTN","RGNETOAT",1,0)
 RGNETOAT ;RI/CBMI/DKM - OAuth2 Token Endpoint ;17-Apr-2015 12:37;DKM
 "RTN","RGNETOAT",2,0)
- ;;1.0;NETWORK SERVICES;;14-March-2014;Build 167
+ ;;1.0;NETWORK SERVICES;;14-March-2014;Build 176
 "RTN","RGNETOAT",3,0)
  ;=================================================================
 "RTN","RGNETOAT",4,0)

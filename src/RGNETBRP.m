@@ -1,4 +1,4 @@
-RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;20-May-2015 23:04;AA
+RGNETBRP ;RI/CBMI/DKM - NETSERV RPC Broker Privileged RPCs;16-Jun-2015 21:51;DKM
  ;;1.0;NETWORK SERVICES;;01-Apr-2015;Build 133
  ;=================================================================
  ; RPC: User authentication
@@ -72,19 +72,25 @@ CVC(DATA,OLD,NEW) ;
  S DATA=$$BRCVC^XUS2($$DECRYP^XUSRB1(OLD),$$DECRYP^XUSRB1(NEW))
  S:'DATA DATA="0^Your verify code has been changed."
  Q
- ; RPC: Get division list
+ ; RPC: Get division list and default
 DIVGET(DATA) ;
- N X,P,G
- S X=0,G=$S(DUZ:$NA(^VA(200,DUZ,2)),1:$NA(^DG(40.8,"AD"))),P=0
- F  S X=$O(@G@(X)) Q:'X  S:DUZ P=$P(^(X,0),U,2) D
- .N X0,X99
- .S X0=$G(^DIC(4,X,0)),X99=$G(^(99))
- .S DATA(X)=X_U_$P(X0,U)_U_$P(X99,U)_U_$P(X0,U,5)
- .S:P DATA(0)=X
- S:'$D(DATA(0)) DATA(0)=+$O(DATA(0))
- I 'DATA(0),$G(DUZ(2)) S DATA(0)=DUZ(2),DATA(DUZ(2))=DUZ(2)_U_$$NS^XUAF4(DUZ(2))
- D:DATA(0) DIVSET(,DATA(0))
+ N DIV,DEF,PRI,GBL,USR
+ S (DIV,PRI)=0,USR=+$G(DUZ),GBL=$S(USR:$NA(^VA(200,USR,2)),1:$NA(^DG(40.8,"AD")))
+ S DEF=+$S(USR:$G(DUZ(2)),1:$P($G(^XTV(8989.3,1,"XUS")),U,17))
+ F  S DIV=$O(@GBL@(DIV)) Q:'DIV  S:USR PRI=$P(^(DIV,0),U,2) D
+ .S DATA(DIV)=$$DIVINFO(DIV)
+ .S:PRI DEF=DIV
+ S:'DEF DEF=+$O(DATA(0))
+ I DEF,'$D(DATA(DEF)) S DATA(DEF)=$$DIVINFO(DEF)
+ S DATA(0)=DEF
+ D:DEF DIVSET(,DIV)
  Q
+ ; Return division info as
+ ; IEN ^ NAME ^ STATION # ^ SHORT NAME
+DIVINFO(DIV) ;
+ N X0,X99
+ S X0=$G(^DIC(4,DIV,0)),X99=$G(^(99))
+ Q DIV_U_$P(X0,U)_U_$P(X99,U)_U_$P(X0,U,5)
  ; RPC: Set division
 DIVSET(DATA,DIV) ;
  S DUZ(2)=+DIV,DATA=1
@@ -259,7 +265,7 @@ LOCKRES(DATA) ;
  ; Note use of naked reference.
 LOCKCNT(GBL,INC) ;
  N X,Y
- S X=+$G(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)),Y=X+$G(INC)                  ; Sets naked reference
+ S X=+$G(^XTMP("RGNETB",RGNETB("UID"),"L",GBL)),Y=X+$G(INC)            ; Sets naked reference
  I Y>0 S ^(GBL)=Y
  E  K ^(GBL)
  Q X

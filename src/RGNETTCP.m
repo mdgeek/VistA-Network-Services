@@ -1,4 +1,4 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;08-Jun-2015 15:13;DKM
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;17-Jun-2015 09:21;DKM
  ;;1.0;NETWORK SERVICES;;29-Mar-2015
  ;=================================================================
  ; Start a primary listener
@@ -209,7 +209,7 @@ QUIT3() N X
  Q X=U
  ; Save application state
 STSAVE(ST) ;
- D SAVE^XUS1
+ D SAVEVAR^%ZIS
  K @$$TMPGBL@(ST)
  M @$$TMPGBL@(ST)=^XUTL("XQ",$J)
  Q
