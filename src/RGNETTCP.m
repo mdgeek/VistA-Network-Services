@@ -1,5 +1,5 @@
-RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;17-Jun-2015 09:21;DKM
- ;;1.0;NETWORK SERVICES;;29-Mar-2015
+RGNETTCP ;RI/CBMI/DKM - TCP Connection Manager ;05-Oct-2015 10:31;DKM
+ ;;1.0;NETWORK SERVICES;;29-Mar-2015;Build 205
  ;=================================================================
  ; Start a primary listener
 START(RGCFG) ;
@@ -206,6 +206,7 @@ QUIT3() N X
  U $P
  R X#1:0
  D TCPUSE
+ B:X="B"!(X="b")
  Q X=U
  ; Save application state
 STSAVE(ST) ;
